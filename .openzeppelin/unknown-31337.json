@@ -1,0 +1,1825 @@
+{
+  "manifestVersion": "3.2",
+  "admin": {
+    "address": "0xCf7Ed3AccA5a467e9e704C703E8D87F634fB0Fc9",
+    "txHash": "0x2af67b328ebfa42f71fb67ee8f10f415c7021b9a29325b46a113405bc989c61a",
+    "deployTransaction": {
+      "hash": "0x2af67b328ebfa42f71fb67ee8f10f415c7021b9a29325b46a113405bc989c61a",
+      "type": 2,
+      "accessList": [],
+      "blockHash": "0x3ea42fb9c2e5b64749fbf50b11a938e18d520ff7c966052e27d0443d9db19dbd",
+      "blockNumber": 5,
+      "transactionIndex": 0,
+      "confirmations": 1,
+      "from": "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266",
+      "gasPrice": {
+        "type": "BigNumber",
+        "hex": "0x3b9aca00"
+      },
+      "maxPriorityFeePerGas": {
+        "type": "BigNumber",
+        "hex": "0x3b9aca00"
+      },
+      "maxFeePerGas": {
+        "type": "BigNumber",
+        "hex": "0x3b9aca00"
+      },
+      "gasLimit": {
+        "type": "BigNumber",
+        "hex": "0x0762b4"
+      },
+      "to": null,
+      "value": {
+        "type": "BigNumber",
+        "hex": "0x00"
+      },
+      "nonce": 3,
+      "data": "0x608060405234801561001057600080fd5b50600080546001600160a01b031916339081178255604051909182917f8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e0908290a350610759806100616000396000f3fe60806040526004361061007b5760003560e01c80639623609d1161004e5780639623609d1461011157806399a88ec414610124578063f2fde38b14610144578063f3b7dead146101645761007b565b8063204e1c7a14610080578063715018a6146100bc5780637eff275e146100d35780638da5cb5b146100f3575b600080fd5b34801561008c57600080fd5b506100a061009b366004610515565b610184565b6040516001600160a01b03909116815260200160405180910390f35b3480156100c857600080fd5b506100d1610215565b005b3480156100df57600080fd5b506100d16100ee366004610554565b610292565b3480156100ff57600080fd5b506000546001600160a01b03166100a0565b6100d161011f36600461058c565b61031c565b34801561013057600080fd5b506100d161013f366004610554565b6103ad565b34801561015057600080fd5b506100d161015f366004610515565b610405565b34801561017057600080fd5b506100a061017f366004610515565b6104ef565b6000806000836001600160a01b03166040516101aa90635c60da1b60e01b815260040190565b600060405180830381855afa9150503d80600081146101e5576040519150601f19603f3d011682016040523d82523d6000602084013e6101ea565b606091505b5091509150816101f957600080fd5b8080602001905181019061020d9190610538565b949350505050565b6000546001600160a01b031633146102485760405162461bcd60e51b815260040161023f906106c0565b60405180910390fd5b600080546040516001600160a01b03909116907f8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e0908390a3600080546001600160a01b0319169055565b6000546001600160a01b031633146102bc5760405162461bcd60e51b815260040161023f906106c0565b6040516308f2839760e41b81526001600160a01b038281166004830152831690638f283970906024015b600060405180830381600087803b15801561030057600080fd5b505af1158015610314573d6000803e3d6000fd5b505050505050565b6000546001600160a01b031633146103465760405162461bcd60e51b815260040161023f906106c0565b60405163278f794360e11b81526001600160a01b03841690634f1ef286903490610376908690869060040161065d565b6000604051808303818588803b15801561038f57600080fd5b505af11580156103a3573d6000803e3d6000fd5b5050505050505050565b6000546001600160a01b031633146103d75760405162461bcd60e51b815260040161023f906106c0565b604051631b2ce7f360e11b81526001600160a01b038281166004830152831690633659cfe6906024016102e6565b6000546001600160a01b0316331461042f5760405162461bcd60e51b815260040161023f906106c0565b6001600160a01b0381166104945760405162461bcd60e51b815260206004820152602660248201527f4f776e61626c653a206e6577206f776e657220697320746865207a65726f206160448201526564647265737360d01b606482015260840161023f565b600080546040516001600160a01b03808516939216917f8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e091a3600080546001600160a01b0319166001600160a01b0392909216919091179055565b6000806000836001600160a01b03166040516101aa906303e1469160e61b815260040190565b600060208284031215610526578081fd5b81356105318161070b565b9392505050565b600060208284031215610549578081fd5b81516105318161070b565b60008060408385031215610566578081fd5b82356105718161070b565b915060208301356105818161070b565b809150509250929050565b6000806000606084860312156105a0578081fd5b83356105ab8161070b565b925060208401356105bb8161070b565b9150604084013567ffffffffffffffff808211156105d7578283fd5b818601915086601f8301126105ea578283fd5b8135818111156105fc576105fc6106f5565b604051601f8201601f19908116603f01168101908382118183101715610624576106246106f5565b8160405282815289602084870101111561063c578586fd5b82602086016020830137856020848301015280955050505050509250925092565b600060018060a01b038416825260206040818401528351806040850152825b818110156106985785810183015185820160600152820161067c565b818111156106a95783606083870101525b50601f01601f191692909201606001949350505050565b6020808252818101527f4f776e61626c653a2063616c6c6572206973206e6f7420746865206f776e6572604082015260600190565b634e487b7160e01b600052604160045260246000fd5b6001600160a01b038116811461072057600080fd5b5056fea2646970667358221220d849f96f3086b9f82cdcf665adb8c697ace05638da1c7c16ab2d26293717af6764736f6c63430008020033",
+      "r": "0x1df1e183fae7880aa8e3603288af7f480927432176b716b721cf1489347aceff",
+      "s": "0x3f1615d82e383a6d9ac8132c833ff3e3b850f8921b3ebf420730da1cd669ec98",
+      "v": 0,
+      "creates": "0xCf7Ed3AccA5a467e9e704C703E8D87F634fB0Fc9",
+      "chainId": 31337
+    }
+  },
+  "proxies": [
+    {
+      "address": "0x0165878A594ca255338adfa4d48449f69242Eb8F",
+      "txHash": "0x6c804b79a56cd665dde1408ffd4bd089d4e2258513338985c0fbf13825de2097",
+      "kind": "transparent"
+    },
+    {
+      "address": "0x8A791620dd6260079BF849Dc5567aDC3F2FdC318",
+      "txHash": "0xebf470a5bfe6b2ef36ad91c6f8a34fac11eacc99ab362b33f77a7012ed421bb3",
+      "kind": "transparent"
+    },
+    {
+      "address": "0x457cCf29090fe5A24c19c1bc95F492168C0EaFdb",
+      "txHash": "0xdfeb652684916764f6f07c88d4016ec5061a3da73b16b49988e276510ab1dabd",
+      "kind": "transparent"
+    },
+    {
+      "address": "0x6F6f570F45833E249e27022648a26F4076F48f78",
+      "txHash": "0xe7a6b717029ee2661969a5f801fb7c97a12c296615a8728553e64f4e74f71ec6",
+      "kind": "transparent"
+    },
+    {
+      "address": "0xD42912755319665397FF090fBB63B1a31aE87Cee",
+      "txHash": "0xcc90e7e914534298ee3fbe2614fdfd7954ce01397bc26bb43e82c071ae537544",
+      "kind": "transparent"
+    },
+    {
+      "address": "0x638A246F0Ec8883eF68280293FFE8Cfbabe61B44",
+      "txHash": "0x349c936d2d10b6f6729a45d9a53c30194f20e6c16d5c46f258b5807a160a7d8d",
+      "kind": "transparent"
+    },
+    {
+      "address": "0x4bf010f1b9beDA5450a8dD702ED602A104ff65EE",
+      "txHash": "0xe95df092c3fd1ecf7ceb7662955c84e5f2f63c63f781bd05b7425b084740b633",
+      "kind": "transparent"
+    },
+    {
+      "address": "0x870526b7973b56163a6997bB7C886F5E4EA53638",
+      "txHash": "0xca5ee0f2673ed46115d7aec4182953f741ded3bc5858e885d931f6912f8081e7",
+      "kind": "transparent"
+    },
+    {
+      "address": "0x66F625B8c4c635af8b74ECe2d7eD0D58b4af3C3d",
+      "txHash": "0x5d0c1427bd1e04d7bd1af53aefb71b858e9310e91e733588c08ed4d62c888cf7",
+      "kind": "transparent"
+    },
+    {
+      "address": "0x26B862f640357268Bd2d9E95bc81553a2Aa81D7E",
+      "txHash": "0x685650133b8ea62b18d3599cd98bf86e74a3afb51365970b7e3178b5bd67b845",
+      "kind": "transparent"
+    },
+    {
+      "address": "0xAD523115cd35a8d4E60B3C0953E0E0ac10418309",
+      "txHash": "0x63208cd34971e5b0744503711672d22a84bad33bcb9196d26b9c23292b6f50c9",
+      "kind": "transparent"
+    },
+    {
+      "address": "0x1780bCf4103D3F501463AD3414c7f4b654bb7aFd",
+      "txHash": "0x091d6af276c4e7bf01e37b65248ed7c57bb754ecda94121f54f4e1db1a8eed2e",
+      "kind": "transparent"
+    },
+    {
+      "address": "0x9fE46736679d2D9a65F0992F2272dE9f3c7fa6e0",
+      "txHash": "0x67f7cef99b0e5214dfa09d76a5ffab3669c90b01cd6a7f65f75793cd3c6102cd",
+      "kind": "transparent"
+    },
+    {
+      "address": "0xa513E6E4b8f2a923D98304ec87F64353C4D5C853",
+      "txHash": "0x6ff6c720fdcfb50cabbf4bd32f647fd9110b0d450cf7d7a9c7dc9cb00ef5332d",
+      "kind": "transparent"
+    },
+    {
+      "address": "0x2279B7A0a67DB372996a5FaB50D91eAA73d2eBe6",
+      "txHash": "0xb3b3b85a0924cfe92de9dbc058b49f3262cc83dba18b38106dfe135353c1dc77",
+      "kind": "transparent"
+    },
+    {
+      "address": "0x9A676e781A523b5d0C0e43731313A708CB607508",
+      "txHash": "0x524e32ab6d8a368eeb9aff1e413c9fce542698669e8991489fcdabe1843a5dae",
+      "kind": "transparent"
+    },
+    {
+      "address": "0x5f3f1dBD7B74C6B46e8c44f98792A1dAf8d69154",
+      "txHash": "0xe651699d3f59ee01857277ffe97f5f6e9804d1042172c8df93e7668d2d7b29bf",
+      "kind": "transparent"
+    },
+    {
+      "address": "0x162A433068F51e18b7d13932F27e66a3f99E6890",
+      "txHash": "0x2a9191cb0c887f20db1c4159ed9904290737871a54377a6452e228150ed14a55",
+      "kind": "transparent"
+    },
+    {
+      "address": "0x36b58F5C1969B7b6591D752ea6F5486D069010AB",
+      "txHash": "0x6834beb3f5ff6b23a8dba9167b2ca951be0e68e6b0027cf9cbccd066c9f85cfb",
+      "kind": "transparent"
+    },
+    {
+      "address": "0x202CCe504e04bEd6fC0521238dDf04Bc9E8E15aB",
+      "txHash": "0xb17dfab4e86be1906ef0746fcecdade3aed78c56d59fbc916c2063115cf0e58d",
+      "kind": "transparent"
+    },
+    {
+      "address": "0xfbC22278A96299D91d41C453234d97b4F5Eb9B2d",
+      "txHash": "0x9a260cb55bd33edffabecdeb8befabf1f4ecf8bdb5dd6e3f993a103ecb5193ed",
+      "kind": "transparent"
+    },
+    {
+      "address": "0x1c85638e118b37167e9298c2268758e058DdfDA0",
+      "txHash": "0x5602db15b929e42e582936eb33c5a07b04081295e2000213493c00e108ce7e7d",
+      "kind": "transparent"
+    },
+    {
+      "address": "0xC9a43158891282A2B1475592D5719c001986Aaec",
+      "txHash": "0xcc6c85cbb10f896140e858c7bf947eb1708f8f7b5c309777ffcc66080f5e1605",
+      "kind": "transparent"
+    },
+    {
+      "address": "0x5eb3Bc0a489C5A8288765d2336659EbCA68FCd00",
+      "txHash": "0x80d7f45870fe56bf0bf486e8f0b122efaadf25eec21265a5d30ba694e9404050",
+      "kind": "transparent"
+    },
+    {
+      "address": "0x8198f5d8F8CfFE8f9C413d98a0A55aEB8ab9FbB7",
+      "txHash": "0x901b171eae4dffaa6dc7712d592dd8722e52332a2bdc9d3b5670dc1745403b59",
+      "kind": "transparent"
+    },
+    {
+      "address": "0x0355B7B8cb128fA5692729Ab3AAa199C1753f726",
+      "txHash": "0x32b983484e4fa1c1f25b56f77bc1de50c238560413c58282eabaa324e4f9f4db",
+      "kind": "transparent"
+    },
+    {
+      "address": "0x172076E0166D1F9Cc711C77Adf8488051744980C",
+      "txHash": "0xacf4dc08bdb094941ecd4d5df607438002a6fef3b12941bc0f03dbb06f51b467",
+      "kind": "transparent"
+    },
+    {
+      "address": "0xa85233C63b9Ee964Add6F2cffe00Fd84eb32338f",
+      "txHash": "0xe19b10c6457c8c23a1613a93b11bb5dded31e30c5afdb96d5616106d805e1d9e",
+      "kind": "transparent"
+    },
+    {
+      "address": "0x4ed7c70F96B99c776995fB64377f0d4aB3B0e1C1",
+      "txHash": "0x9097c8333f42f0bb41a2315b201c5d9df4d7c8c13684e9d98c9eb6c93776b741",
+      "kind": "transparent"
+    },
+    {
+      "address": "0xb7278A61aa25c888815aFC32Ad3cC52fF24fE575",
+      "txHash": "0x94de2711ee4dedd4a7f2713361ab3f10ddb3039e4e2c7b7b2a25ac5c776e5183",
+      "kind": "transparent"
+    },
+    {
+      "address": "0x51A1ceB83B83F1985a81C295d1fF28Afef186E02",
+      "txHash": "0xecf5d508f07dbd82743552fd14391e08df681fe1917033ef6e7d424dd663c665",
+      "kind": "transparent"
+    },
+    {
+      "address": "0xf4B146FbA71F41E0592668ffbF264F1D186b2Ca8",
+      "txHash": "0xf2f14ade528195af2f6a17effc117570d25ea4202b4a985b0d683ef62f00b6f4",
+      "kind": "transparent"
+    },
+    {
+      "address": "0x46b142DD1E924FAb83eCc3c08e4D46E82f005e0E",
+      "txHash": "0x8f737072c8cdcfc03d31ffaf61b3b40ccfcac61df88becb41f9a20edbc623b06",
+      "kind": "transparent"
+    },
+    {
+      "address": "0x367761085BF3C12e5DA2Df99AC6E1a824612b8fb",
+      "txHash": "0x39cd4a98b2c67fa08d840f90793c4b9c716d88baed07b1121d71fe7d68fffcd1",
+      "kind": "transparent"
+    },
+    {
+      "address": "0x5c74c94173F05dA1720953407cbb920F3DF9f887",
+      "txHash": "0x3bb13e9762046e9333a4678ced430fab0ac012bdd14b7a3684fdaff667e91de0",
+      "kind": "transparent"
+    },
+    {
+      "address": "0xB7f8BC63BbcaD18155201308C8f3540b07f84F5e",
+      "txHash": "0x2fdfc0fc631adfd683ec6a588283d6de946955410b2a26655e52d159bd65933b",
+      "kind": "transparent"
+    },
+    {
+      "address": "0x9A9f2CCfdE556A7E9Ff0848998Aa4a0CFD8863AE",
+      "txHash": "0xc5d20b91db901747e47c0ed3a969186f886bc0dc70661fa324512d4d78d08103",
+      "kind": "transparent"
+    },
+    {
+      "address": "0x49fd2BE640DB2910c2fAb69bB8531Ab6E76127ff",
+      "txHash": "0x8d8735f4a8285528ff6c05f8a5553acce8bd087e8d826f27c0278cfabcf35fc8",
+      "kind": "transparent"
+    },
+    {
+      "address": "0x720472c8ce72c2A2D711333e064ABD3E6BbEAdd3",
+      "txHash": "0x25841f199da2aa21b82a26722f195ca558163516a61a30710a8adf8df58b012a",
+      "kind": "transparent"
+    },
+    {
+      "address": "0xe8D2A1E88c91DCd5433208d4152Cc4F399a7e91d",
+      "txHash": "0x8d43f819b790ae991963015659943f74576d6b8edf889193897d0cd1432ab6bf",
+      "kind": "transparent"
+    },
+    {
+      "address": "0x68B1D87F95878fE05B998F19b66F4baba5De1aed",
+      "txHash": "0x493ba32d9f3a6af3c5143ee4754321a4658fc82cca5ce2c86a99d89ca775bd34",
+      "kind": "transparent"
+    },
+    {
+      "address": "0x4A679253410272dd5232B3Ff7cF5dbB88f295319",
+      "txHash": "0x10cfa52c269da1b5469b468577b3ddd204d0bbaa9dff251edb5943ff3793ff95",
+      "kind": "transparent"
+    },
+    {
+      "address": "0x1613beB3B2C4f22Ee086B2b38C1476A3cE7f78E8",
+      "txHash": "0x924ad9e390d9f009daa7578419bd38ae9db7b28589dbbeccd5162f4d2ad44d62",
+      "kind": "transparent"
+    },
+    {
+      "address": "0x998abeb3E57409262aE5b751f60747921B33613E",
+      "txHash": "0x962f107489ad022f5016278196f476fe591e699b9df21d409aae38e63842ecf3",
+      "kind": "transparent"
+    },
+    {
+      "address": "0x36C02dA8a0983159322a80FFE9F24b1acfF8B570",
+      "txHash": "0xc1c875f7f3a6c9802fa999b59bc56c6e408c8cebd279e42dc224769f25685ec0",
+      "kind": "transparent"
+    },
+    {
+      "address": "0x82e01223d51Eb87e16A03E24687EDF0F294da6f1",
+      "txHash": "0x2c8c4f7a4944ec95afe41aabdde0d3a23928f67673827f7deb02882823b8df15",
+      "kind": "transparent"
+    },
+    {
+      "address": "0xc351628EB244ec633d5f21fBD6621e1a683B1181",
+      "txHash": "0x338993a5905e9498e908ed3ad89a7d7937820a247b8214ff641430febdee5455",
+      "kind": "transparent"
+    },
+    {
+      "address": "0x922D6956C99E12DFeB3224DEA977D0939758A1Fe",
+      "txHash": "0x6e5d68822e275c979df7f34e19bc1e32a59e16b30ca7eb066e335cb56aea0733",
+      "kind": "transparent"
+    },
+    {
+      "address": "0x21dF544947ba3E8b3c32561399E88B52Dc8b2823",
+      "txHash": "0xac06cfe3d98f2303a29449dd2f905a973a891b5252d3deb44086aa698891e852",
+      "kind": "transparent"
+    },
+    {
+      "address": "0x4EE6eCAD1c2Dae9f525404De8555724e3c35d07B",
+      "txHash": "0x85eabb76e901179552365e5d1b5c42a89d134ab641f0b65a7f2da77be86da54e",
+      "kind": "transparent"
+    },
+    {
+      "address": "0x4631BCAbD6dF18D94796344963cB60d44a4136b6",
+      "txHash": "0x226ab506f2ac2b8f9f6b4fbdcacf4b5f2c34f82f6fba9d9407b869d55c3202c3",
+      "kind": "transparent"
+    },
+    {
+      "address": "0x5067457698Fd6Fa1C6964e416b3f42713513B3dD",
+      "txHash": "0x94b8585cf0b795338889849fc6b8ab72efce4a52b0615c04cbeeaedb6004401f",
+      "kind": "transparent"
+    },
+    {
+      "address": "0x18E317A7D70d8fBf8e6E893616b52390EbBdb629",
+      "txHash": "0x40ff2bb055017e8203d0da253b2a0678f34680f3d988d3c8fb4cdf8ef40541af",
+      "kind": "transparent"
+    },
+    {
+      "address": "0xF8e31cb472bc70500f08Cd84917E5A1912Ec8397",
+      "txHash": "0x34aea9a846ffcb8ae33204c102e30bebddb2e015069b43f85479057bda3e4de1",
+      "kind": "transparent"
+    },
+    {
+      "address": "0xE3011A37A904aB90C8881a99BD1F6E21401f1522",
+      "txHash": "0xa36ef85b5d503637286365375d8fc4803605971912ab5df2f80c912de48c8d07",
+      "kind": "transparent"
+    },
+    {
+      "address": "0x22753E4264FDDc6181dc7cce468904A80a363E44",
+      "txHash": "0x7963aa9b5e49c1a9503eb63151d7a9229f6affae7f22086c38b5f69d7f6f5c98",
+      "kind": "transparent"
+    },
+    {
+      "address": "0x1f10F3Ba7ACB61b2F50B9d6DdCf91a6f787C0E82",
+      "txHash": "0x3785f6075b9cd61965670e40a09e623c916f66a7f3e5aa89d390ced3a76814ad",
+      "kind": "transparent"
+    },
+    {
+      "address": "0xc0F115A19107322cFBf1cDBC7ea011C19EbDB4F8",
+      "txHash": "0x3ed9d32365a8d589aab9c18d0a9e07ada315d866d67fcfff9605af7bf2ec636e",
+      "kind": "transparent"
+    },
+    {
+      "address": "0x276C216D241856199A83bf27b2286659e5b877D3",
+      "txHash": "0x2171618db7e5eebd9b4a35ec8c572a21b985dbaf4057bd6f2ea02cd2310bda08",
+      "kind": "transparent"
+    },
+    {
+      "address": "0x38a024C0b412B9d1db8BC398140D00F5Af3093D4",
+      "txHash": "0x64eb52f19dd502fb38eea346f5607738e3f3fba693143a614f08a236d02e47d3",
+      "kind": "transparent"
+    },
+    {
+      "address": "0xCf7Ed3AccA5a467e9e704C703E8D87F634fB0Fc9",
+      "txHash": "0x337337926b4678755b52dfcdd1106982605a77d45444bfb27295bb9b7850d88d",
+      "kind": "transparent"
+    },
+    {
+      "address": "0x3Aa5ebB10DC797CAC828524e59A333d0A371443c",
+      "txHash": "0xf0e52bca70785874bb434d0c8b942f9a3f7046111282d20ebc1378b3bc385665",
+      "kind": "transparent"
+    },
+    {
+      "address": "0x7a2088a1bFc9d81c55368AE168C2C02570cB814F",
+      "txHash": "0x1afd4ba65a190c50c6f7128713ed0e3026191619327bc7931864413eda3dc769",
+      "kind": "transparent"
+    },
+    {
+      "address": "0x67d269191c92Caf3cD7723F116c85e6E9bf55933",
+      "txHash": "0x7663a060ba633210225c37e42ce2b81c0ce89fd7ad956b0f1dd3ee97d65f788f",
+      "kind": "transparent"
+    },
+    {
+      "address": "0x84eA74d481Ee0A5332c457a4d796187F6Ba67fEB",
+      "txHash": "0x9170d7eaa6a9b12e36add6f31f98ddc348f290bd7bbaa4426e408578f6ec7a5e",
+      "kind": "transparent"
+    },
+    {
+      "address": "0x851356ae760d987E095750cCeb3bC6014560891C",
+      "txHash": "0x2434cf7832cdbac5f5e569350fc2811634f87d0e66c9f64fc4f05af254bac004",
+      "kind": "transparent"
+    },
+    {
+      "address": "0x70e0bA845a1A0F2DA3359C97E0285013525FFC49",
+      "txHash": "0x5f4b269c7eb99416cd8b81373c769927c05f0139b65ca88daebdd0f10f0bd374",
+      "kind": "transparent"
+    },
+    {
+      "address": "0x0E801D84Fa97b50751Dbf25036d067dCf18858bF",
+      "txHash": "0x35aaf52a9b3c3bc12e0e08369bf26d7ea9b324fd5ed2045211c91751fad47a40",
+      "kind": "transparent"
+    },
+    {
+      "address": "0x809d550fca64d94Bd9F66E60752A544199cfAC3D",
+      "txHash": "0xeead983f76aafb9780fde590df634ae5fb8eb500334d535c77dc3c78e0589781",
+      "kind": "transparent"
+    },
+    {
+      "address": "0x2bdCC0de6bE1f7D2ee689a0342D76F52E8EFABa3",
+      "txHash": "0xd448a03e6f39bac93f353150cd1eb71e4340ff13c686c7cdbeebac1e99f9c951",
+      "kind": "transparent"
+    },
+    {
+      "address": "0xFD471836031dc5108809D173A067e8486B9047A3",
+      "txHash": "0x08666a562be363f59734ea36e9f3268348b55ddae5a1e8fe003bef6621d84ce6",
+      "kind": "transparent"
+    },
+    {
+      "address": "0x5081a39b8A5f0E35a8D959395a630b68B74Dd30f",
+      "txHash": "0xeaa4e93de31678ddadf541424e7347b7fdefb84773f8edc375455b1907e19f09",
+      "kind": "transparent"
+    },
+    {
+      "address": "0x2E2Ed0Cfd3AD2f1d34481277b3204d807Ca2F8c2",
+      "txHash": "0x96a14d8f27e2991bdf918ce879cf6ad35df52713ad21706f5e034733ec9e4561",
+      "kind": "transparent"
+    },
+    {
+      "address": "0xBEc49fA140aCaA83533fB00A2BB19bDdd0290f25",
+      "txHash": "0xa34377fafa93e43b4dcd3fb66078787410bff892a849e3fa92c0e5dddf75616e",
+      "kind": "transparent"
+    },
+    {
+      "address": "0x86A2EE8FAf9A840F7a2c64CA3d51209F9A02081D",
+      "txHash": "0x506b1d7a1fb309284d353809a4e3ce144ab95479d043fa207cebb3f1de6fd3d6",
+      "kind": "transparent"
+    },
+    {
+      "address": "0x4b6aB5F819A515382B0dEB6935D793817bB4af28",
+      "txHash": "0xcb6ccbca23c37eaf7218d48570de684acf83474ff4a6b1ff6627009d3882fa53",
+      "kind": "transparent"
+    },
+    {
+      "address": "0xc96304e3c037f81dA488ed9dEa1D8F2a48278a75",
+      "txHash": "0x2f126088303d5c377f80fde664c0e2d3e361f001a4824b42863cf1eb58652cd3",
+      "kind": "transparent"
+    },
+    {
+      "address": "0x07882Ae1ecB7429a84f1D53048d35c4bB2056877",
+      "txHash": "0xfa02739b7491e70b7f75a505201de67c8ce0b29451d5460e2604d347083c2cbc",
+      "kind": "transparent"
+    },
+    {
+      "address": "0x3347B4d90ebe72BeFb30444C9966B2B990aE9FcB",
+      "txHash": "0x5afaacbacda468c4dd1c26ba4e68415d7e0f2c04ebfc811a0ec432edf9e03278",
+      "kind": "transparent"
+    },
+    {
+      "address": "0x5fc748f1FEb28d7b76fa1c6B07D8ba2d5535177c",
+      "txHash": "0xe0a0a46746a2ff21122591106677cac9952cca121edad6edec8dbb06bb910ef9",
+      "kind": "transparent"
+    },
+    {
+      "address": "0x5bf5b11053e734690269C6B9D438F8C9d48F528A",
+      "txHash": "0x4b22c192c7e3d135e1083e607981cf35d9259d00b0545f148596f55ad86c6030",
+      "kind": "transparent"
+    },
+    {
+      "address": "0x2a810409872AfC346F9B5b26571Fd6eC42EA4849",
+      "txHash": "0xf1de09b8b7441c4fb52a04c666739dd1d3f3e382e99cc89602bb3f7d4680820a",
+      "kind": "transparent"
+    },
+    {
+      "address": "0xc6e7DF5E7b4f2A278906862b61205850344D4e7d",
+      "txHash": "0x959500d1ef4ae2b6284cca761e8ffe8cce13f7978cce4ba62d2d1d46ae053f8e",
+      "kind": "transparent"
+    },
+    {
+      "address": "0x09635F643e140090A9A8Dcd712eD6285858ceBef",
+      "txHash": "0xc2ca36a253a0a1b03c4b1c2e88deef3481f8ad3a6c6127ee8fca5ed008d9758c",
+      "kind": "transparent"
+    },
+    {
+      "address": "0xE6E340D132b5f46d1e472DebcD681B2aBc16e57E",
+      "txHash": "0x335f4f4f2d5e9bf7573e22e81f4e78293d1eb3541b78985b91703c22c4d40606",
+      "kind": "transparent"
+    },
+    {
+      "address": "0x9E545E3C0baAB3E08CdfD552C960A1050f373042",
+      "txHash": "0xf519dc68879fb7234e83b0297caf632c5cf9409f6af519fad75fd4c13ebf9720",
+      "kind": "transparent"
+    },
+    {
+      "address": "0xf5059a5D33d5853360D16C683c16e67980206f36",
+      "txHash": "0x01719ab6198112364a171ca6d28a715ab5fe6a6535fbae02065e5fd0a5626832",
+      "kind": "transparent"
+    },
+    {
+      "address": "0x4826533B4897376654Bb4d4AD88B7faFD0C98528",
+      "txHash": "0x8f95fcdda917b472fc0f001dac93fc79f5f13f6e759770c38b8396106ceb53b0",
+      "kind": "transparent"
+    },
+    {
+      "address": "0x8f86403A4DE0BB5791fa46B8e795C547942fE4Cf",
+      "txHash": "0xb2faaec04b3813a812e23df7f19a61a6019175c9d5fd6ce3f2df7be3c0650c92",
+      "kind": "transparent"
+    },
+    {
+      "address": "0x7969c5eD335650692Bc04293B07F5BF2e7A673C0",
+      "txHash": "0xd455e7c3ec052e2d3990b95f412bd518507ed96191d8c272c4cea16593d69231",
+      "kind": "transparent"
+    },
+    {
+      "address": "0xcbEAF3BDe82155F56486Fb5a1072cb8baAf547cc",
+      "txHash": "0xbb6ed2a5e61d63f6f189eccfd40752e5517efe907fe20082c02c8f542fc6df89",
+      "kind": "transparent"
+    },
+    {
+      "address": "0x1fA02b2d6A771842690194Cf62D91bdd92BfE28d",
+      "txHash": "0x1f4b86cbeae30848e8817c14c6bb6d42f994f8bcb610b0745469c2e0a985241f",
+      "kind": "transparent"
+    },
+    {
+      "address": "0xD8a5a9b31c3C0232E196d518E89Fd8bF83AcAd43",
+      "txHash": "0xaa0bc7855d7bb454dd17eb3ceb0b1f47f3dec06b7722c197807dd7131d2366ce",
+      "kind": "transparent"
+    },
+    {
+      "address": "0xD84379CEae14AA33C123Af12424A37803F885889",
+      "txHash": "0x2898ddf6b5405cdfc64ff7b421235518d36c58d5c4e100bfec14d8869c92fdeb",
+      "kind": "transparent"
+    },
+    {
+      "address": "0xA4899D35897033b927acFCf422bc745916139776",
+      "txHash": "0x87b024b5087885da432d299accb0f3abd0381b7853230754ef67e261592abdf7",
+      "kind": "transparent"
+    },
+    {
+      "address": "0xCace1b78160AE76398F486c8a18044da0d66d86D",
+      "txHash": "0xfe0934a3cce5dcb1f0e29eaad1993b7bfb977aa3fe7362c8257b174902c01440",
+      "kind": "transparent"
+    },
+    {
+      "address": "0x34B40BA116d5Dec75548a9e9A8f15411461E8c70",
+      "txHash": "0xd16a26fac2a963a47ef96f0b59e80f10707a4d5f58e7e466da01900db0c15f0e",
+      "kind": "transparent"
+    },
+    {
+      "address": "0xA7c59f010700930003b33aB25a7a0679C860f29c",
+      "txHash": "0x52a0632a78c20b41354ddc4838a9ab46caa7ff0538f4adfe025e6adbab1f7634",
+      "kind": "transparent"
+    },
+    {
+      "address": "0xffa7CA1AEEEbBc30C874d32C7e22F052BbEa0429",
+      "txHash": "0x97ce0e0f7ada858ba48d8635ebe4ce30f6719cf5fb340bd27c8dfb1b3b49cb35",
+      "kind": "transparent"
+    },
+    {
+      "address": "0xb9bEECD1A582768711dE1EE7B0A1d582D9d72a6C",
+      "txHash": "0x55317742ee4f21efb7469e4114000637447b88ac653f8c57c5cf1ca51015b654",
+      "kind": "transparent"
+    },
+    {
+      "address": "0x4c5859f0F772848b2D91F1D83E2Fe57935348029",
+      "txHash": "0x1e781809fd2e0db9071fa12c80fb75c8bf7d7d374527d6c5348a6758c5baf34d",
+      "kind": "transparent"
+    },
+    {
+      "address": "0xDc64a140Aa3E981100a9becA4E685f962f0cF6C9",
+      "txHash": "0x4b2809db788e59da7ec90725f0c63b80d29415c5c10141816ebf2f3d0662a07e",
+      "kind": "transparent"
+    },
+    {
+      "address": "0x59b670e9fA9D0A427751Af201D676719a970857b",
+      "txHash": "0x5ff9a7c34412b0a066d121cc89ec68e830e73e9ec5b4833587890f22753ab580",
+      "kind": "transparent"
+    },
+    {
+      "address": "0xc5a5C42992dECbae36851359345FE25997F5C42d",
+      "txHash": "0x4988aeea0d2fbf33af03c05105d036fe79ee285bf6d67e4ff08a86993e552bc0",
+      "kind": "transparent"
+    },
+    {
+      "address": "0xc3e53F4d16Ae77Db1c982e75a937B9f60FE63690",
+      "txHash": "0xd4392c30a0ebb1688636043f73aeaace37d88e5dd9e294f5c4bd15bcc0a85981",
+      "kind": "transparent"
+    },
+    {
+      "address": "0xa82fF9aFd8f496c3d6ac40E2a0F282E47488CFc9",
+      "txHash": "0xef46114644783535c366c9aa878218319def091a0b1af6a3a8513f43a2db9714",
+      "kind": "transparent"
+    },
+    {
+      "address": "0x95401dc811bb5740090279Ba06cfA8fcF6113778",
+      "txHash": "0x68a35db281104fc7f57d914be238bc440e635eb6c01c9ac355f37dab9bddbf3f",
+      "kind": "transparent"
+    },
+    {
+      "address": "0x99bbA657f2BbC93c02D617f8bA121cB8Fc104Acf",
+      "txHash": "0xade8289219c19320c34b781919229b9fa521337149eb9e61690be9ded8ace058",
+      "kind": "transparent"
+    },
+    {
+      "address": "0x9d4454B023096f34B160D6B654540c56A1F81688",
+      "txHash": "0x7100c897a740ce6d5b283bcdd6e39dc62084a482ad7cc5ffa91b78b9da44be3a",
+      "kind": "transparent"
+    },
+    {
+      "address": "0x1291Be112d480055DaFd8a610b7d1e203891C274",
+      "txHash": "0x0c7bbf58e305cc2cf815d01276068b71c0cca96af9bae3177fa4e4285b7bf34f",
+      "kind": "transparent"
+    },
+    {
+      "address": "0x7bc06c482DEAd17c0e297aFbC32f6e63d3846650",
+      "txHash": "0x132ef3065c602f4d8119132669c6266e029eb27aeec656f6ff7eb5c4e0417a13",
+      "kind": "transparent"
+    },
+    {
+      "address": "0x1429859428C0aBc9C2C47C8Ee9FBaf82cFA0F20f",
+      "txHash": "0x63101ebf5ee66c92546a45ca6f0c9ec5d308da86fc0c8a662b453488219d8cba",
+      "kind": "transparent"
+    },
+    {
+      "address": "0xdbC43Ba45381e02825b14322cDdd15eC4B3164E6",
+      "txHash": "0x871bcfcc17aa3f07fb2b00f233f56bbedbb881f22db28e374d7f0a5d8b9992bf",
+      "kind": "transparent"
+    },
+    {
+      "address": "0xDC11f7E700A4c898AE5CAddB1082cFfa76512aDD",
+      "txHash": "0xde2e114f5874647ae44e73cc6daa4e38a204c1f738b8488a82749b0651a069e1",
+      "kind": "transparent"
+    },
+    {
+      "address": "0x2B0d36FACD61B71CC05ab8F3D2355ec3631C0dd5",
+      "txHash": "0xa2d1d857c1bac97d9b5b5a750c4762b41dae509c703b6d39cbe8e7f00661204a",
+      "kind": "transparent"
+    },
+    {
+      "address": "0xf953b3A269d80e3eB0F2947630Da976B896A8C5b",
+      "txHash": "0xf806ae42fae3bc3701dcea802d1cf1a71b248e34155fc340aba88eff511cb3e6",
+      "kind": "transparent"
+    },
+    {
+      "address": "0xD5ac451B0c50B9476107823Af206eD814a2e2580",
+      "txHash": "0x795f82c99997138e3d7a196ab65fe4190c72f2437b78c60ecef592e4b3b9c696",
+      "kind": "transparent"
+    },
+    {
+      "address": "0xD0141E899a65C95a556fE2B27e5982A6DE7fDD7A",
+      "txHash": "0x6f48767953359d5b19bcb7bc1f1ea0ab1bfe7581b92627e28536d7e8b2be9692",
+      "kind": "transparent"
+    },
+    {
+      "address": "0xfaAddC93baf78e89DCf37bA67943E1bE8F37Bb8c",
+      "txHash": "0xf952164a4f170d31a77f366bb3aa165dab8ec7509e1f36f79ec73f770949ebdb",
+      "kind": "transparent"
+    },
+    {
+      "address": "0x3aAde2dCD2Df6a8cAc689EE797591b2913658659",
+      "txHash": "0x65f4a0de0c0751131951d5b0ad2a3f7149e06edfe13622f048a140e23055870a",
+      "kind": "transparent"
+    },
+    {
+      "address": "0x8A93d247134d91e0de6f96547cB0204e5BE8e5D8",
+      "txHash": "0x083c058fd72fdbb5548f165d3897e828a85a46f519a8c20cec9f83e3e4a9dc37",
+      "kind": "transparent"
+    }
+  ],
+  "impls": {
+    "698f6174debffa6fe061e650202f4006ed290025a8083aa6e3eed26ca3655da6": {
+      "address": "0x5FbDB2315678afecb367f032d93F642f64180aa3",
+      "txHash": "0x5f9553477e6d3ffb8cddaf0fd74bc59cae25f13f38e75d4e4bad73afce21aa02",
+      "layout": {
+        "storage": [
+          {
+            "contract": "Initializable",
+            "label": "initialized",
+            "type": "t_bool",
+            "src": "contracts\\RUSDFraction.sol:129"
+          },
+          {
+            "contract": "Initializable",
+            "label": "initializing",
+            "type": "t_bool",
+            "src": "contracts\\RUSDFraction.sol:134"
+          },
+          {
+            "contract": "Initializable",
+            "label": "______gap",
+            "type": "t_array(t_uint256)50_storage",
+            "src": "contracts\\RUSDFraction.sol:179"
+          },
+          {
+            "contract": "ERC20Detailed",
+            "label": "_name",
+            "type": "t_string_storage",
+            "src": "contracts\\RUSDFraction.sol:288"
+          },
+          {
+            "contract": "ERC20Detailed",
+            "label": "_symbol",
+            "type": "t_string_storage",
+            "src": "contracts\\RUSDFraction.sol:289"
+          },
+          {
+            "contract": "ERC20Detailed",
+            "label": "_decimals",
+            "type": "t_uint8",
+            "src": "contracts\\RUSDFraction.sol:290"
+          },
+          {
+            "contract": "ERC20Detailed",
+            "label": "______gap",
+            "type": "t_array(t_uint256)50_storage",
+            "src": "contracts\\RUSDFraction.sol:323"
+          },
+          {
+            "contract": "Ownable",
+            "label": "_owner",
+            "type": "t_address",
+            "src": "contracts\\RUSDFraction.sol:214"
+          },
+          {
+            "contract": "Ownable",
+            "label": "______gap",
+            "type": "t_array(t_uint256)50_storage",
+            "src": "contracts\\RUSDFraction.sol:278"
+          },
+          {
+            "contract": "RUSDFraction",
+            "label": "rebasePausedDeprecated",
+            "type": "t_bool",
+            "src": "contracts\\RUSDFraction.sol:360"
+          },
+          {
+            "contract": "RUSDFraction",
+            "label": "tokenPausedDeprecated",
+            "type": "t_bool",
+            "src": "contracts\\RUSDFraction.sol:361"
+          },
+          {
+            "contract": "RUSDFraction",
+            "label": "_totalSupply",
+            "type": "t_uint256",
+            "src": "contracts\\RUSDFraction.sol:380"
+          },
+          {
+            "contract": "RUSDFraction",
+            "label": "_fracsPerRUSD",
+            "type": "t_uint256",
+            "src": "contracts\\RUSDFraction.sol:381"
+          },
+          {
+            "contract": "RUSDFraction",
+            "label": "_fracBalances",
+            "type": "t_mapping(t_address,t_uint256)",
+            "src": "contracts\\RUSDFraction.sol:382"
+          },
+          {
+            "contract": "RUSDFraction",
+            "label": "_allowedFragments",
+            "type": "t_mapping(t_address,t_mapping(t_address,t_uint256))",
+            "src": "contracts\\RUSDFraction.sol:386"
+          },
+          {
+            "contract": "RUSDFraction",
+            "label": "_nonces",
+            "type": "t_mapping(t_address,t_uint256)",
+            "src": "contracts\\RUSDFraction.sol:401"
+          }
+        ],
+        "types": {
+          "t_bool": {
+            "label": "bool"
+          },
+          "t_uint256": {
+            "label": "uint256"
+          },
+          "t_mapping(t_address,t_uint256)": {
+            "label": "mapping(address => uint256)"
+          },
+          "t_address": {
+            "label": "address"
+          },
+          "t_mapping(t_address,t_mapping(t_address,t_uint256))": {
+            "label": "mapping(address => mapping(address => uint256))"
+          },
+          "t_array(t_uint256)50_storage": {
+            "label": "uint256[50]"
+          },
+          "t_string_storage": {
+            "label": "string"
+          },
+          "t_uint8": {
+            "label": "uint8"
+          }
+        }
+      }
+    },
+    "e267f730575d654ad456ea4c76a437ba32df8410ed9cc56229da00ed8901c8bf": {
+      "address": "0x59b670e9fA9D0A427751Af201D676719a970857b",
+      "txHash": "0x2e281ee3b7a2ddef1f23d4d999edb91e0b60c4b2057ed6446854a288610db7b0",
+      "layout": {
+        "storage": [
+          {
+            "contract": "Initializable",
+            "label": "initialized",
+            "type": "t_bool",
+            "src": "contracts\\_external\\Initializable.sol:19"
+          },
+          {
+            "contract": "Initializable",
+            "label": "initializing",
+            "type": "t_bool",
+            "src": "contracts\\_external\\Initializable.sol:24"
+          },
+          {
+            "contract": "Initializable",
+            "label": "______gap",
+            "type": "t_array(t_uint256)50_storage",
+            "src": "contracts\\_external\\Initializable.sol:69"
+          },
+          {
+            "contract": "Ownable",
+            "label": "_owner",
+            "type": "t_address",
+            "src": "contracts\\_external\\Ownable.sol:11"
+          },
+          {
+            "contract": "Ownable",
+            "label": "______gap",
+            "type": "t_array(t_uint256)50_storage",
+            "src": "contracts\\_external\\Ownable.sol:75"
+          },
+          {
+            "contract": "RUSDFractionPolicy",
+            "label": "rusdFracs",
+            "type": "t_contract(IRUSDFraction)216",
+            "src": "contracts\\RUSDFractionPolicy.sol:41"
+          },
+          {
+            "contract": "RUSDFractionPolicy",
+            "label": "cpiOracle",
+            "type": "t_contract(IOracle)224",
+            "src": "contracts\\RUSDFractionPolicy.sol:44"
+          },
+          {
+            "contract": "RUSDFractionPolicy",
+            "label": "marketOracle",
+            "type": "t_contract(IOracle)224",
+            "src": "contracts\\RUSDFractionPolicy.sol:48"
+          },
+          {
+            "contract": "RUSDFractionPolicy",
+            "label": "baseCpi",
+            "type": "t_uint256",
+            "src": "contracts\\RUSDFractionPolicy.sol:51"
+          },
+          {
+            "contract": "RUSDFractionPolicy",
+            "label": "deviationThreshold",
+            "type": "t_uint256",
+            "src": "contracts\\RUSDFractionPolicy.sol:57"
+          },
+          {
+            "contract": "RUSDFractionPolicy",
+            "label": "rebaseLag",
+            "type": "t_uint256",
+            "src": "contracts\\RUSDFractionPolicy.sol:62"
+          },
+          {
+            "contract": "RUSDFractionPolicy",
+            "label": "minRebaseTimeIntervalSec",
+            "type": "t_uint256",
+            "src": "contracts\\RUSDFractionPolicy.sol:65"
+          },
+          {
+            "contract": "RUSDFractionPolicy",
+            "label": "lastRebaseTimestampSec",
+            "type": "t_uint256",
+            "src": "contracts\\RUSDFractionPolicy.sol:68"
+          },
+          {
+            "contract": "RUSDFractionPolicy",
+            "label": "rebaseWindowOffsetSec",
+            "type": "t_uint256",
+            "src": "contracts\\RUSDFractionPolicy.sol:72"
+          },
+          {
+            "contract": "RUSDFractionPolicy",
+            "label": "rebaseWindowLengthSec",
+            "type": "t_uint256",
+            "src": "contracts\\RUSDFractionPolicy.sol:75"
+          },
+          {
+            "contract": "RUSDFractionPolicy",
+            "label": "epoch",
+            "type": "t_uint256",
+            "src": "contracts\\RUSDFractionPolicy.sol:78"
+          },
+          {
+            "contract": "RUSDFractionPolicy",
+            "label": "handler",
+            "type": "t_address",
+            "src": "contracts\\RUSDFractionPolicy.sol:89"
+          }
+        ],
+        "types": {
+          "t_contract(IRUSDFraction)216": {
+            "label": "contract IRUSDFraction"
+          },
+          "t_contract(IOracle)224": {
+            "label": "contract IOracle"
+          },
+          "t_uint256": {
+            "label": "uint256"
+          },
+          "t_address": {
+            "label": "address"
+          },
+          "t_array(t_uint256)50_storage": {
+            "label": "uint256[50]"
+          },
+          "t_bool": {
+            "label": "bool"
+          }
+        }
+      }
+    },
+    "c92ed57f897353d908025df3ccd741fc1a17b79b37c2edbc03d706a0e4306999": {
+      "address": "0x9A9f2CCfdE556A7E9Ff0848998Aa4a0CFD8863AE",
+      "txHash": "0x5e2a7d09ad06ed4704f1caf47331551d37d78def8b1975bf9424f97128c143f6",
+      "layout": {
+        "storage": [
+          {
+            "contract": "Initializable",
+            "label": "initialized",
+            "type": "t_bool",
+            "src": "contracts\\RUSDFraction.sol:146"
+          },
+          {
+            "contract": "Initializable",
+            "label": "initializing",
+            "type": "t_bool",
+            "src": "contracts\\RUSDFraction.sol:151"
+          },
+          {
+            "contract": "Initializable",
+            "label": "______gap",
+            "type": "t_array(t_uint256)50_storage",
+            "src": "contracts\\RUSDFraction.sol:196"
+          },
+          {
+            "contract": "ERC20Detailed",
+            "label": "_name",
+            "type": "t_string_storage",
+            "src": "contracts\\RUSDFraction.sol:315"
+          },
+          {
+            "contract": "ERC20Detailed",
+            "label": "_symbol",
+            "type": "t_string_storage",
+            "src": "contracts\\RUSDFraction.sol:316"
+          },
+          {
+            "contract": "ERC20Detailed",
+            "label": "_decimals",
+            "type": "t_uint8",
+            "src": "contracts\\RUSDFraction.sol:317"
+          },
+          {
+            "contract": "ERC20Detailed",
+            "label": "______gap",
+            "type": "t_array(t_uint256)50_storage",
+            "src": "contracts\\RUSDFraction.sol:350"
+          },
+          {
+            "contract": "Ownable",
+            "label": "_owner",
+            "type": "t_address",
+            "src": "contracts\\RUSDFraction.sol:238"
+          },
+          {
+            "contract": "Ownable",
+            "label": "______gap",
+            "type": "t_array(t_uint256)50_storage",
+            "src": "contracts\\RUSDFraction.sol:305"
+          },
+          {
+            "contract": "RUSDFraction",
+            "label": "rewardsPerToken",
+            "type": "t_struct(RewardsPerToken)806_storage",
+            "src": "contracts\\RUSDFraction.sol:421"
+          },
+          {
+            "contract": "RUSDFraction",
+            "label": "rewards",
+            "type": "t_mapping(t_address,t_mapping(t_contract(IERC20)518,t_struct(UserRewards)811_storage))",
+            "src": "contracts\\RUSDFraction.sol:422"
+          },
+          {
+            "contract": "RUSDFraction",
+            "label": "rewardStatus",
+            "type": "t_mapping(t_contract(IERC20)518,t_enum(RewardStatus)794)",
+            "src": "contracts\\RUSDFraction.sol:423"
+          },
+          {
+            "contract": "RUSDFraction",
+            "label": "rewardsTokenDetail",
+            "type": "t_mapping(t_contract(IERC20)518,t_struct(RewardsPerToken)806_storage)",
+            "src": "contracts\\RUSDFraction.sol:424"
+          },
+          {
+            "contract": "RUSDFraction",
+            "label": "rewardsPeriod",
+            "type": "t_mapping(t_contract(IERC20)518,t_struct(RewardsPeriod)799_storage)",
+            "src": "contracts\\RUSDFraction.sol:425"
+          },
+          {
+            "contract": "RUSDFraction",
+            "label": "tempRewardDetails",
+            "type": "t_mapping(t_contract(IERC20)518,t_struct(TempRewardDetail)820_storage)",
+            "src": "contracts\\RUSDFraction.sol:426"
+          },
+          {
+            "contract": "RUSDFraction",
+            "label": "gaslessClaimTimestamp",
+            "type": "t_mapping(t_address,t_uint256)",
+            "src": "contracts\\RUSDFraction.sol:427"
+          },
+          {
+            "contract": "RUSDFraction",
+            "label": "gaslessClaimPeriod",
+            "type": "t_uint256",
+            "src": "contracts\\RUSDFraction.sol:440"
+          },
+          {
+            "contract": "RUSDFraction",
+            "label": "rewardPool",
+            "type": "t_array(t_contract(IERC20)518)dyn_storage",
+            "src": "contracts\\RUSDFraction.sol:445"
+          },
+          {
+            "contract": "RUSDFraction",
+            "label": "pendingPool",
+            "type": "t_array(t_contract(IERC20)518)dyn_storage",
+            "src": "contracts\\RUSDFraction.sol:446"
+          },
+          {
+            "contract": "RUSDFraction",
+            "label": "defaultReward",
+            "type": "t_contract(IERC20)518",
+            "src": "contracts\\RUSDFraction.sol:447"
+          },
+          {
+            "contract": "RUSDFraction",
+            "label": "monetaryPolicy",
+            "type": "t_address",
+            "src": "contracts\\RUSDFraction.sol:457"
+          },
+          {
+            "contract": "RUSDFraction",
+            "label": "providerPairs",
+            "type": "t_array(t_contract(IProviderPair)721)dyn_storage",
+            "src": "contracts\\RUSDFraction.sol:458"
+          },
+          {
+            "contract": "RUSDFraction",
+            "label": "developer",
+            "type": "t_address",
+            "src": "contracts\\RUSDFraction.sol:459"
+          },
+          {
+            "contract": "RUSDFraction",
+            "label": "liquiditypool",
+            "type": "t_address",
+            "src": "contracts\\RUSDFraction.sol:460"
+          },
+          {
+            "contract": "RUSDFraction",
+            "label": "developerpercent",
+            "type": "t_uint256",
+            "src": "contracts\\RUSDFraction.sol:461"
+          },
+          {
+            "contract": "RUSDFraction",
+            "label": "liquidityfee",
+            "type": "t_uint256",
+            "src": "contracts\\RUSDFraction.sol:462"
+          },
+          {
+            "contract": "RUSDFraction",
+            "label": "buybackpool",
+            "type": "t_uint256",
+            "src": "contracts\\RUSDFraction.sol:463"
+          },
+          {
+            "contract": "RUSDFraction",
+            "label": "buybackcontract",
+            "type": "t_uint256",
+            "src": "contracts\\RUSDFraction.sol:464"
+          },
+          {
+            "contract": "RUSDFraction",
+            "label": "sellbackpool",
+            "type": "t_uint256",
+            "src": "contracts\\RUSDFraction.sol:465"
+          },
+          {
+            "contract": "RUSDFraction",
+            "label": "sellbackcontract",
+            "type": "t_uint256",
+            "src": "contracts\\RUSDFraction.sol:466"
+          },
+          {
+            "contract": "RUSDFraction",
+            "label": "reflectoAdd",
+            "type": "t_address",
+            "src": "contracts\\RUSDFraction.sol:467"
+          },
+          {
+            "contract": "RUSDFraction",
+            "label": "poolAddress",
+            "type": "t_address",
+            "src": "contracts\\RUSDFraction.sol:468"
+          },
+          {
+            "contract": "RUSDFraction",
+            "label": "_totalSupply",
+            "type": "t_uint256",
+            "src": "contracts\\RUSDFraction.sol:469"
+          },
+          {
+            "contract": "RUSDFraction",
+            "label": "_fracsPerRUSD",
+            "type": "t_uint256",
+            "src": "contracts\\RUSDFraction.sol:470"
+          },
+          {
+            "contract": "RUSDFraction",
+            "label": "MAX_REWARD_POOL",
+            "type": "t_uint256",
+            "src": "contracts\\RUSDFraction.sol:471"
+          },
+          {
+            "contract": "RUSDFraction",
+            "label": "_fracBalances",
+            "type": "t_mapping(t_address,t_uint256)",
+            "src": "contracts\\RUSDFraction.sol:473"
+          },
+          {
+            "contract": "RUSDFraction",
+            "label": "_allowedFractions",
+            "type": "t_mapping(t_address,t_mapping(t_address,t_uint256))",
+            "src": "contracts\\RUSDFraction.sol:477"
+          },
+          {
+            "contract": "RUSDFraction",
+            "label": "_nonces",
+            "type": "t_mapping(t_address,t_uint256)",
+            "src": "contracts\\RUSDFraction.sol:492"
+          }
+        ],
+        "types": {
+          "t_struct(RewardsPerToken)806_storage": {
+            "label": "struct RUSDFraction.RewardsPerToken",
+            "members": [
+              {
+                "label": "accumulated",
+                "type": "t_uint128"
+              },
+              {
+                "label": "lastUpdated",
+                "type": "t_uint32"
+              },
+              {
+                "label": "rate",
+                "type": "t_uint96"
+              }
+            ]
+          },
+          "t_uint128": {
+            "label": "uint128"
+          },
+          "t_uint32": {
+            "label": "uint32"
+          },
+          "t_uint96": {
+            "label": "uint96"
+          },
+          "t_mapping(t_address,t_mapping(t_contract(IERC20)518,t_struct(UserRewards)811_storage))": {
+            "label": "mapping(address => mapping(contract IERC20 => struct RUSDFraction.UserRewards))"
+          },
+          "t_address": {
+            "label": "address"
+          },
+          "t_mapping(t_contract(IERC20)518,t_struct(UserRewards)811_storage)": {
+            "label": "mapping(contract IERC20 => struct RUSDFraction.UserRewards)"
+          },
+          "t_contract(IERC20)518": {
+            "label": "contract IERC20"
+          },
+          "t_struct(UserRewards)811_storage": {
+            "label": "struct RUSDFraction.UserRewards",
+            "members": [
+              {
+                "label": "accumulated",
+                "type": "t_uint128"
+              },
+              {
+                "label": "checkpoint",
+                "type": "t_uint128"
+              }
+            ]
+          },
+          "t_mapping(t_contract(IERC20)518,t_enum(RewardStatus)794)": {
+            "label": "mapping(contract IERC20 => enum RUSDFraction.RewardStatus)"
+          },
+          "t_enum(RewardStatus)794": {
+            "label": "enum RUSDFraction.RewardStatus",
+            "members": [
+              "NOT_ADDED",
+              "PENDING",
+              "APPROVED",
+              "REJECTED"
+            ]
+          },
+          "t_mapping(t_contract(IERC20)518,t_struct(RewardsPerToken)806_storage)": {
+            "label": "mapping(contract IERC20 => struct RUSDFraction.RewardsPerToken)"
+          },
+          "t_mapping(t_contract(IERC20)518,t_struct(RewardsPeriod)799_storage)": {
+            "label": "mapping(contract IERC20 => struct RUSDFraction.RewardsPeriod)"
+          },
+          "t_struct(RewardsPeriod)799_storage": {
+            "label": "struct RUSDFraction.RewardsPeriod",
+            "members": [
+              {
+                "label": "start",
+                "type": "t_uint32"
+              },
+              {
+                "label": "end",
+                "type": "t_uint32"
+              }
+            ]
+          },
+          "t_mapping(t_contract(IERC20)518,t_struct(TempRewardDetail)820_storage)": {
+            "label": "mapping(contract IERC20 => struct RUSDFraction.TempRewardDetail)"
+          },
+          "t_struct(TempRewardDetail)820_storage": {
+            "label": "struct RUSDFraction.TempRewardDetail",
+            "members": [
+              {
+                "label": "tokenOwner",
+                "type": "t_address"
+              },
+              {
+                "label": "start",
+                "type": "t_uint32"
+              },
+              {
+                "label": "end",
+                "type": "t_uint32"
+              },
+              {
+                "label": "rate",
+                "type": "t_uint256"
+              }
+            ]
+          },
+          "t_uint256": {
+            "label": "uint256"
+          },
+          "t_mapping(t_address,t_uint256)": {
+            "label": "mapping(address => uint256)"
+          },
+          "t_array(t_contract(IERC20)518)dyn_storage": {
+            "label": "contract IERC20[]"
+          },
+          "t_array(t_contract(IProviderPair)721)dyn_storage": {
+            "label": "contract IProviderPair[]"
+          },
+          "t_contract(IProviderPair)721": {
+            "label": "contract IProviderPair"
+          },
+          "t_mapping(t_address,t_mapping(t_address,t_uint256))": {
+            "label": "mapping(address => mapping(address => uint256))"
+          },
+          "t_array(t_uint256)50_storage": {
+            "label": "uint256[50]"
+          },
+          "t_string_storage": {
+            "label": "string"
+          },
+          "t_uint8": {
+            "label": "uint8"
+          },
+          "t_bool": {
+            "label": "bool"
+          }
+        }
+      }
+    },
+    "3591e529af4d78699266ca707a3e1a6d7dd5e17d255ccfb37173931047c9ce50": {
+      "address": "0xe7f1725E7734CE288F8367e1Bb143E90bb3F0512",
+      "txHash": "0xeec4fe822874edc5574621bc6bd183868a7407690d7c640a25d54c6f2785684d",
+      "layout": {
+        "storage": [
+          {
+            "label": "initialized",
+            "offset": 0,
+            "slot": "0",
+            "type": "t_bool",
+            "contract": "Initializable",
+            "src": "contracts\\_external\\Initializable.sol:19"
+          },
+          {
+            "label": "initializing",
+            "offset": 1,
+            "slot": "0",
+            "type": "t_bool",
+            "contract": "Initializable",
+            "src": "contracts\\_external\\Initializable.sol:24"
+          },
+          {
+            "label": "______gap",
+            "offset": 0,
+            "slot": "1",
+            "type": "t_array(t_uint256)50_storage",
+            "contract": "Initializable",
+            "src": "contracts\\_external\\Initializable.sol:69"
+          },
+          {
+            "label": "_owner",
+            "offset": 0,
+            "slot": "51",
+            "type": "t_address",
+            "contract": "Ownable",
+            "src": "contracts\\_external\\Ownable.sol:11"
+          },
+          {
+            "label": "______gap",
+            "offset": 0,
+            "slot": "52",
+            "type": "t_array(t_uint256)50_storage",
+            "contract": "Ownable",
+            "src": "contracts\\_external\\Ownable.sol:75"
+          },
+          {
+            "label": "rusdFracs",
+            "offset": 0,
+            "slot": "102",
+            "type": "t_contract(IRUSDFraction)539",
+            "contract": "RUSDFractionPolicy",
+            "src": "contracts\\RUSDFractionPolicy.sol:49"
+          },
+          {
+            "label": "providerPairs",
+            "offset": 0,
+            "slot": "103",
+            "type": "t_array(t_contract(IProviderPair)557)dyn_storage",
+            "contract": "RUSDFractionPolicy",
+            "src": "contracts\\RUSDFractionPolicy.sol:50"
+          },
+          {
+            "label": "ratePair",
+            "offset": 0,
+            "slot": "104",
+            "type": "t_contract(IProviderPair)557",
+            "contract": "RUSDFractionPolicy",
+            "src": "contracts\\RUSDFractionPolicy.sol:52"
+          },
+          {
+            "label": "deviationThreshold",
+            "offset": 0,
+            "slot": "105",
+            "type": "t_uint256",
+            "contract": "RUSDFractionPolicy",
+            "src": "contracts\\RUSDFractionPolicy.sol:58"
+          },
+          {
+            "label": "epoch",
+            "offset": 0,
+            "slot": "106",
+            "type": "t_uint256",
+            "contract": "RUSDFractionPolicy",
+            "src": "contracts\\RUSDFractionPolicy.sol:61"
+          },
+          {
+            "label": "handler",
+            "offset": 0,
+            "slot": "107",
+            "type": "t_address",
+            "contract": "RUSDFractionPolicy",
+            "src": "contracts\\RUSDFractionPolicy.sol:72"
+          }
+        ],
+        "types": {
+          "t_address": {
+            "label": "address",
+            "numberOfBytes": "20"
+          },
+          "t_array(t_contract(IProviderPair)557)dyn_storage": {
+            "label": "contract IProviderPair[]",
+            "numberOfBytes": "32"
+          },
+          "t_array(t_uint256)50_storage": {
+            "label": "uint256[50]",
+            "numberOfBytes": "1600"
+          },
+          "t_bool": {
+            "label": "bool",
+            "numberOfBytes": "1"
+          },
+          "t_contract(IProviderPair)557": {
+            "label": "contract IProviderPair",
+            "numberOfBytes": "20"
+          },
+          "t_contract(IRUSDFraction)539": {
+            "label": "contract IRUSDFraction",
+            "numberOfBytes": "20"
+          },
+          "t_uint256": {
+            "label": "uint256",
+            "numberOfBytes": "32"
+          }
+        }
+      }
+    },
+    "55eb9c07109f9323b5b9c35f9e5904d5ef208f57865eafe9b18bc9b2ae31379a": {
+      "address": "0x9fE46736679d2D9a65F0992F2272dE9f3c7fa6e0",
+      "txHash": "0x1a84c1e5fe1a330885f3b98975dd27262aeedbec489b3b3e7ef4178a4f5fbc9d",
+      "layout": {
+        "storage": [
+          {
+            "contract": "Initializable",
+            "label": "initialized",
+            "type": "t_bool",
+            "src": "contracts/_external/Initializable.sol:19"
+          },
+          {
+            "contract": "Initializable",
+            "label": "initializing",
+            "type": "t_bool",
+            "src": "contracts/_external/Initializable.sol:24"
+          },
+          {
+            "contract": "Initializable",
+            "label": "______gap",
+            "type": "t_array(t_uint256)50_storage",
+            "src": "contracts/_external/Initializable.sol:69"
+          },
+          {
+            "contract": "Ownable",
+            "label": "_owner",
+            "type": "t_address",
+            "src": "contracts/_external/Ownable.sol:11"
+          },
+          {
+            "contract": "Ownable",
+            "label": "______gap",
+            "type": "t_array(t_uint256)50_storage",
+            "src": "contracts/_external/Ownable.sol:75"
+          },
+          {
+            "contract": "RUSDFractionPolicy",
+            "label": "rusdFracs",
+            "type": "t_contract(IRUSDFraction)759",
+            "src": "contracts/RUSDFractionPolicy.sol:73"
+          },
+          {
+            "contract": "RUSDFractionPolicy",
+            "label": "busd",
+            "type": "t_contract(IERC20)705",
+            "src": "contracts/RUSDFractionPolicy.sol:74"
+          },
+          {
+            "contract": "RUSDFractionPolicy",
+            "label": "providerPairs",
+            "type": "t_array(t_contract(IProviderPair)782)dyn_storage",
+            "src": "contracts/RUSDFractionPolicy.sol:75"
+          },
+          {
+            "contract": "RUSDFractionPolicy",
+            "label": "pairWithBUSD",
+            "type": "t_mapping(t_contract(IProviderPair)782,t_contract(IProviderPair)782)",
+            "src": "contracts/RUSDFractionPolicy.sol:77"
+          },
+          {
+            "contract": "RUSDFractionPolicy",
+            "label": "ratePair",
+            "type": "t_contract(IProviderPair)782",
+            "src": "contracts/RUSDFractionPolicy.sol:79"
+          },
+          {
+            "contract": "RUSDFractionPolicy",
+            "label": "deviationThreshold",
+            "type": "t_uint256",
+            "src": "contracts/RUSDFractionPolicy.sol:85"
+          },
+          {
+            "contract": "RUSDFractionPolicy",
+            "label": "epoch",
+            "type": "t_uint256",
+            "src": "contracts/RUSDFractionPolicy.sol:88"
+          },
+          {
+            "contract": "RUSDFractionPolicy",
+            "label": "handler",
+            "type": "t_address",
+            "src": "contracts/RUSDFractionPolicy.sol:99"
+          }
+        ],
+        "types": {
+          "t_contract(IRUSDFraction)759": {
+            "label": "contract IRUSDFraction"
+          },
+          "t_contract(IERC20)705": {
+            "label": "contract IERC20"
+          },
+          "t_array(t_contract(IProviderPair)782)dyn_storage": {
+            "label": "contract IProviderPair[]"
+          },
+          "t_contract(IProviderPair)782": {
+            "label": "contract IProviderPair"
+          },
+          "t_mapping(t_contract(IProviderPair)782,t_contract(IProviderPair)782)": {
+            "label": "mapping(contract IProviderPair => contract IProviderPair)"
+          },
+          "t_uint256": {
+            "label": "uint256"
+          },
+          "t_address": {
+            "label": "address"
+          },
+          "t_array(t_uint256)50_storage": {
+            "label": "uint256[50]"
+          },
+          "t_bool": {
+            "label": "bool"
+          }
+        }
+      }
+    },
+    "c64ee967bd501957e68e05008b9ba5e50f6ae6c6fb7cd016ce8074a4ad3e9953": {
+      "address": "0xc6e7DF5E7b4f2A278906862b61205850344D4e7d",
+      "txHash": "0xf9383839449847a635974f2f778e6ed197a5ae6723e719a76bbe93ffeeee6ad9",
+      "layout": {
+        "storage": [
+          {
+            "contract": "Initializable",
+            "label": "initialized",
+            "type": "t_bool",
+            "src": "contracts/RUSD-additional/Initializable.sol:7"
+          },
+          {
+            "contract": "Initializable",
+            "label": "initializing",
+            "type": "t_bool",
+            "src": "contracts/RUSD-additional/Initializable.sol:12"
+          },
+          {
+            "contract": "Initializable",
+            "label": "______gap",
+            "type": "t_array(t_uint256)50_storage",
+            "src": "contracts/RUSD-additional/Initializable.sol:57"
+          },
+          {
+            "contract": "ERC20Detailed",
+            "label": "_name",
+            "type": "t_string_storage",
+            "src": "contracts/RUSD-additional/ERC20Detailed.sol:14"
+          },
+          {
+            "contract": "ERC20Detailed",
+            "label": "_symbol",
+            "type": "t_string_storage",
+            "src": "contracts/RUSD-additional/ERC20Detailed.sol:15"
+          },
+          {
+            "contract": "ERC20Detailed",
+            "label": "_decimals",
+            "type": "t_uint8",
+            "src": "contracts/RUSD-additional/ERC20Detailed.sol:16"
+          },
+          {
+            "contract": "ERC20Detailed",
+            "label": "______gap",
+            "type": "t_array(t_uint256)50_storage",
+            "src": "contracts/RUSD-additional/ERC20Detailed.sol:49"
+          },
+          {
+            "contract": "Ownable",
+            "label": "_owner",
+            "type": "t_address",
+            "src": "contracts/RUSD-additional/Ownable.sol:11"
+          },
+          {
+            "contract": "Ownable",
+            "label": "______gap",
+            "type": "t_array(t_uint256)50_storage",
+            "src": "contracts/RUSD-additional/Ownable.sol:78"
+          },
+          {
+            "contract": "RUSDFraction",
+            "label": "usersFees",
+            "type": "t_mapping(t_address,t_struct(Fees)880_storage)",
+            "src": "contracts/RUSDFraction.sol:76"
+          },
+          {
+            "contract": "RUSDFraction",
+            "label": "isCustomFee",
+            "type": "t_mapping(t_address,t_bool)",
+            "src": "contracts/RUSDFraction.sol:77"
+          },
+          {
+            "contract": "RUSDFraction",
+            "label": "isExcludedFromAllFees",
+            "type": "t_mapping(t_address,t_bool)",
+            "src": "contracts/RUSDFraction.sol:78"
+          },
+          {
+            "contract": "RUSDFraction",
+            "label": "timeOfSell",
+            "type": "t_mapping(t_address,t_uint256)",
+            "src": "contracts/RUSDFraction.sol:80"
+          },
+          {
+            "contract": "RUSDFraction",
+            "label": "amountOfSell",
+            "type": "t_mapping(t_address,t_uint256)",
+            "src": "contracts/RUSDFraction.sol:81"
+          },
+          {
+            "contract": "RUSDFraction",
+            "label": "sellLimit",
+            "type": "t_uint256",
+            "src": "contracts/RUSDFraction.sol:82"
+          },
+          {
+            "contract": "RUSDFraction",
+            "label": "monetaryPolicy",
+            "type": "t_address",
+            "src": "contracts/RUSDFraction.sol:97"
+          },
+          {
+            "contract": "RUSDFraction",
+            "label": "providerPairs",
+            "type": "t_array(t_contract(IProviderPair)212)dyn_storage",
+            "src": "contracts/RUSDFraction.sol:98"
+          },
+          {
+            "contract": "RUSDFraction",
+            "label": "rusdRewardContract",
+            "type": "t_contract(IRUSDRewards)793",
+            "src": "contracts/RUSDFraction.sol:99"
+          },
+          {
+            "contract": "RUSDFraction",
+            "label": "developer",
+            "type": "t_address",
+            "src": "contracts/RUSDFraction.sol:100"
+          },
+          {
+            "contract": "RUSDFraction",
+            "label": "liquidityPool",
+            "type": "t_address",
+            "src": "contracts/RUSDFraction.sol:101"
+          },
+          {
+            "contract": "RUSDFraction",
+            "label": "sellDeveloperPercent",
+            "type": "t_uint256",
+            "src": "contracts/RUSDFraction.sol:102"
+          },
+          {
+            "contract": "RUSDFraction",
+            "label": "buyDeveloperPercent",
+            "type": "t_uint256",
+            "src": "contracts/RUSDFraction.sol:103"
+          },
+          {
+            "contract": "RUSDFraction",
+            "label": "sellLiquidityFee",
+            "type": "t_uint256",
+            "src": "contracts/RUSDFraction.sol:104"
+          },
+          {
+            "contract": "RUSDFraction",
+            "label": "buyLiquidityFee",
+            "type": "t_uint256",
+            "src": "contracts/RUSDFraction.sol:105"
+          },
+          {
+            "contract": "RUSDFraction",
+            "label": "buyBackPool",
+            "type": "t_uint256",
+            "src": "contracts/RUSDFraction.sol:106"
+          },
+          {
+            "contract": "RUSDFraction",
+            "label": "buyBackContract",
+            "type": "t_uint256",
+            "src": "contracts/RUSDFraction.sol:107"
+          },
+          {
+            "contract": "RUSDFraction",
+            "label": "sellBackPool",
+            "type": "t_uint256",
+            "src": "contracts/RUSDFraction.sol:108"
+          },
+          {
+            "contract": "RUSDFraction",
+            "label": "sellBackContract",
+            "type": "t_uint256",
+            "src": "contracts/RUSDFraction.sol:109"
+          },
+          {
+            "contract": "RUSDFraction",
+            "label": "reflectoAdd",
+            "type": "t_address",
+            "src": "contracts/RUSDFraction.sol:110"
+          },
+          {
+            "contract": "RUSDFraction",
+            "label": "poolAddress",
+            "type": "t_address",
+            "src": "contracts/RUSDFraction.sol:111"
+          },
+          {
+            "contract": "RUSDFraction",
+            "label": "_totalSupply",
+            "type": "t_uint256",
+            "src": "contracts/RUSDFraction.sol:112"
+          },
+          {
+            "contract": "RUSDFraction",
+            "label": "_fracsPerRUSD",
+            "type": "t_uint256",
+            "src": "contracts/RUSDFraction.sol:113"
+          },
+          {
+            "contract": "RUSDFraction",
+            "label": "nonces",
+            "type": "t_mapping(t_address,t_uint256)",
+            "src": "contracts/RUSDFraction.sol:114"
+          },
+          {
+            "contract": "RUSDFraction",
+            "label": "_fracBalances",
+            "type": "t_mapping(t_address,t_uint256)",
+            "src": "contracts/RUSDFraction.sol:119"
+          },
+          {
+            "contract": "RUSDFraction",
+            "label": "_allowedFractions",
+            "type": "t_mapping(t_address,t_mapping(t_address,t_uint256))",
+            "src": "contracts/RUSDFraction.sol:123"
+          }
+        ],
+        "types": {
+          "t_mapping(t_address,t_struct(Fees)880_storage)": {
+            "label": "mapping(address => struct RUSDFraction.Fees)"
+          },
+          "t_address": {
+            "label": "address"
+          },
+          "t_struct(Fees)880_storage": {
+            "label": "struct RUSDFraction.Fees",
+            "members": [
+              {
+                "label": "devSellFee",
+                "type": "t_uint256"
+              },
+              {
+                "label": "devBuyFee",
+                "type": "t_uint256"
+              },
+              {
+                "label": "rewardPoolSellFee",
+                "type": "t_uint256"
+              },
+              {
+                "label": "rewardPoolBuyFee",
+                "type": "t_uint256"
+              },
+              {
+                "label": "reflectoBBSellFee",
+                "type": "t_uint256"
+              },
+              {
+                "label": "reflectoBBBuyFee",
+                "type": "t_uint256"
+              },
+              {
+                "label": "liquiditySellFee",
+                "type": "t_uint256"
+              },
+              {
+                "label": "liquidityBuyFee",
+                "type": "t_uint256"
+              }
+            ]
+          },
+          "t_uint256": {
+            "label": "uint256"
+          },
+          "t_mapping(t_address,t_bool)": {
+            "label": "mapping(address => bool)"
+          },
+          "t_bool": {
+            "label": "bool"
+          },
+          "t_mapping(t_address,t_uint256)": {
+            "label": "mapping(address => uint256)"
+          },
+          "t_array(t_contract(IProviderPair)212)dyn_storage": {
+            "label": "contract IProviderPair[]"
+          },
+          "t_contract(IProviderPair)212": {
+            "label": "contract IProviderPair"
+          },
+          "t_contract(IRUSDRewards)793": {
+            "label": "contract IRUSDRewards"
+          },
+          "t_mapping(t_address,t_mapping(t_address,t_uint256))": {
+            "label": "mapping(address => mapping(address => uint256))"
+          },
+          "t_array(t_uint256)50_storage": {
+            "label": "uint256[50]"
+          },
+          "t_string_storage": {
+            "label": "string"
+          },
+          "t_uint8": {
+            "label": "uint8"
+          }
+        }
+      }
+    }
+  }
+}
