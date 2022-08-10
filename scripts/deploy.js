@@ -1,12 +1,6 @@
 const fs = require("fs");
 const address = require("../address/addressess");
 
-const ROUTER = '0x9Ac64Cc6e4415144C455BD8E4837Fea55603e5c3';
-const WBNB = '0xae13d989dac2f0debff460ac112a837c89baa7cd';
-
-// $ICO
-const IMPERIUM_CONTRACT_ADDRESS = '0x13301153Fc4B90146d5b462F0da406e6f119e47C';
-
 async function main() {
     await run('compile');
     const [deployer] = await ethers.getSigners();
@@ -30,7 +24,7 @@ async function main() {
 
     // 3. Handler Contract
     const Handler = await ethers.getContractFactory("Handler");
-    const handler = await Handler.deploy($icoPolicy.address, ROUTER, $ico.address, WBNB);
+    const handler = await Handler.deploy($icoPolicy.address, $ico.address);
     
     console.log("Handler Contract: ", handler.address);
 
