@@ -4,8 +4,8 @@ const address = require("../address/addressess");
 const ROUTER = '0x9Ac64Cc6e4415144C455BD8E4837Fea55603e5c3';
 const WBNB = '0xae13d989dac2f0debff460ac112a837c89baa7cd';
 
-// RUSD
-const REFLECTO_CONTRACT_ADDRESS = '0x13301153Fc4B90146d5b462F0da406e6f119e47C';
+// $ICO
+const IMPERIUM_CONTRACT_ADDRESS = '0x13301153Fc4B90146d5b462F0da406e6f119e47C';
 
 async function main() {
     await run('compile');
@@ -16,29 +16,28 @@ async function main() {
 
     // Deploying main contracts
 
-    // 1. RUSD Token
-    const RUSD = await ethers.getContractFactory("RUSDFraction");
-    const rusd= await RUSD.deploy();
+    // 1. $ICO Token
+    const $ICO = await ethers.getContractFactory("$ICOFraction");
+    const $ico= await $ICO.deploy();
   
-    console.log("RUSD address:", rusd.address);
+    console.log("$ICO address:", $ico.address);
 
-    // 3. RUSD Policy Contract
-    const RUSDPolicy = await ethers.getContractFactory("RUSDFractionPolicy");
-    const rusdPolicy = await RUSDPolicy.deploy();
+    // 3. $ICO Policy Contract
+    const $ICOPolicy = await ethers.getContractFactory("$ICOFractionPolicy");
+    const $icoPolicy = await $ICOPolicy.deploy();
 
-    console.log("RUSDFractionPolicy Address", rusdPolicy.address);
+    console.log("$ICOFractionPolicy Address", $icoPolicy.address);
 
     // 3. Handler Contract
     const Handler = await ethers.getContractFactory("Handler");
-    const handler = await Handler.deploy(rusdPolicy.address, ROUTER, rusd.address, WBNB, REFLECTO_CONTRACT_ADDRESS);
+    const handler = await Handler.deploy($icoPolicy.address, ROUTER, $ico.address, WBNB);
     
     console.log("Handler Contract: ", handler.address);
 
     // Defining new user
     let user = {
-        rusd: rusd.address,
-        rusdPolicy: rusdPolicy.address,
-        rusdReward: rusdRewards.address,
+        $ico: $ico.address,
+        $icoPolicy: $icoPolicy.address,
         handler: handler.address,
     };
     address.push(user);

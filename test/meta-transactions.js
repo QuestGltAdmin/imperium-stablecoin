@@ -10,43 +10,40 @@ const {
 
 describe('Testing meta transactions', function () {
   let initialSupply;
-  let reflecto;
+  let Imperium;
 
-  before('setup RUSDFraction contract', setupContracts)
+  before('setup $ICOFraction contract', setupContracts)
 
   async function setupContracts() {
     // prepare signers
     accounts = await ethers.getSigners()
     deployer = accounts[0]
     // deploy upgradable token
-    reflecto = await (await ethers.getContractFactory('RUSDFraction')).connect(deployer).deploy()
-    const rusdReward = await (await ethers.getContractFactory('RUSDRewards'))
-    .connect(deployer)
-    .deploy(reflecto.address)
-    const factory = await ethers.getContractFactory('RUSDFraction')
-    reflecto = await upgrades.deployProxy(
+    Imperium = await (await ethers.getContractFactory('$ICOFraction')).connect(deployer).deploy()
+    const factory = await ethers.getContractFactory('$ICOFraction')
+    Imperium = await upgrades.deployProxy(
       factory,
-      [await deployer.getAddress(),rusdReward.address],
+      [await deployer.getAddress()],
       {
-        initializer: 'initialize(address,address)',
+        initializer: 'initialize(address)',
       },
     )
     // fetch initial supply
-    initialSupply = await reflecto.totalSupply()
+    initialSupply = await Imperium.totalSupply()
   }
 
   it('balance of contract deployer should be 50000000', async () => {
     const [admin] = await ethers.getSigners();
-    const balance = await reflecto.balanceOf(admin.address);
+    const balance = await Imperium.balanceOf(admin.address);
     const totalBalance = balance / Math.pow(10, 9);
     expect(totalBalance).to.be.equal(50000000);
   });
 
   it('initializes DOMAIN_SEPARATOR and PERMIT_TYPEHASH correctly', async () => {
-    expect(await reflecto.PERMIT_TYPEHASH_META()).to.be.equal(PERMIT_TYPEHASH);
-    const ci = await reflecto.getChainID();
-    expect(await reflecto.DOMAIN_SEPARATOR()).to.be.equal(
-      getDomainSeparator(await reflecto.name(), reflecto.address, ci.toNumber())
+    expect(await Imperium.PERMIT_TYPEHASH_META()).to.be.equal(PERMIT_TYPEHASH);
+    const ci = await Imperium.getChainID();
+    expect(await Imperium.DOMAIN_SEPARATOR()).to.be.equal(
+      getDomainSeparator(await Imperium.name(), Imperium.address, ci.toNumber())
     );
   });
 
@@ -56,7 +53,7 @@ describe('Testing meta transactions', function () {
     const admin = adminSig.address;
     // Try transfer
     // expect(
-    //   await reflecto
+    //   await Imperium
     //     .connect(investorSig)
     //     .transferFrom(admin, investor, 3000, {
     //       from: investor,
@@ -75,15 +72,15 @@ describe('Testing meta transactions', function () {
     const deadline = 100000000000000;
     // console.log('1 -----------------------------');
     // console.log(
-    //   ((await reflecto.balanceOf(investor)) as any) / Math.pow(10, 9)
+    //   ((await Imperium.balanceOf(investor)) as any) / Math.pow(10, 9)
     // );
 
     // Get the user's nonce
-    const nonceBn = await reflecto.nonces(admin);
-    const contractAdress = reflecto.address;
-    const chain = await reflecto.getChainID();
+    const nonceBn = await Imperium.nonces(admin);
+    const contractAdress = Imperium.address;
+    const chain = await Imperium.getChainID();
     const chainId = chain.toNumber();
-    const name = await reflecto.name();
+    const name = await Imperium.name();
     const nonce = nonceBn.toNumber();
     // Get the EIP712 digest
 
@@ -103,7 +100,7 @@ describe('Testing meta transactions', function () {
     const { v, r, s } = sign(digest, ownerPrivateKey);
 
     // Approve it
-    const receipt = await reflecto.permit(
+    const receipt = await Imperium.permit(
       approve.owner,
       approve.spender,
       nonce,
@@ -115,33 +112,33 @@ describe('Testing meta transactions', function () {
     );
     // It worked!
 
-    const updatedNonce = await reflecto.nonces(approve.owner);
+    const updatedNonce = await Imperium.nonces(approve.owner);
     expect(updatedNonce.toNumber()).to.be.eq(1);
 
-    const balance = await reflecto.balanceOf(admin);
+    const balance = await Imperium.balanceOf(admin);
 
     expect(
-      (await reflecto.allowance(approve.owner, approve.spender)) /
+      (await Imperium.allowance(approve.owner, approve.spender)) /
         Math.pow(10, 9)
     ).to.be.eq((balance) / Math.pow(10, 9));
 
     // succesfull transfer
-    await reflecto
+    await Imperium
       .connect(investorSig)
       .transferFrom(admin, investor, 30000000000000, {
         from: investor,
         gasLimit: 500000,
       });
 
-    const balanceBn = await reflecto.balanceOf(investor);
+    const balanceBn = await Imperium.balanceOf(investor);
     // console.log(balanceBn / Math.pow(10, 9));
 
-    expect(balanceBn / Math.pow(10, 9)).to.be.equal(30000-(30000*0.031))
+    expect(balanceBn / Math.pow(10, 9)).to.be.equal(30000)
 
     // Re-using the same sig doesn't work since the nonce has been incremented
     // on the contract level for replay-protection
     expect(
-      reflecto.permit(
+      Imperium.permit(
         approve.owner,
         approve.spender,
         nonce,
@@ -151,12 +148,12 @@ describe('Testing meta transactions', function () {
         r,
         s
       )
-    ).to.be.revertedWith('Reflecto/invalid-nonce');
+    ).to.be.revertedWith('Imperium/invalid-nonce');
 
     // invalid ecrecover's return address(0x0), so we must also guarantee that
     // this case fails
     expect(
-      reflecto.permit(
+      Imperium.permit(
         '0x0000000000000000000000000000000000000000',
         approve.spender,
         nonce,
@@ -166,10 +163,10 @@ describe('Testing meta transactions', function () {
         r,
         s
       )
-    ).to.be.revertedWith('Reflecto/invalid-address-0');
+    ).to.be.revertedWith('Imperium/invalid-address-0');
 
     expect(
-      reflecto.permit(
+      Imperium.permit(
         approve.owner,
         approve.spender,
         nonce,

@@ -11,7 +11,7 @@ async function main() {
 
     // Deploying main contracts
 
-    // 1. RUSD Token
+    // 1. $ICO Token
     const Handler = await ethers.getContractFactory("Handler");
     const handler= await Handler.attach('0xC6E7900d07cD660d304Cd5dC22da3DaEed8AD334');
     await handler.stabilizeOnly()
