@@ -225,6 +225,18 @@ contract $ICOFractionPolicy is Ownable {
             if (address(providerPairs[i]) == address(ratePair)) {
                 token0 = IProviderPair(providerPairs[i]).token0(); 
                 token1 = IProviderPair(providerPairs[i]).token1();
+
+                // Always make token0 ICO
+                if(token1 == address($icoFracs)){
+                    address newToken= token0;
+                    token0 = token1;
+                    token1= newToken;
+
+                    uint112 reserve_ = reserve0;
+                    reserve0= reserve1;
+                    reserve1 = reserve_;
+                }
+
                 token0Decimals = IERC20(token0).decimals();
                 token1Decimals = IERC20(token1).decimals();
 
