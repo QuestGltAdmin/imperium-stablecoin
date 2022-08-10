@@ -38,10 +38,6 @@ async function mockedHandler() {
 
   const mockProvider1 = await (await ethers.getContractFactory('mockProvider')).connect(deployer).deploy()
 
-  const mockRouter = await (await ethers.getContractFactory('mockRouter')).connect(deployer).deploy()
-
-  const wbnb = await (await ethers.getContractFactory('Gold')).connect(deployer).deploy()
-
   await mockProvider
     .connect(deployer)
     .setReserves(1000000000,1000000000,1656457)
@@ -52,7 +48,7 @@ async function mockedHandler() {
 
   const handler = await (await ethers.getContractFactory('Handler'))
     .connect(deployer)
-    .deploy(mockPolicy.address,mockRouter.address,mock$ICOFraction.address,wbnb.address)
+    .deploy(mockPolicy.address,mock$ICOFraction.address)
 
   const mockDownstream = await (await ethers.getContractFactory('MockDownstream')).connect(deployer).deploy()
   await mockPolicy.connect(deployer).addProviderPair(await mockProvider.address,await mockProvider1.address)

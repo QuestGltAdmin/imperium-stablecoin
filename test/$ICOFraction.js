@@ -66,7 +66,7 @@ describe('$ICOFraction:Initialization', () => {
 
   it('should set detailed ERC20 parameters', async function () {
     expect(await $icoFraction.name()).to.eq('IMPERIUM STABLE')
-    expect(await $icoFraction.symbol()).to.eq('$ICO')
+    expect(await $icoFraction.symbol()).to.eq('ICO')
     expect(await $icoFraction.decimals()).to.eq(DECIMALS)
   })
 })
