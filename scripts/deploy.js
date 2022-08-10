@@ -22,12 +22,6 @@ async function main() {
   
     console.log("RUSD address:", rusd.address);
 
-    // 2. RUSD Rewards Contract
-    const RUSDRewards = await ethers.getContractFactory("RUSDRewards");
-    const rusdRewards = await RUSDRewards.deploy(rusd.address);
-
-    console.log("Rewards address:", rusdRewards.address);
-
     // 3. RUSD Policy Contract
     const RUSDPolicy = await ethers.getContractFactory("RUSDFractionPolicy");
     const rusdPolicy = await RUSDPolicy.deploy();
@@ -36,7 +30,7 @@ async function main() {
 
     // 3. Handler Contract
     const Handler = await ethers.getContractFactory("Handler");
-    const handler = await Handler.deploy(rusdPolicy.address, ROUTER, rusd.address, WBNB, REFLECTO_CONTRACT_ADDRESS, rusdRewards.address);
+    const handler = await Handler.deploy(rusdPolicy.address, ROUTER, rusd.address, WBNB, REFLECTO_CONTRACT_ADDRESS);
     
     console.log("Handler Contract: ", handler.address);
 

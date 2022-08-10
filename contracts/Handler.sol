@@ -46,7 +46,7 @@ interface IReflecto {
 contract Handler is Ownable {
     RUSDFractionPolicy public policy;
     IRouter public router;
-    IRUSDFraction public rusd;
+    IRUSDFraction public ico;
     address public wbnb;
     address public reflecto;
     address public reflectoPool;
@@ -65,21 +65,16 @@ contract Handler is Ownable {
         address _policy,
         address _router,
         address _rusd,
-        address _wbnb,
-        address _reflecto,
-        address _reflectoPool
+        address _wbnb
     ) {
         Ownable.initialize(msg.sender);
-        policy = RUSDFractionPolicy(_policy);
+        policy = ICOFractionPolicy(_policy);
         router = IRouter(_router);
-        rusd = IRUSDFraction(_rusd);
+        ico = IICOFraction(_ico);
         wbnb = _wbnb;
-        reflecto = _reflecto;
-        reflectoPool = _reflectoPool;
         // One time array Intializing
         reflectoPath.push(_wbnb);
-        reflectoPath.push(_reflecto);
-        bnbPath.push(_rusd);
+        bnbPath.push(_ico);
         bnbPath.push(_wbnb);
     }
 
@@ -98,23 +93,23 @@ contract Handler is Ownable {
         _ratePair.sync();
     }
 
-    function collectRUSD(address _wallet) external onlyOwner {
-        require(rusd.balanceOf(address(this)) > 0, "Not enough RUSD to withdraw");
-        rusd.transfer(_wallet, rusd.balanceOf(address(this)));
+    function collectICO(address _wallet) external onlyOwner {
+        require(ico.balanceOf(address(this)) > 0, "Not enough ICO to withdraw");
+        ico.transfer(_wallet, ico.balanceOf(address(this)));
     }
 
     function stabilize() external onlyOwner {
         require(msg.sender == tx.origin); // solhint-disable-line avoid-tx-origin
 
-        if (rusd.balanceOf(address(this)) > 0) {
-            _convertRUSDtoBNB();
+        if (ico.balanceOf(address(this)) > 0) {
+            _convertICOtoBNB();
         }
         policy.stabilize();
     }
 
     function gatherFunds() external {
-        if (rusd.balanceOf(address(this)) > 0) {
-            _convertRUSDtoBNB();
+        if (ico.balanceOf(address(this)) > 0) {
+            _convertICOtoBNB();
         }
         IProviderPair _ratePair = policy.ratePair();
         _ratePair.sync();
@@ -131,8 +126,8 @@ contract Handler is Ownable {
         router = _router;
     }
 
-    function setRUSDAddress(IRUSDFraction _rusd) external onlyOwner {
-        rusd = _rusd;
+    function setICOAddress(IICOFraction _ico) external onlyOwner {
+        ico = _ico;
     }
 
     function setWBNBAddress(address _wbnb) external onlyOwner {
@@ -148,7 +143,7 @@ contract Handler is Ownable {
     }
 
     function setPolicyAddress(address _policy) external onlyOwner {
-        policy = RUSDFractionPolicy(_policy);
+        policy = ICOFractionPolicy(_policy);
     }
 
     function _getAmountOutBNB(uint256 _amountIn, address[] memory _path)
@@ -174,7 +169,7 @@ contract Handler is Ownable {
     }
 
     function _getAmountIn() public view returns (uint256) {
-        uint256 _amountIn = (rusd.balanceOf(address(this)));
+        uint256 _amountIn = (ico.balanceOf(address(this)));
         return _amountIn;
     }
 
@@ -183,11 +178,11 @@ contract Handler is Ownable {
         return _amountIn;
     }
 
-    function _convertRUSDtoBNB() internal {
+    function _convertICOtoBNB() internal {
         uint256 amountIn = _getAmountIn();
         uint256 deadline = block.timestamp + 1000;
         address to = address(this);
-        rusd.approve(address(router), amountIn);
+        ico.approve(address(router), amountIn);
         router.swapExactTokensForETHSupportingFeeOnTransferTokens(
             amountIn,
             0,

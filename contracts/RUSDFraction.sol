@@ -1,5 +1,4 @@
 // SPDX-License-Identifier: MIT
-
 pragma solidity 0.7.6;
 
 import "./RUSD-additional/CastU256U128.sol";
@@ -10,7 +9,6 @@ import "./RUSD-additional/Initializable.sol";
 import "./RUSD-additional/IERC20.sol";
 import "./RUSD-additional/Ownable.sol";
 import "./RUSD-additional/ERC20Detailed.sol";
-import "./RUSD-additional/IProviderPair.sol";
 
 interface IRouter {
     function swapExactTokensForETHSupportingFeeOnTransferTokens(
@@ -49,37 +47,12 @@ contract RUSDFraction is ERC20Detailed, Ownable {
 
     event LogRebase(uint256 indexed epoch, uint256 totalSupply);
     event LogMonetaryPolicyUpdated(address monetaryPolicy);
-    event LogDeveloperAddress(address developer);
-    event LogLiquidityAddress(address liquidityPool);
-    event LogDeveloperFee(
-        uint256 sellDeveloperPercent,
-        uint256 buyDeveloperPercent
-    );
-    event LogLiquidityFee(uint256 sellLiquidityFee, uint256 buyLiquidityFee);
-
+    
     modifier validRecipient(address to) {
         require(to != address(0x0));
         require(to != address(this));
         _;
     }
-
-    struct Fees {
-        uint256 devSellFee;
-        uint256 devBuyFee;
-        uint256 rewardPoolSellFee;
-        uint256 rewardPoolBuyFee;
-        uint256 reflectoBBSellFee;
-        uint256 reflectoBBBuyFee;
-        uint256 liquiditySellFee;
-        uint256 liquidityBuyFee;
-    }
-    mapping(address => Fees) public usersFees;
-    mapping(address => bool) public isCustomFee;
-    mapping(address => bool) public isExcludedFromAllFees;
-
-    mapping(address => uint256) public timeOfSell;
-    mapping(address => uint256) public amountOfSell;
-    uint256 public sellLimit;
 
     uint256 private constant DECIMALS = 9;
     uint256 private constant MAX_UINT256 = type(uint256).max;
@@ -95,20 +68,6 @@ contract RUSDFraction is ERC20Detailed, Ownable {
     uint256 private constant MAX_SUPPLY = type(uint128).max; // (2^128) - 1
 
     address public monetaryPolicy;
-    IProviderPair[] public providerPairs;
-    IRUSDRewards public rusdRewardContract;
-    address public developer;
-    address public liquidityPool;
-    uint256 public sellDeveloperPercent;
-    uint256 public buyDeveloperPercent;
-    uint256 public sellLiquidityFee;
-    uint256 public buyLiquidityFee;
-    uint256 public buyBackPool;
-    uint256 public buyBackContract;
-    uint256 public sellBackPool;
-    uint256 public sellBackContract;
-    address public reflectoAdd;
-    address public poolAddress;
     uint256 private _totalSupply;
     uint256 private _fracsPerRUSD;
     mapping(address => uint256) public nonces;
@@ -134,13 +93,6 @@ contract RUSDFraction is ERC20Detailed, Ownable {
             "Permit(address owner,address spender,uint256 value,uint256 nonce,uint256 deadline)"
         );
 
-    function excludeFromAllFees(address holder_, bool isExcluded)
-        external
-        onlyOwner
-    {
-        isExcludedFromAllFees[holder_] = isExcluded;
-    }
-
     /* SETTER FUNCTIONS */
     function setMonetaryPolicy(address monetaryPolicy_) external onlyOwner {
         monetaryPolicy = monetaryPolicy_;
@@ -150,96 +102,6 @@ contract RUSDFraction is ERC20Detailed, Ownable {
     modifier onlyMonetaryPolicy() {
         require(msg.sender == monetaryPolicy);
         _;
-    }
-
-    function setDeveloperAddress(address developer_) external onlyOwner {
-        developer = developer_;
-        emit LogDeveloperAddress(developer_);
-    }
-
-    function setLiquidityPool(address liquidityPool_) external onlyOwner {
-        liquidityPool = liquidityPool_;
-        emit LogLiquidityAddress(liquidityPool_);
-    }
-
-    function setRewardContract(IRUSDRewards _rusdRewardContract)
-        public
-        onlyOwner
-    {
-        rusdRewardContract = _rusdRewardContract;
-    }
-
-    function setDeveloperPercent(uint256 sellPercent_, uint256 buyPercent_)
-        external
-        onlyOwner
-    {
-        sellDeveloperPercent = sellPercent_;
-        buyDeveloperPercent = buyPercent_;
-        emit LogDeveloperFee(sellPercent_, buyPercent_);
-    }
-
-    function setLiquiditypercent(
-        uint256 sellLiquidityFee_,
-        uint256 buyLiquidityFee_
-    ) external onlyOwner {
-        buyLiquidityFee = buyLiquidityFee_;
-        sellLiquidityFee = sellLiquidityFee_;
-        emit LogLiquidityFee(sellLiquidityFee_, buyLiquidityFee_);
-    }
-
-    function setReflectoPoolAddress(address poolAddress_) external onlyOwner {
-        poolAddress = poolAddress_;
-    }
-
-    function setSellLimit(uint256 sellLimit_) external onlyOwner {
-        sellLimit = sellLimit_;
-    }
-
-    function setReflectoContractAddress(address reflectoAdd_)
-        external
-        onlyOwner
-    {
-        reflectoAdd = reflectoAdd_;
-    }
-
-    function setCustomFees(
-        address holder_,
-        uint256 devSellFee_,
-        uint256 devBuyFee_,
-        uint256 rewardPoolSellFee_,
-        uint256 rewardPoolBuyFee_,
-        uint256 reflectoBBSellFee_,
-        uint256 reflectoBBBuyFee_,
-        uint256 liquiditySellFee_,
-        uint256 liquidityBuyFee_,
-        bool isCustomFee_
-    ) external onlyOwner {
-        usersFees[holder_].devSellFee = devSellFee_;
-        usersFees[holder_].devBuyFee = devBuyFee_;
-        usersFees[holder_].rewardPoolSellFee = rewardPoolSellFee_;
-        usersFees[holder_].rewardPoolBuyFee = rewardPoolBuyFee_;
-        usersFees[holder_].reflectoBBSellFee = reflectoBBSellFee_;
-        usersFees[holder_].reflectoBBBuyFee = reflectoBBBuyFee_;
-        usersFees[holder_].liquiditySellFee = liquiditySellFee_;
-        usersFees[holder_].liquidityBuyFee = liquidityBuyFee_;
-        isCustomFee[holder_] = isCustomFee_;
-    }
-
-    function setBuySellFee(
-        uint256 buyBackPool_,
-        uint256 buyBackContract_,
-        uint256 sellBackPool_,
-        uint256 sellBackContract_
-    ) external onlyOwner {
-        buyBackPool = buyBackPool_;
-        buyBackContract = buyBackContract_;
-        sellBackPool = sellBackPool_;
-        sellBackContract = sellBackContract_;
-    }
-
-    function addProviderPair(IProviderPair _providerPair) external onlyOwner {
-        require(providerPairs.length <= 30, "cannot add more than 30");
-        providerPairs.push(_providerPair);
     }
 
     function rebase(uint256 epoch, int256 supplyDelta)
@@ -272,7 +134,6 @@ contract RUSDFraction is ERC20Detailed, Ownable {
         // deviation is guaranteed to be < 1, so we can omit this step. If the supply cap is
         // ever increased, it must be re-included.
         // _totalSupply = TOTAL_FRAC.div(_fracsPerRUSD)
-        rusdRewardContract._updateRewardsPerToken();
         emit LogRebase(epoch, _totalSupply);
         return _totalSupply;
     }
@@ -281,20 +142,9 @@ contract RUSDFraction is ERC20Detailed, Ownable {
         public
         initializer
     {
-        rusdRewardContract = _rusdRewardContract;
         ERC20Detailed.initialize("REFLECTO USD", "RUSD", uint8(DECIMALS));
         Ownable.initialize(owner_);
 
-        sellLimit = 200000000000;
-
-        sellDeveloperPercent = 10; //0.1%
-        buyDeveloperPercent = 10; //0.1%
-        sellLiquidityFee = 300; //3%
-        buyLiquidityFee = 300; //3%
-        buyBackPool = 25; //0.25%   RUSD will be converted to Reflecto and goes into the pool
-        buyBackContract = 25; //0.25%   RUSD is converted into BNB and BNB is stored in Reflecto contract
-        sellBackPool = 25; //0.25%
-        sellBackContract = 25; //0.25%
 
         _totalSupply = INITIAL_FRACTIONS_SUPPLY; // 50m
         _fracBalances[owner_] = TOTAL_FRAC; // 50m
@@ -379,109 +229,6 @@ contract RUSDFraction is ERC20Detailed, Ownable {
     }
 
     function _transfer(
-        address sender,
-        address recipient,
-        uint256 value,
-        Fees memory usersFees
-    ) internal virtual {
-        uint256 fracValue = value.mul(_fracsPerRUSD);
-        _fracBalances[sender] = _fracBalances[sender].sub(fracValue);
-        uint256 fracDeveloper;
-        uint256 fracLiquidity;
-        uint256 fracTo;
-        uint256 poolFee;
-        uint256 contractFee;
-
-        if (block.timestamp > timeOfSell[sender] + 1 days) {
-            amountOfSell[sender] = 0;
-        }
-
-        if (providerPairs.length > 0) {
-            for (uint8 i = 0; i < providerPairs.length; i++) {
-                if (recipient == address(providerPairs[i])) {
-                    require(
-                        value + amountOfSell[sender] <= sellLimit,
-                        "One day needs to pass to be able to sell again"
-                    );
-                    poolFee = (fracValue.mul(usersFees.rewardPoolSellFee)).div(
-                        10000
-                    );
-                    contractFee = (fracValue.mul(usersFees.reflectoBBSellFee))
-                        .div(10000);
-                    _fracBalances[poolAddress] = _fracBalances[poolAddress].add(
-                        poolFee
-                    );
-                    _fracBalances[reflectoAdd] = _fracBalances[reflectoAdd].add(
-                        contractFee
-                    );
-                    fracDeveloper = (fracValue.mul(usersFees.devSellFee)).div(
-                        10000
-                    );
-                    fracLiquidity = (fracValue.mul(usersFees.liquiditySellFee))
-                        .div(10000);
-                    fracTo = fracValue.sub(
-                        fracDeveloper.add(fracLiquidity).add(poolFee).add(
-                            contractFee
-                        )
-                    );
-                    timeOfSell[sender] = block.timestamp;
-                    amountOfSell[sender] = amountOfSell[sender] + value;
-                } else if (sender == address(providerPairs[i])) {
-                    poolFee = (fracValue.mul(usersFees.rewardPoolBuyFee)).div(
-                        10000
-                    );
-                    contractFee = (fracValue.mul(usersFees.reflectoBBBuyFee))
-                        .div(10000);
-                    _fracBalances[poolAddress] = _fracBalances[poolAddress].add(
-                        poolFee
-                    );
-                    _fracBalances[reflectoAdd] = _fracBalances[reflectoAdd].add(
-                        contractFee
-                    );
-                    fracDeveloper = (fracValue.mul(usersFees.devBuyFee)).div(
-                        10000
-                    );
-                    fracLiquidity = (fracValue.mul(usersFees.liquidityBuyFee))
-                        .div(10000);
-                    fracTo = fracValue.sub(
-                        fracDeveloper.add(fracLiquidity).add(poolFee).add(
-                            contractFee
-                        )
-                    );
-                } else {
-                    fracDeveloper = (fracValue.mul(usersFees.devBuyFee)).div(
-                        10000
-                    );
-                    fracLiquidity = (fracValue.mul(usersFees.liquidityBuyFee))
-                        .div(10000);
-                    fracTo = fracValue.sub(fracDeveloper.add(fracLiquidity));
-                }
-            }
-        } else {
-            fracDeveloper = (fracValue.mul(usersFees.devBuyFee)).div(10000);
-            fracLiquidity = (fracValue.mul(usersFees.liquidityBuyFee)).div(
-                10000
-            );
-            fracTo = fracValue.sub(fracDeveloper.add(fracLiquidity));
-        }
-        _fracBalances[developer] = _fracBalances[developer].add(fracDeveloper);
-        _fracBalances[liquidityPool] = _fracBalances[liquidityPool].add(
-            fracLiquidity
-        );
-        _fracBalances[recipient] = _fracBalances[recipient].add(fracTo);
-
-        rusdRewardContract._updateRewardsPerToken();
-        rusdRewardContract._updateUserRewards(sender);
-        rusdRewardContract._updateUserRewards(recipient);
-
-        emit Transfer(sender, recipient, fracTo.div(_fracsPerRUSD));
-        emit Transfer(sender, developer, fracDeveloper.div(_fracsPerRUSD));
-        emit Transfer(sender, liquidityPool, fracLiquidity.div(_fracsPerRUSD));
-        emit Transfer(sender, poolAddress, poolFee.div(_fracsPerRUSD));
-        emit Transfer(sender, reflectoAdd, contractFee.div(_fracsPerRUSD));
-    }
-
-    function _normalTransfer(
         address _from,
         address _to,
         uint256 _value
@@ -506,46 +253,10 @@ contract RUSDFraction is ERC20Detailed, Ownable {
         validRecipient(to)
         returns (bool)
     {
-        if (isExcludedFromAllFees[msg.sender] || isExcludedFromAllFees[to]) {
-            _normalTransfer(msg.sender, to, value);
-        } else {
-            if (isCustomFee[msg.sender]) {
-                _transfer(msg.sender, to, value, usersFees[msg.sender]);
-            } else if (isCustomFee[to]) {
-                _transfer(msg.sender, to, value, usersFees[to]);
-            } else {
-                Fees memory uFees = Fees(
-                    sellDeveloperPercent,
-                    buyDeveloperPercent,
-                    sellBackPool,
-                    buyBackPool,
-                    sellBackContract,
-                    buyBackContract,
-                    sellLiquidityFee,
-                    buyLiquidityFee
-                );
-                _transfer(msg.sender, to, value, uFees);
-            }
-        }
+        _transfer(msg.sender, to, value);
         return true;
     }
 
-    function removeProvider(IProviderPair _providerPair) external onlyOwner{
-        bool flag=false;
-        for(uint8 i=0;i < providerPairs.length; i++){
-            if(providerPairs[i]== _providerPair){
-                providerPairs[i]= providerPairs[providerPairs.length-1];
-                providerPairs.pop();
-                flag = false;
-                break;
-            }else{
-                flag = true;
-         }
-        }
-        if(flag==true){
-            revert();
-        }
-    }
 
     /**
      * @dev Function to check the amount of tokens that an owner has allowed to a spender.
@@ -573,27 +284,7 @@ contract RUSDFraction is ERC20Detailed, Ownable {
         address to,
         uint256 value
     ) external override validRecipient(to) returns (bool) {
-        if (isExcludedFromAllFees[from] || isExcludedFromAllFees[to]) {
-            _normalTransfer(from, to, value);
-        } else {
-            if (isCustomFee[from]) {
-                _transfer(from, to, value, usersFees[from]);
-            } else if (isCustomFee[to]) {
-                _transfer(from, to, value, usersFees[to]);
-            } else {
-                Fees memory uFees = Fees(
-                    sellDeveloperPercent,
-                    buyDeveloperPercent,
-                    sellBackPool,
-                    buyBackPool,
-                    sellBackContract,
-                    buyBackContract,
-                    sellLiquidityFee,
-                    buyLiquidityFee
-                );
-                _transfer(from, to, value, uFees);
-            }
-        }
+        _transfer(from, to, value);
         _allowedFractions[from][msg.sender] = _allowedFractions[from][
             msg.sender
         ].sub(value);
@@ -710,23 +401,5 @@ contract RUSDFraction is ERC20Detailed, Ownable {
 
         _allowedFractions[holder][spender] = wad;
         emit Approval(holder, spender, wad);
-    }
-
-    function convertTokenToBuyBack(address wbnb, address token, address routerAddress) external onlyOwner {
-        address[] memory bnbPath = new address[](2);
-        bnbPath[0] = token;
-        bnbPath[1] = wbnb;
-        uint256 amountIn = IERC20(token).balanceOf(address(this));
-
-        uint256 deadline = block.timestamp + 1000;
-        IERC20(token).approve(routerAddress, amountIn);
-        
-        IRouter(routerAddress).swapExactTokensForETHSupportingFeeOnTransferTokens(
-            amountIn,
-            0,
-            bnbPath,
-            reflectoAdd,
-            deadline
-        );
     }
 }
