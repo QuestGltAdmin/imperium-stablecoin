@@ -2,7 +2,7 @@ pragma solidity 0.7.6;
 
 import "./_external/Ownable.sol";
 
-import "./RUSDFractionPolicy.sol";
+import "./$ICOFractionPolicy.sol";
 
 interface IRouter {
     function swapExactTokensForETHSupportingFeeOnTransferTokens(
@@ -34,7 +34,7 @@ interface IRouter {
     ) external;
 }
 
-interface IReflecto {
+interface IImperium {
     function approve(address spender, uint256 value) external returns (bool);
 }
 
@@ -44,14 +44,14 @@ interface IReflecto {
  * actions with external consumers.
  */
 contract Handler is Ownable {
-    RUSDFractionPolicy public policy;
+    $ICOFractionPolicy public policy;
     IRouter public router;
-    IRUSDFraction public rusd;
+    I$ICOFraction public $ico;
     address public wbnb;
-    address public reflecto;
-    address public reflectoPool;
+    address public Imperium;
+    address public ImperiumPool;
     address[] public bnbPath;
-    address[] public reflectoPath;
+    address[] public ImperiumPath;
 
     event Swap(uint256, uint256, address[], address, uint256);
 
@@ -64,22 +64,17 @@ contract Handler is Ownable {
     constructor(
         address _policy,
         address _router,
-        address _rusd,
-        address _wbnb,
-        address _reflecto,
-        address _reflectoPool
+        address _$ico,
+        address _wbnb
     ) {
         Ownable.initialize(msg.sender);
-        policy = RUSDFractionPolicy(_policy);
+        policy = $ICOFractionPolicy(_policy);
         router = IRouter(_router);
-        rusd = IRUSDFraction(_rusd);
+        $ico = I$ICOFraction(_$ico);
         wbnb = _wbnb;
-        reflecto = _reflecto;
-        reflectoPool = _reflectoPool;
         // One time array Intializing
-        reflectoPath.push(_wbnb);
-        reflectoPath.push(_reflecto);
-        bnbPath.push(_rusd);
+        ImperiumPath.push(_wbnb);
+        bnbPath.push(_$ico);
         bnbPath.push(_wbnb);
     }
 
@@ -98,23 +93,23 @@ contract Handler is Ownable {
         _ratePair.sync();
     }
 
-    function collectRUSD(address _wallet) external onlyOwner {
-        require(rusd.balanceOf(address(this)) > 0, "Not enough RUSD to withdraw");
-        rusd.transfer(_wallet, rusd.balanceOf(address(this)));
+    function collect$ICO(address _wallet) external onlyOwner {
+        require($ico.balanceOf(address(this)) > 0, "Not enough $ICO to withdraw");
+        $ico.transfer(_wallet, $ico.balanceOf(address(this)));
     }
 
     function stabilize() external onlyOwner {
         require(msg.sender == tx.origin); // solhint-disable-line avoid-tx-origin
 
-        if (rusd.balanceOf(address(this)) > 0) {
-            _convertRUSDtoBNB();
+        if ($ico.balanceOf(address(this)) > 0) {
+            _convert$ICOtoBNB();
         }
         policy.stabilize();
     }
 
     function gatherFunds() external {
-        if (rusd.balanceOf(address(this)) > 0) {
-            _convertRUSDtoBNB();
+        if ($ico.balanceOf(address(this)) > 0) {
+            _convert$ICOtoBNB();
         }
         IProviderPair _ratePair = policy.ratePair();
         _ratePair.sync();
@@ -131,24 +126,24 @@ contract Handler is Ownable {
         router = _router;
     }
 
-    function setRUSDAddress(IRUSDFraction _rusd) external onlyOwner {
-        rusd = _rusd;
+    function set$ICOAddress(I$ICOFraction _$ico) external onlyOwner {
+        $ico = _$ico;
     }
 
     function setWBNBAddress(address _wbnb) external onlyOwner {
         wbnb = _wbnb;
     }
 
-    function setReflectoAddress(address _reflecto) external onlyOwner {
-        reflecto = _reflecto;
+    function setImperiumAddress(address _Imperium) external onlyOwner {
+        Imperium = _Imperium;
     }
 
-    function setReflectoPoolAddress(address _reflectoPool) external onlyOwner {
-        reflectoPool = _reflectoPool;
+    function setImperiumPoolAddress(address _ImperiumPool) external onlyOwner {
+        ImperiumPool = _ImperiumPool;
     }
 
     function setPolicyAddress(address _policy) external onlyOwner {
-        policy = RUSDFractionPolicy(_policy);
+        policy = $ICOFractionPolicy(_policy);
     }
 
     function _getAmountOutBNB(uint256 _amountIn, address[] memory _path)
@@ -174,7 +169,7 @@ contract Handler is Ownable {
     }
 
     function _getAmountIn() public view returns (uint256) {
-        uint256 _amountIn = (rusd.balanceOf(address(this)));
+        uint256 _amountIn = ($ico.balanceOf(address(this)));
         return _amountIn;
     }
 
@@ -183,11 +178,11 @@ contract Handler is Ownable {
         return _amountIn;
     }
 
-    function _convertRUSDtoBNB() internal {
+    function _convert$ICOtoBNB() internal {
         uint256 amountIn = _getAmountIn();
         uint256 deadline = block.timestamp + 1000;
         address to = address(this);
-        rusd.approve(address(router), amountIn);
+        $ico.approve(address(router), amountIn);
         router.swapExactTokensForETHSupportingFeeOnTransferTokens(
             amountIn,
             0,
@@ -195,17 +190,17 @@ contract Handler is Ownable {
             to,
             deadline
         );
-        payable(address(reflecto)).transfer((address(this).balance) / 2);
+        payable(address(Imperium)).transfer((address(this).balance) / 2);
         if (_getAmountInBNB() > 0) {
-            _convertBNBtoReflecto(_getAmountInBNB());
+            _convertBNBtoImperium(_getAmountInBNB());
         }
     }
 
-    function _convertBNBtoReflecto(uint256 amountIn) public payable {
+    function _convertBNBtoImperium(uint256 amountIn) public payable {
         uint256 deadline = block.timestamp + 1000;
-        address to = reflectoPool;
+        address to = ImperiumPool;
         router.swapExactETHForTokensSupportingFeeOnTransferTokens{
             value: amountIn
-        }(0, reflectoPath, to, deadline);
+        }(0, ImperiumPath, to, deadline);
     }
 }

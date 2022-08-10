@@ -15,8 +15,8 @@ async function mockedHandler() {
   // get signers
   const [deployer, user] = await ethers.getSigners()
   // deploy mocks
-  const mockRUSDFraction = await (
-    await ethers.getContractFactory('RUSDFraction')
+  const mock$ICOFraction = await (
+    await ethers.getContractFactory('$ICOFraction')
   )
     .connect(deployer)
     .deploy()
@@ -27,8 +27,8 @@ async function mockedHandler() {
       .deploy()
   // deploy upgradable contract
   const mockPolicy = await upgrades.deployProxy(
-    (await ethers.getContractFactory('RUSDFractionPolicy')).connect(deployer),
-    [await deployer.getAddress(), mockRUSDFraction.address,mockBUSD.address],
+    (await ethers.getContractFactory('$ICOFractionPolicy')).connect(deployer),
+    [await deployer.getAddress(), mock$ICOFraction.address,mockBUSD.address],
     {
       initializer: 'initialize(address,address,address)',
     },
@@ -42,10 +42,6 @@ async function mockedHandler() {
 
   const wbnb = await (await ethers.getContractFactory('Gold')).connect(deployer).deploy()
 
-  const reflecto = await (await ethers.getContractFactory('Gold')).connect(deployer).deploy()
-
-  const reflectoPool = await (await ethers.getContractFactory('Gold')).connect(deployer).deploy()
-
   await mockProvider
     .connect(deployer)
     .setReserves(1000000000,1000000000,1656457)
@@ -56,7 +52,7 @@ async function mockedHandler() {
 
   const handler = await (await ethers.getContractFactory('Handler'))
     .connect(deployer)
-    .deploy(mockPolicy.address,mockRouter.address,mockRUSDFraction.address,wbnb.address,reflecto.address,reflectoPool.address)
+    .deploy(mockPolicy.address,mockRouter.address,mock$ICOFraction.address,wbnb.address)
 
   const mockDownstream = await (await ethers.getContractFactory('MockDownstream')).connect(deployer).deploy()
   await mockPolicy.connect(deployer).addProviderPair(await mockProvider.address,await mockProvider1.address)

@@ -18,7 +18,7 @@ interface IERC20 {
     event Approval(address indexed owner, address indexed spender, uint256 value);
 }    
 
-interface IRUSDFraction {
+interface I$ICOFraction {
     function totalSupply() external view returns (uint256);
 
     function rebase(uint256 epoch, int256 supplyDelta)
@@ -54,13 +54,13 @@ interface IProviderPair {
     function token1() external view returns(address);
 }
 
-contract RUSDFractionPolicy is Ownable {
+contract $ICOFractionPolicy is Ownable {
     using SafeMath for uint256;
     using SafeMathInt for int256;
     using UInt256Lib for uint256;
 
     event Stabilize(
-        uint256 newRUSDSupply
+        uint256 new$ICOSupply
     );
     event LogRebase(
         uint256 indexed epoch,
@@ -70,7 +70,7 @@ contract RUSDFractionPolicy is Ownable {
         uint256 timestampSec
     );
 
-    IRUSDFraction public rusdFracs;
+    I$ICOFraction public $icoFracs;
     IERC20 public busd;
     IProviderPair[] public providerPairs;
 
@@ -110,11 +110,11 @@ contract RUSDFractionPolicy is Ownable {
 
     function checkDeviation(
         uint256 exchangeRateWithBUSD,
-        uint256 exchangeRateWithRUSD
+        uint256 exchangeRateWith$ICO
     ) internal pure returns (bool) {
         uint256 deviation;
         deviation =
-            (abs(int256(exchangeRateWithBUSD - exchangeRateWithRUSD)) * 100) /
+            (abs(int256(exchangeRateWithBUSD - exchangeRateWith$ICO)) * 100) /
             exchangeRateWithBUSD;
         if (deviation > 5) {
             return true;
@@ -143,7 +143,7 @@ contract RUSDFractionPolicy is Ownable {
             decimalDiff = uint256(reserve1Decimal - reserve0Decimal);
             reserve0 = uint112(reserve0 * uint112(10**decimalDiff));
         }
-        if(token0 == address(busd) || token0== address(rusdFracs)){
+        if(token0 == address(busd) || token0== address($icoFracs)){
             exchangeRate = (uint256((reserve0 * 10** DECIMALS )/ reserve1)); 
         }else{
             exchangeRate = (uint256((reserve1 * 10** DECIMALS ) / reserve0));
@@ -159,7 +159,7 @@ contract RUSDFractionPolicy is Ownable {
         (reserve0, reserve1, timestamp) = IProviderPair(ratePair).getReserves();
         address token0 = IProviderPair(ratePair).token0();
 
-        if(token0 == address(rusdFracs)){
+        if(token0 == address($icoFracs)){
             
             exchangeRate = (uint256(reserve1/reserve0));    
         }else{
@@ -189,13 +189,13 @@ contract RUSDFractionPolicy is Ownable {
 
         if (
             supplyDelta > 0 &&
-            rusdFracs.totalSupply().add(uint256(supplyDelta)) > MAX_SUPPLY
+            $icoFracs.totalSupply().add(uint256(supplyDelta)) > MAX_SUPPLY
         ) {
-            supplyDelta = (MAX_SUPPLY.sub(rusdFracs.totalSupply()))
+            supplyDelta = (MAX_SUPPLY.sub($icoFracs.totalSupply()))
                 .toInt256Safe();
         }
 
-        uint256 supplyAfterRebase = rusdFracs.rebase(epoch, supplyDelta);
+        uint256 supplyAfterRebase = $icoFracs.rebase(epoch, supplyDelta);
         assert(supplyAfterRebase <= MAX_SUPPLY);
         for (uint256 i = 0; i < providerPairs.length; i++) {
             IProviderPair(providerPairs[i]).sync();
@@ -221,7 +221,7 @@ contract RUSDFractionPolicy is Ownable {
             uint8 token1Decimals;
             uint256 supplyToChange;
             (reserve0, reserve1, timestamp) = IProviderPair(providerPairs[i]).getReserves();
-            //  for rate pair: RUSD/BUSD
+            //  for rate pair: $ICO/BUSD
             if (address(providerPairs[i]) == address(ratePair)) {
                 token0 = IProviderPair(providerPairs[i]).token0(); 
                 token1 = IProviderPair(providerPairs[i]).token1();
@@ -239,12 +239,12 @@ contract RUSDFractionPolicy is Ownable {
                 if(reserve0 > reserve1){
                     supplyToChange = uint256(reserve0 - reserve1);
                     supplyToChange = supplyToChange/(10**uint256(decimalDiff));
-                    IRUSDFraction(rusdFracs).burn(address(providerPairs[i]), supplyToChange);
+                    I$ICOFraction($icoFracs).burn(address(providerPairs[i]), supplyToChange);
                 }
                 else if(reserve0 < reserve1){
                     supplyToChange = uint256(reserve1 - reserve0);
                     supplyToChange = supplyToChange/(10**uint256(decimalDiff));
-                    IRUSDFraction(rusdFracs).mint(address(providerPairs[i]), supplyToChange);
+                    I$ICOFraction($icoFracs).mint(address(providerPairs[i]), supplyToChange);
                 }
                 else{
                     continue;
@@ -256,8 +256,8 @@ contract RUSDFractionPolicy is Ownable {
             }   
             IProviderPair(providerPairs[i]).sync();
         }
-        uint256 newRUSDSupply= IRUSDFraction(rusdFracs).totalSupply();
-        emit Stabilize(newRUSDSupply);
+        uint256 new$ICOSupply= I$ICOFraction($icoFracs).totalSupply();
+        emit Stabilize(new$ICOSupply);
     }
 
     function stabilizeOtherPairs(IProviderPair _providerPair) internal{
@@ -278,62 +278,62 @@ contract RUSDFractionPolicy is Ownable {
         uint8 token1Decimals= IERC20(token1).decimals();  
         uint8 token0Decimals= IERC20(token0).decimals();  
         (reserve0, reserve1, timestamp) =IProviderPair(_providerPair).getReserves();
-        // Exchange rate of Other token with RUSD
-        uint exchangeRateWithRUSD= getPriceData(_providerPair);
+        // Exchange rate of Other token with $ICO
+        uint exchangeRateWith$ICO= getPriceData(_providerPair);
         // CHECK DEVIATION
-        if (checkDeviation(exchangeRateWithBUSD, exchangeRateWithRUSD)) {
-            if (token0 == address(rusdFracs)) {
-                if (int256(exchangeRateWithBUSD - exchangeRateWithRUSD) > 0) {
+        if (checkDeviation(exchangeRateWithBUSD, exchangeRateWith$ICO)) {
+            if (token0 == address($icoFracs)) {
+                if (int256(exchangeRateWithBUSD - exchangeRateWith$ICO) > 0) {
                     supplyChange = uint256(
                         uint256(reserve1) *
-                            uint256(exchangeRateWithBUSD - exchangeRateWithRUSD)
+                            uint256(exchangeRateWithBUSD - exchangeRateWith$ICO)
                     );
                     supplyChange = supplyChange.div(
                         10**uint256(token1Decimals)
                     );
-                    IRUSDFraction(rusdFracs).mint(
+                    I$ICOFraction($icoFracs).mint(
                         address(_providerPair),
                         supplyChange
                     );
                 } else if (
-                    int256(exchangeRateWithRUSD - exchangeRateWithBUSD) > 0
+                    int256(exchangeRateWith$ICO - exchangeRateWithBUSD) > 0
                 ) {
                     supplyChange = uint256(
                         uint256(reserve1) *
-                            uint256(exchangeRateWithRUSD - exchangeRateWithBUSD)
+                            uint256(exchangeRateWith$ICO - exchangeRateWithBUSD)
                     );
                     supplyChange = supplyChange.div(
                         10**uint256(token1Decimals)
                     );
-                    IRUSDFraction(rusdFracs).burn(
+                    I$ICOFraction($icoFracs).burn(
                         address(_providerPair),
                         supplyChange
                     );
                 }
             } else {
-                if (int256(exchangeRateWithBUSD - exchangeRateWithRUSD) > 0) {
+                if (int256(exchangeRateWithBUSD - exchangeRateWith$ICO) > 0) {
                     supplyChange = uint256(
                         uint256(reserve0) *
-                            uint256(exchangeRateWithBUSD - exchangeRateWithRUSD)
+                            uint256(exchangeRateWithBUSD - exchangeRateWith$ICO)
                     );
                     supplyChange = supplyChange.div(
                         10**uint256(token0Decimals)
                     );
-                    IRUSDFraction(rusdFracs).mint(
+                    I$ICOFraction($icoFracs).mint(
                         address(_providerPair),
                         supplyChange
                     );
                 } else if (
-                    int256(exchangeRateWithRUSD - exchangeRateWithBUSD) > 0
+                    int256(exchangeRateWith$ICO - exchangeRateWithBUSD) > 0
                 ) {
                     supplyChange = uint256(
                         uint256(reserve0) *
-                            uint256(exchangeRateWithRUSD - exchangeRateWithBUSD)
+                            uint256(exchangeRateWith$ICO - exchangeRateWithBUSD)
                     );
                     supplyChange = supplyChange.div(
                         10**uint256(token0Decimals)
                     );
-                    IRUSDFraction(rusdFracs).burn(
+                    I$ICOFraction($icoFracs).burn(
                         address(_providerPair),
                         supplyChange
                     );
@@ -342,18 +342,18 @@ contract RUSDFractionPolicy is Ownable {
         }
     }
 
-    function addProviderPair(IProviderPair _RUSDProviderPair, IProviderPair _OtherTokenPairWithBUSD) external onlyOwner {
+    function addProviderPair(IProviderPair _$ICOProviderPair, IProviderPair _OtherTokenPairWithBUSD) external onlyOwner {
         if (providerPairs.length == 0) {
-            ratePair = _RUSDProviderPair;
+            ratePair = _$ICOProviderPair;
         }
         require(providerPairs.length <= 50, "cannot add more than 50");
-        // require(address(_RUSDProviderPair) != address(0) && address(_OtherTokenPairWithBUSD)!=address(0), "Invalid Parameter Address");
-        providerPairs.push(_RUSDProviderPair);
-        // If the pair is with RUSD/BNB then, Other token pair is= BNB/BUSD
-        pairWithBUSD[_RUSDProviderPair]= _OtherTokenPairWithBUSD;   
+        // require(address(_$ICOProviderPair) != address(0) && address(_OtherTokenPairWithBUSD)!=address(0), "Invalid Parameter Address");
+        providerPairs.push(_$ICOProviderPair);
+        // If the pair is with $ICO/BNB then, Other token pair is= BNB/BUSD
+        pairWithBUSD[_$ICOProviderPair]= _OtherTokenPairWithBUSD;   
     }
 
-    function setRUSDStableProvider(IProviderPair _ratePair) external onlyOwner {
+    function set$ICOStableProvider(IProviderPair _ratePair) external onlyOwner {
         ratePair = _ratePair;
     }
 
@@ -379,20 +379,20 @@ contract RUSDFractionPolicy is Ownable {
     }
 
     /**
-     * @notice A multi-chain RUSD interface method. The Reflecto monetary policy contract
-     *         on the base-chain and XC-ReflectoController contracts on the satellite-chains
+     * @notice A multi-chain $ICO interface method. The Imperium monetary policy contract
+     *         on the base-chain and XC-ImperiumController contracts on the satellite-chains
      *         implement this method. It atomically returns two values:
      *         what the current contract believes to be,
-     *         the globalReflectoEpoch and globalRUSDSupply.
-     * @return globalReflectoEpoch The current epoch number.
-     * @return globalRUSDSupply The total supply at the current epoch.
+     *         the globalImperiumEpoch and global$ICOSupply.
+     * @return globalImperiumEpoch The current epoch number.
+     * @return global$ICOSupply The total supply at the current epoch.
      */
-    function globalReflectoEpochAndRUSDSupply()
+    function globalImperiumEpochAnd$ICOSupply()
         external
         view
         returns (uint256, uint256)
     {
-        return (epoch, rusdFracs.totalSupply());
+        return (epoch, $icoFracs.totalSupply());
     }
 
     /**
@@ -400,7 +400,7 @@ contract RUSDFractionPolicy is Ownable {
      *      It is called at the time of contract creation to invoke parent class initializers and
      *      initialize the contract's state variables.
      */
-    function initialize(address owner_, IRUSDFraction rusdFracs_, IERC20 _busd)
+    function initialize(address owner_, I$ICOFraction $icoFracs_, IERC20 _busd)
         public
         initializer
     {
@@ -408,7 +408,7 @@ contract RUSDFractionPolicy is Ownable {
         // deviationThreshold = 0.05e18 = 5e16
         deviationThreshold = 5 * 10**(DECIMALS - 2);
         epoch = 0;
-        rusdFracs = rusdFracs_;
+        $icoFracs = $icoFracs_;
         busd= _busd;
     }
 
@@ -428,7 +428,7 @@ contract RUSDFractionPolicy is Ownable {
         // supplyDelta = totalSupply * (rate - targetRate) / targetRate
         int256 targetRateSigned = targetRate.toInt256Safe();
         return
-            rusdFracs
+            $icoFracs
                 .totalSupply()
                 .toInt256Safe()
                 .mul(rate.toInt256Safe().sub(targetRateSigned))

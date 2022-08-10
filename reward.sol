@@ -1,6 +1,6 @@
 // Sources flattened with hardhat v2.8.3 https://hardhat.org
 
-// File contracts/RUSD-additional/CastU256U128.sol
+// File contracts/$ICO-additional/CastU256U128.sol
 
 pragma solidity 0.7.6;
 
@@ -13,7 +13,7 @@ library CastU256U128 {
 }
 
 
-// File contracts/RUSD-additional/CastU256U32.sol
+// File contracts/$ICO-additional/CastU256U32.sol
 
 
 
@@ -26,7 +26,7 @@ library CastU256U32 {
 }
 
 
-// File contracts/RUSD-additional/SafeMathInt.sol
+// File contracts/$ICO-additional/SafeMathInt.sol
 
 
 
@@ -89,7 +89,7 @@ library SafeMathInt {
 }
 
 
-// File contracts/RUSD-additional/SafeMath.sol
+// File contracts/$ICO-additional/SafeMath.sol
 
 
 
@@ -157,7 +157,7 @@ library SafeMath {
 }
 
 
-// File contracts/RUSD-additional/Initializable.sol
+// File contracts/$ICO-additional/Initializable.sol
 
 
 
@@ -219,7 +219,7 @@ contract Initializable {
 }
 
 
-// File contracts/RUSD-additional/IERC20.sol
+// File contracts/$ICO-additional/IERC20.sol
 
 
 
@@ -257,7 +257,7 @@ interface IERC20 {
 }
 
 
-// File contracts/RUSD-additional/Ownable.sol
+// File contracts/$ICO-additional/Ownable.sol
 
 
 
@@ -338,7 +338,7 @@ contract Ownable is Initializable {
 }
 
 
-// File contracts/RUSDRewards.sol
+// File contracts/$ICORewards.sol
 
 // SPDX-License-Identifier: MIT
 
@@ -350,7 +350,7 @@ contract Ownable is Initializable {
 
 
 
-contract RUSDRewards is Ownable {
+contract $ICORewards is Ownable {
     using SafeMath for uint256;
     using SafeMathInt for int256;
     using CastU256U32 for uint256;
@@ -407,19 +407,19 @@ contract RUSDRewards is Ownable {
     mapping(address => bool) public isExcludedFromRewards;
 
     address public developer;
-    address public reflectoAdd;
+    address public ImperiumAdd;
     uint256 public gaslessClaimPeriod;
     IERC20[] public rewardPool;
     IERC20[] public pendingPool;
     IERC20 public defaultReward;
-    IERC20 public rusdToken;
+    IERC20 public $icoToken;
     uint256 public MAX_REWARD_POOL;
     uint256 public poolPrice;
 
-    constructor(IERC20 _rusdToken) {
+    constructor(IERC20 _$icoToken) {
         gaslessClaimPeriod = 86400; // Gasless Claim once every 1 day
         MAX_REWARD_POOL = 130;
-        rusdToken = _rusdToken;
+        $icoToken = _$icoToken;
         poolPrice = 1000000000000000000;
         Ownable.initialize(msg.sender);
     }
@@ -476,7 +476,7 @@ contract RUSDRewards is Ownable {
     function _updateRewardsPerToken() public {
         // RewardsPerToken memory rewardsPerToken_ = rewardsPerToken;
         // RewardsPeriod memory rewardsPeriod_ = rewardsPeriod;
-        uint256 totalSupply_ = rusdToken.totalSupply();
+        uint256 totalSupply_ = $icoToken.totalSupply();
 
         for (uint8 i = 0; i < rewardPool.length; i++) {
             // We skip the update if the program hasn't started
@@ -513,12 +513,12 @@ contract RUSDRewards is Ownable {
         view
         returns (uint128)
     {
-        uint256 totalSupply_ = rusdToken.totalSupply();
+        uint256 totalSupply_ = $icoToken.totalSupply();
         uint128 rewardsPerSecond = (rewardsTokenDetail[rewardToken]
             .accumulated +
             (1e9 * 86400 * rewardsTokenDetail[rewardToken].rate) /
             totalSupply_).u128();
-        uint128 rewardsUser = ((rusdToken.balanceOf(user) * rewardsPerSecond) /
+        uint128 rewardsUser = (($icoToken.balanceOf(user) * rewardsPerSecond) /
             1e9).u128();
         return rewardsUser;
     }
@@ -530,7 +530,7 @@ contract RUSDRewards is Ownable {
         // RewardsPerToken memory rewardsPerToken_ = rewardsPerToken;
         for (uint8 i = 0; i < rewardPool.length; i++) {
             // Calculate and update the new value user reserves. _fracBalances[user] casts it into uint256, which is desired.
-            // accumulated+= (RUSD_BALANCE * (RPT.accumulated - UR.checkpoint)/ 1e9)
+            // accumulated+= ($ICO_BALANCE * (RPT.accumulated - UR.checkpoint)/ 1e9)
             if (
                 !isExcludedFromRewards[user] &&
                 rewardsTokenDetail[rewardPool[i]].accumulated > 0
@@ -538,7 +538,7 @@ contract RUSDRewards is Ownable {
                 rewards[user][rewardPool[i]].accumulated = (rewards[user][
                     rewardPool[i]
                 ].accumulated +
-                    (rusdToken.balanceOf(user) *
+                    ($icoToken.balanceOf(user) *
                         (rewardsTokenDetail[rewardPool[i]].accumulated -
                             rewards[user][rewardPool[i]].checkpoint)) /
                     1e9).u128(); // We must scale down the rewards by the precision factor
@@ -564,15 +564,15 @@ contract RUSDRewards is Ownable {
         _updateUserRewards(holder_);
     }
 
-    function setReflectoContractAddress(address reflectoAdd_)
+    function setImperiumContractAddress(address ImperiumAdd_)
         external
         onlyOwner
     {
-        reflectoAdd = reflectoAdd_;
+        ImperiumAdd = ImperiumAdd_;
     }
 
-    function updateRUSD(IERC20 _rusdToken) external onlyOwner {
-        rusdToken = _rusdToken;
+    function update$ICO(IERC20 _$icoToken) external onlyOwner {
+        $icoToken = _$icoToken;
     }
 
     function setDeveloperAddress(address developer_) external onlyOwner {
@@ -620,7 +620,7 @@ contract RUSDRewards is Ownable {
             revert();
         }
 
-        // payable(reflectoAdd).transfer(msg.value / 2);
+        // payable(ImperiumAdd).transfer(msg.value / 2);
         // payable(developer).transfer(msg.value / 2);
         tempRewardDetails[_rewardToken].start = uint32(block.timestamp) + start;
         tempRewardDetails[_rewardToken].end = uint32(block.timestamp) + end;
@@ -672,7 +672,7 @@ contract RUSDRewards is Ownable {
 
         rewardStatus[_rewardToken] = RewardStatus.APPROVED;
         // send fee to contract and dev
-        payable(reflectoAdd).transfer(tempRewardDetails[_rewardToken].fee / 2);
+        payable(ImperiumAdd).transfer(tempRewardDetails[_rewardToken].fee / 2);
         payable(developer).transfer(tempRewardDetails[_rewardToken].fee / 2);
         // delete the struct data for tempRewardDetails
         delete tempRewardDetails[_rewardToken];
