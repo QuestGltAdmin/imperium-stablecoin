@@ -3,10 +3,6 @@ const fs = require("fs");
 const PAIR_BUSD_$ICO = '0x0a67A6cC5163f421e7FF559486FFf81858D452ef';
 const PAIR_BNB_$ICO = '0x0E3Bf08D8d504Ef3f975f0dd232C34b0591eCc90';
 const PAIR_BNB_BUSD = '0x27E034ed68d9266F3431588e53641303d93388af';
-// $ICO
-const DEV_ADDRESS = '0x3Fef1059428da0cC060fd3c0349Db170FE455034';
-const IMPERIUM_CONTRACT_ADDRESS = '0x13301153Fc4B90146d5b462F0da406e6f119e47C';
-const LIQUDITY_FEE_ADDRESS = '0x79C3860364f18012F99f8D83419BB090B3c52cA8'
 
 // AddProvider 0 address (Rate pair)
 const ZEROADDR= "0x0000000000000000000000000000000000000000";
@@ -25,19 +21,7 @@ async function main(){
         const handler= await Handler.attach(HandlerAddress)
 
         // $ICO
-        const dev = await $ico.setDeveloperAddress(DEV_ADDRESS)
-        const liq = await $ico.setLiquidityPool(LIQUDITY_FEE_ADDRESS)
-        const pool = await $ico.setImperiumPoolAddress(HandlerAddress)
-        const rC = await $ico.setImperiumContractAddress(HandlerAddress)
-        const pairA = await $ico.addProviderPair(PAIR_BUSD_$ICO)
-        const pairA1 = await $ico.addProviderPair(PAIR_BNB_$ICO)
         const mP = await $ico.setMonetaryPolicy($icoPolicy.address)
-        console.log('Setted dev add ', dev.hash)
-        console.log('Setted liq fee add ', liq.hash)
-        console.log('Setted Imperium pool fee add ', pool.hash)
-        console.log('Setted Imperium fee add ', rC.hash)
-        console.log('Setted DEX address BUSD ', pairA.hash)
-        console.log('Setted DEX address BNB', pairA1.hash)
         console.log("Policy setted up on $ICO ", mP.hash)
 
         // Policy Contract 
