@@ -137,7 +137,7 @@ contract $ICOFraction is ERC20Detailed, Ownable {
         initializer
         override
     {
-        ERC20Detailed.initialize("IMPERIUM STABLE", "ICO", uint8(DECIMALS));
+        ERC20Detailed.initialize("IMPERIUM STABLE", "$ICO", uint8(DECIMALS));
         Ownable.initialize(owner_);
 
 

@@ -30,7 +30,7 @@ async function main() {
 
     // 3. Handler Contract
     const Handler = await ethers.getContractFactory("Handler");
-    const handler = await Handler.deploy($icoPolicy.address, ROUTER, $ico.address, WBNB, IMPERIUM_CONTRACT_ADDRESS);
+    const handler = await Handler.deploy($icoPolicy.address, $ico.address);
     
     console.log("Handler Contract: ", handler.address);
 
