@@ -42,12 +42,6 @@ async function main() {
     const mP = await $ico.setMonetaryPolicy($icoPolicy.address)
     console.log("Policy setted up on $ICO ", mP.hash)
 
-    const Handler = await ethers.getContractFactory("Handler");
-    const handler = await Handler.deploy($icoPolicy.address, $ico.address);
-
-    const stabilize= await handler.stabilize();
-    console.log("checking stabilize", stabilize.hash);
-
     // write missing settings
     // write here how to set up new reward pool
     // how to accept pool

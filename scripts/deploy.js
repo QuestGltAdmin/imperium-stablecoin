@@ -22,17 +22,10 @@ async function main() {
 
     console.log("$ICOFractionPolicy Address", $icoPolicy.address);
 
-    // 3. Handler Contract
-    const Handler = await ethers.getContractFactory("Handler");
-    const handler = await Handler.deploy($icoPolicy.address, $ico.address);
-    
-    console.log("Handler Contract: ", handler.address);
-
     // Defining new user
     let user = {
         $ico: $ico.address,
         $icoPolicy: $icoPolicy.address,
-        handler: handler.address,
     };
     address.push(user);
     const address_json= JSON.stringify(address)
