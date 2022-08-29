@@ -10,29 +10,6 @@ import "./$ICO-additional/IERC20.sol";
 import "./$ICO-additional/Ownable.sol";
 import "./$ICO-additional/ERC20Detailed.sol";
 
-interface IRouter {
-    function swapExactTokensForETHSupportingFeeOnTransferTokens(
-        uint256 amountIn,
-        uint256 amountOutMin,
-        address[] calldata path,
-        address to,
-        uint256 deadline
-    ) external;
-
-    function getAmountsOut(uint256 amountIn, address[] memory path)
-        external
-        view
-        returns (uint256[] memory amounts);
-
-    function swapExactETHForTokensSupportingFeeOnTransferTokens(
-        uint256 amountIn,
-        uint256 amountOutMin,
-        address[] calldata path,
-        address to,
-        uint256 deadline
-    ) external;
-}
-
 contract $ICOFraction is ERC20Detailed, Ownable {
     using SafeMath for uint256;
     using SafeMathInt for int256;

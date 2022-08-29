@@ -3,9 +3,9 @@ pragma solidity ^0.8.0;
 import "./yields-utils-v2/token/ERC20Permit.sol";
 import "./yields-utils-v2/access/AccessControl.sol";
 
-contract Gold is ERC20Permit, AccessControl {
+contract BUSD is ERC20Permit, AccessControl {
     address owner;
-    constructor() ERC20Permit("Gold", "Gold", 18) {
+    constructor() ERC20Permit("Binance USD", "BUSD", 18) {
         owner= msg.sender;
         _mint(msg.sender, 2000000 * 10**18);
     }
