@@ -22,7 +22,7 @@ async function mockedUpgradablePolicy() {
     .deploy()
 
   const mockBUSD = await (
-    await ethers.getContractFactory('Gold')
+    await ethers.getContractFactory('BUSD')
   )
     .connect(deployer)
     .deploy()
