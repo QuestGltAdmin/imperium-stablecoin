@@ -12,15 +12,15 @@ describe('Testing meta transactions', function () {
   let initialSupply;
   let Imperium;
 
-  before('setup $ICOFraction contract', setupContracts)
+  before('setup ICO$Fraction contract', setupContracts)
 
   async function setupContracts() {
     // prepare signers
     accounts = await ethers.getSigners()
     deployer = accounts[0]
     // deploy upgradable token
-    Imperium = await (await ethers.getContractFactory('$ICOFraction')).connect(deployer).deploy()
-    const factory = await ethers.getContractFactory('$ICOFraction')
+    Imperium = await (await ethers.getContractFactory('ICO$Fraction')).connect(deployer).deploy()
+    const factory = await ethers.getContractFactory('ICO$Fraction')
     Imperium = await upgrades.deployProxy(
       factory,
       [await deployer.getAddress()],
@@ -32,11 +32,11 @@ describe('Testing meta transactions', function () {
     initialSupply = await Imperium.totalSupply()
   }
 
-  it('balance of contract deployer should be 50000000', async () => {
+  it('balance of contract deployer should be 500000000', async () => {
     const [admin] = await ethers.getSigners();
     const balance = await Imperium.balanceOf(admin.address);
     const totalBalance = balance / Math.pow(10, 9);
-    expect(totalBalance).to.be.equal(50000000);
+    expect(totalBalance).to.be.equal(500000000);
   });
 
   it('initializes DOMAIN_SEPARATOR and PERMIT_TYPEHASH correctly', async () => {

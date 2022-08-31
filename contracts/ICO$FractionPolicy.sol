@@ -18,7 +18,7 @@ interface IERC20 {
     event Approval(address indexed owner, address indexed spender, uint256 value);
 }    
 
-interface I$ICOFraction {
+interface IICO$Fraction {
     function totalSupply() external view returns (uint256);
 
     function rebase(uint256 epoch, int256 supplyDelta)
@@ -54,13 +54,13 @@ interface IProviderPair {
     function token1() external view returns(address);
 }
 
-contract $ICOFractionPolicy is Ownable {
+contract ICO$FractionPolicy is Ownable {
     using SafeMath for uint256;
     using SafeMathInt for int256;
     using UInt256Lib for uint256;
 
     event Stabilize(
-        uint256 new$ICOSupply
+        uint256 newICO$Supply
     );
     event LogRebase(
         uint256 indexed epoch,
@@ -70,7 +70,7 @@ contract $ICOFractionPolicy is Ownable {
         uint256 timestampSec
     );
 
-    I$ICOFraction public $icoFracs;
+    IICO$Fraction public Ico$Fracs;
     IERC20 public busd;
     IProviderPair[] public providerPairs;
 
@@ -110,11 +110,11 @@ contract $ICOFractionPolicy is Ownable {
 
     function checkDeviation(
         uint256 exchangeRateWithBUSD,
-        uint256 exchangeRateWith$ICO
+        uint256 exchangeRateWithICO$
     ) internal pure returns (bool) {
         uint256 deviation;
         deviation =
-            (abs(int256(exchangeRateWithBUSD - exchangeRateWith$ICO)) * 100) /
+            (abs(int256(exchangeRateWithBUSD - exchangeRateWithICO$)) * 100) /
             exchangeRateWithBUSD;
         if (deviation > 5) {
             return true;
@@ -143,7 +143,7 @@ contract $ICOFractionPolicy is Ownable {
             decimalDiff = uint256(reserve1Decimal - reserve0Decimal);
             reserve0 = uint112(reserve0 * uint112(10**decimalDiff));
         }
-        if(token0 == address(busd) || token0== address($icoFracs)){
+        if(token0 == address(busd) || token0== address(Ico$Fracs)){
             exchangeRate = (uint256((reserve0 * 10** DECIMALS )/ reserve1)); 
         }else{
             exchangeRate = (uint256((reserve1 * 10** DECIMALS ) / reserve0));
@@ -159,7 +159,7 @@ contract $ICOFractionPolicy is Ownable {
         (reserve0, reserve1, timestamp) = IProviderPair(ratePair).getReserves();
         address token0 = IProviderPair(ratePair).token0();
 
-        if(token0 == address($icoFracs)){
+        if(token0 == address(Ico$Fracs)){
             
             exchangeRate = (uint256(reserve1/reserve0));    
         }else{
@@ -189,13 +189,13 @@ contract $ICOFractionPolicy is Ownable {
 
         if (
             supplyDelta > 0 &&
-            $icoFracs.totalSupply().add(uint256(supplyDelta)) > MAX_SUPPLY
+            Ico$Fracs.totalSupply().add(uint256(supplyDelta)) > MAX_SUPPLY
         ) {
-            supplyDelta = (MAX_SUPPLY.sub($icoFracs.totalSupply()))
+            supplyDelta = (MAX_SUPPLY.sub(Ico$Fracs.totalSupply()))
                 .toInt256Safe();
         }
 
-        uint256 supplyAfterRebase = $icoFracs.rebase(epoch, supplyDelta);
+        uint256 supplyAfterRebase = Ico$Fracs.rebase(epoch, supplyDelta);
         assert(supplyAfterRebase <= MAX_SUPPLY);
         for (uint256 i = 0; i < providerPairs.length; i++) {
             IProviderPair(providerPairs[i]).sync();
@@ -221,13 +221,13 @@ contract $ICOFractionPolicy is Ownable {
             uint8 token1Decimals;
             uint256 supplyToChange;
             (reserve0, reserve1, timestamp) = IProviderPair(providerPairs[i]).getReserves();
-            //  for rate pair: $ICO/BUSD
+            //  for rate pair: ICO$/BUSD
             if (address(providerPairs[i]) == address(ratePair)) {
                 token0 = IProviderPair(providerPairs[i]).token0(); 
                 token1 = IProviderPair(providerPairs[i]).token1();
 
                 // Always make token0 ICO
-                if(token1 == address($icoFracs)){
+                if(token1 == address(Ico$Fracs)){
                     address newToken= token0;
                     token0 = token1;
                     token1= newToken;
@@ -251,12 +251,12 @@ contract $ICOFractionPolicy is Ownable {
                 if(reserve0 > reserve1){
                     supplyToChange = uint256(reserve0 - reserve1);
                     supplyToChange = supplyToChange/(10**uint256(decimalDiff));
-                    I$ICOFraction($icoFracs).burn(address(providerPairs[i]), supplyToChange);
+                    IICO$Fraction(Ico$Fracs).burn(address(providerPairs[i]), supplyToChange);
                 }
                 else if(reserve0 < reserve1){
                     supplyToChange = uint256(reserve1 - reserve0);
                     supplyToChange = supplyToChange/(10**uint256(decimalDiff));
-                    I$ICOFraction($icoFracs).mint(address(providerPairs[i]), supplyToChange);
+                    IICO$Fraction(Ico$Fracs).mint(address(providerPairs[i]), supplyToChange);
                 }
                 else{
                     continue;
@@ -268,8 +268,8 @@ contract $ICOFractionPolicy is Ownable {
             }   
             IProviderPair(providerPairs[i]).sync();
         }
-        uint256 new$ICOSupply= I$ICOFraction($icoFracs).totalSupply();
-        emit Stabilize(new$ICOSupply);
+        uint256 newICO$Supply= IICO$Fraction(Ico$Fracs).totalSupply();
+        emit Stabilize(newICO$Supply);
     }
 
     function stabilizeOtherPairs(IProviderPair _providerPair) internal{
@@ -290,62 +290,62 @@ contract $ICOFractionPolicy is Ownable {
         uint8 token1Decimals= IERC20(token1).decimals();  
         uint8 token0Decimals= IERC20(token0).decimals();  
         (reserve0, reserve1, timestamp) =IProviderPair(_providerPair).getReserves();
-        // Exchange rate of Other token with $ICO
-        uint exchangeRateWith$ICO= getPriceData(_providerPair);
+        // Exchange rate of Other token with ICO$
+        uint exchangeRateWithICO$= getPriceData(_providerPair);
         // CHECK DEVIATION
-        if (checkDeviation(exchangeRateWithBUSD, exchangeRateWith$ICO)) {
-            if (token0 == address($icoFracs)) {
-                if (int256(exchangeRateWithBUSD - exchangeRateWith$ICO) > 0) {
+        if (checkDeviation(exchangeRateWithBUSD, exchangeRateWithICO$)) {
+            if (token0 == address(Ico$Fracs)) {
+                if (int256(exchangeRateWithBUSD - exchangeRateWithICO$) > 0) {
                     supplyChange = uint256(
                         uint256(reserve1) *
-                            uint256(exchangeRateWithBUSD - exchangeRateWith$ICO)
+                            uint256(exchangeRateWithBUSD - exchangeRateWithICO$)
                     );
                     supplyChange = supplyChange.div(
                         10**uint256(token1Decimals)
                     );
-                    I$ICOFraction($icoFracs).mint(
+                    IICO$Fraction(Ico$Fracs).mint(
                         address(_providerPair),
                         supplyChange
                     );
                 } else if (
-                    int256(exchangeRateWith$ICO - exchangeRateWithBUSD) > 0
+                    int256(exchangeRateWithICO$ - exchangeRateWithBUSD) > 0
                 ) {
                     supplyChange = uint256(
                         uint256(reserve1) *
-                            uint256(exchangeRateWith$ICO - exchangeRateWithBUSD)
+                            uint256(exchangeRateWithICO$ - exchangeRateWithBUSD)
                     );
                     supplyChange = supplyChange.div(
                         10**uint256(token1Decimals)
                     );
-                    I$ICOFraction($icoFracs).burn(
+                    IICO$Fraction(Ico$Fracs).burn(
                         address(_providerPair),
                         supplyChange
                     );
                 }
             } else {
-                if (int256(exchangeRateWithBUSD - exchangeRateWith$ICO) > 0) {
+                if (int256(exchangeRateWithBUSD - exchangeRateWithICO$) > 0) {
                     supplyChange = uint256(
                         uint256(reserve0) *
-                            uint256(exchangeRateWithBUSD - exchangeRateWith$ICO)
+                            uint256(exchangeRateWithBUSD - exchangeRateWithICO$)
                     );
                     supplyChange = supplyChange.div(
                         10**uint256(token0Decimals)
                     );
-                    I$ICOFraction($icoFracs).mint(
+                    IICO$Fraction(Ico$Fracs).mint(
                         address(_providerPair),
                         supplyChange
                     );
                 } else if (
-                    int256(exchangeRateWith$ICO - exchangeRateWithBUSD) > 0
+                    int256(exchangeRateWithICO$ - exchangeRateWithBUSD) > 0
                 ) {
                     supplyChange = uint256(
                         uint256(reserve0) *
-                            uint256(exchangeRateWith$ICO - exchangeRateWithBUSD)
+                            uint256(exchangeRateWithICO$ - exchangeRateWithBUSD)
                     );
                     supplyChange = supplyChange.div(
                         10**uint256(token0Decimals)
                     );
-                    I$ICOFraction($icoFracs).burn(
+                    IICO$Fraction(Ico$Fracs).burn(
                         address(_providerPair),
                         supplyChange
                     );
@@ -354,18 +354,18 @@ contract $ICOFractionPolicy is Ownable {
         }
     }
 
-    function addProviderPair(IProviderPair _$ICOProviderPair, IProviderPair _OtherTokenPairWithBUSD) external onlyOwner {
+    function addProviderPair(IProviderPair _ICO$ProviderPair, IProviderPair _OtherTokenPairWithBUSD) external onlyOwner {
         if (providerPairs.length == 0) {
-            ratePair = _$ICOProviderPair;
+            ratePair = _ICO$ProviderPair;
         }
         require(providerPairs.length <= 50, "cannot add more than 50");
-        // require(address(_$ICOProviderPair) != address(0) && address(_OtherTokenPairWithBUSD)!=address(0), "Invalid Parameter Address");
-        providerPairs.push(_$ICOProviderPair);
-        // If the pair is with $ICO/BNB then, Other token pair is= BNB/BUSD
-        pairWithBUSD[_$ICOProviderPair]= _OtherTokenPairWithBUSD;   
+        // require(address(_ICO$ProviderPair) != address(0) && address(_OtherTokenPairWithBUSD)!=address(0), "Invalid Parameter Address");
+        providerPairs.push(_ICO$ProviderPair);
+        // If the pair is with ICO$/BNB then, Other token pair is= BNB/BUSD
+        pairWithBUSD[_ICO$ProviderPair]= _OtherTokenPairWithBUSD;   
     }
 
-    function set$ICOStableProvider(IProviderPair _ratePair) external onlyOwner {
+    function setICO$StableProvider(IProviderPair _ratePair) external onlyOwner {
         ratePair = _ratePair;
     }
 
@@ -391,20 +391,20 @@ contract $ICOFractionPolicy is Ownable {
     }
 
     /**
-     * @notice A multi-chain $ICO interface method. The Imperium monetary policy contract
+     * @notice A multi-chain ICO$ interface method. The Imperium monetary policy contract
      *         on the base-chain and XC-ImperiumController contracts on the satellite-chains
      *         implement this method. It atomically returns two values:
      *         what the current contract believes to be,
-     *         the globalImperiumEpoch and global$ICOSupply.
+     *         the globalImperiumEpoch and globalICO$Supply.
      * @return globalImperiumEpoch The current epoch number.
-     * @return global$ICOSupply The total supply at the current epoch.
+     * @return globalICO$Supply The total supply at the current epoch.
      */
-    function globalImperiumEpochAnd$ICOSupply()
+    function globalImperiumEpochAndICO$Supply()
         external
         view
         returns (uint256, uint256)
     {
-        return (epoch, $icoFracs.totalSupply());
+        return (epoch, Ico$Fracs.totalSupply());
     }
 
     /**
@@ -412,7 +412,7 @@ contract $ICOFractionPolicy is Ownable {
      *      It is called at the time of contract creation to invoke parent class initializers and
      *      initialize the contract's state variables.
      */
-    function initialize(address owner_, I$ICOFraction $icoFracs_, IERC20 _busd)
+    function initialize(address owner_, IICO$Fraction Ico$Fracs_, IERC20 _busd)
         public
         initializer
     {
@@ -420,7 +420,7 @@ contract $ICOFractionPolicy is Ownable {
         // deviationThreshold = 0.05e18 = 5e16
         deviationThreshold = 5 * 10**(DECIMALS - 2);
         epoch = 0;
-        $icoFracs = $icoFracs_;
+        Ico$Fracs = Ico$Fracs_;
         busd= _busd;
     }
 
@@ -440,7 +440,7 @@ contract $ICOFractionPolicy is Ownable {
         // supplyDelta = totalSupply * (rate - targetRate) / targetRate
         int256 targetRateSigned = targetRate.toInt256Safe();
         return
-            $icoFracs
+            Ico$Fracs
                 .totalSupply()
                 .toInt256Safe()
                 .mul(rate.toInt256Safe().sub(targetRateSigned))

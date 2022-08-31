@@ -1,7 +1,7 @@
 const WBNB = '0xae13d989dac2f0debff460ac112a837c89baa7cd';
 const BUSD = '0x78867bbeef44f2326bf8ddd1941a4439382ef2a7'
 
-// $ICO
+// ICO$
 const DEX_ADDRESS = ''
 
 async function main() {
@@ -12,35 +12,35 @@ async function main() {
     console.log("Account balance:", (await deployer.getBalance()).toString());
 
     // Deploying main contracts
-    const $ICO = await ethers.getContractFactory("$ICOFraction");
-    // const $ico = await $ICO.deploy();
-    const $ico = await upgrades.deployProxy(
-      $ICO,
+    const ICO$ = await ethers.getContractFactory("ICO$Fraction");
+    // const Ico$ = await ICO$.deploy();
+    const Ico$ = await upgrades.deployProxy(
+      ICO$,
       [await deployer.getAddress()],
       {
         initializer: 'initialize(address)',
       },
     )
   
-    console.log("$ICO address:", $ico.address);
+    console.log("ICO$ address:", Ico$.address);
     
-    const $icoPolicy = await upgrades.deployProxy(
-      (await ethers.getContractFactory('$ICOFractionPolicy')).connect(deployer),
-      [await deployer.getAddress(), $ico.address, BUSD],
+    const Ico$Policy = await upgrades.deployProxy(
+      (await ethers.getContractFactory('ICO$FractionPolicy')).connect(deployer),
+      [await deployer.getAddress(), Ico$.address, BUSD],
       {
         initializer: 'initialize(address,address,address)',
       },
     )
-    // console.log("PolicyImplementation Address", $icoPolicyImplementation.address);
-    console.log("Policy Proxy Deployed", $icoPolicy.address)   
-    console.log("Checking policy BUSD",await $icoPolicy.busd());
+    // console.log("PolicyImplementation Address", Ico$PolicyImplementation.address);
+    console.log("Policy Proxy Deployed", Ico$Policy.address)   
+    console.log("Checking policy BUSD",await Ico$Policy.busd());
 
-    const setProvider= await $icoPolicy.set$ICOStableProvider("0x5E4d60C53A95D71979F4d25c853Cc2E01c922E16");
+    const setProvider= await Ico$Policy.setICO$StableProvider("0x5E4d60C53A95D71979F4d25c853Cc2E01c922E16");
     console.log("Setted Provider",setProvider.hash);
 
-    // set monetaryPolicy address on $ICO
-    const mP = await $ico.setMonetaryPolicy($icoPolicy.address)
-    console.log("Policy setted up on $ICO ", mP.hash)
+    // set monetaryPolicy address on ICO$
+    const mP = await Ico$.setMonetaryPolicy(Ico$Policy.address)
+    console.log("Policy setted up on ICO$ ", mP.hash)
 
     // write missing settings
     // write here how to set up new reward pool

@@ -10,22 +10,22 @@ async function main() {
 
     // Deploying main contracts
 
-    // 1. $ICO Token
-    const $ICO = await ethers.getContractFactory("$ICOFraction");
-    const $ico= await $ICO.deploy();
+    // 1. ICO$ Token
+    const ICO$ = await ethers.getContractFactory("ICO$Fraction");
+    const Ico$= await ICO$.deploy();
   
-    console.log("$ICO address:", $ico.address);
+    console.log("ICO$ address:", Ico$.address);
 
-    // 3. $ICO Policy Contract
-    const $ICOPolicy = await ethers.getContractFactory("$ICOFractionPolicy");
-    const $icoPolicy = await $ICOPolicy.deploy();
+    // 3. ICO$ Policy Contract
+    const ICO$Policy = await ethers.getContractFactory("ICO$FractionPolicy");
+    const Ico$Policy = await ICO$Policy.deploy();
 
-    console.log("$ICOFractionPolicy Address", $icoPolicy.address);
+    console.log("ICO$FractionPolicy Address", Ico$Policy.address);
 
     // Defining new user
     let user = {
-        $ico: $ico.address,
-        $icoPolicy: $icoPolicy.address,
+        Ico$: Ico$.address,
+        Ico$Policy: Ico$Policy.address,
     };
     address.push(user);
     const address_json= JSON.stringify(address)

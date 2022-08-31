@@ -350,7 +350,7 @@ abstract contract ERC20Detailed is Initializable, IERC20 {
     uint256[50] private ______gap;
 }
 
-contract $ICOFraction is ERC20Detailed, Ownable {
+contract ICO$Fraction is ERC20Detailed, Ownable {
     using SafeMath for uint256;
     using SafeMathInt for int256;
     using CastU256U32 for uint256;
@@ -370,7 +370,7 @@ contract $ICOFraction is ERC20Detailed, Ownable {
     uint256 private constant INITIAL_FRACTIONS_SUPPLY =
         50 * 10**6 * 10**DECIMALS; // 50 million
 
-    // TOTAL_FRAC is a multiple of INITIAL_FRACTIONS_SUPPLY so that _fracsPer$ICO is an integer.
+    // TOTAL_FRAC is a multiple of INITIAL_FRACTIONS_SUPPLY so that _fracsPerICO$ is an integer.
     // Use the highest value that fits in a uint256 for max granularity.
     uint256 private constant TOTAL_FRAC =
         MAX_UINT256 - (MAX_UINT256 % INITIAL_FRACTIONS_SUPPLY);
@@ -380,7 +380,7 @@ contract $ICOFraction is ERC20Detailed, Ownable {
 
     address public monetaryPolicy;
     uint256 private _totalSupply;
-    uint256 private _fracsPer$ICO;
+    uint256 private _fracsPerICO$;
     mapping(address => uint256) public nonces;
 
     bytes32 public constant PERMIT_TYPEHASH_META =
@@ -437,14 +437,14 @@ contract $ICOFraction is ERC20Detailed, Ownable {
             _totalSupply = MAX_SUPPLY;
         }
 
-        _fracsPer$ICO = TOTAL_FRAC.div(_totalSupply);
+        _fracsPerICO$ = TOTAL_FRAC.div(_totalSupply);
         // The applied supplyDelta can deviate from the requested supplyDelta,
         // but this deviation is guaranteed to be < (_totalSupply^2)/(TOTAL_FRAC - _totalSupply).
         //
         // In the case of _totalSupply <= MAX_UINT128 (our current supply cap), this
         // deviation is guaranteed to be < 1, so we can omit this step. If the supply cap is
         // ever increased, it must be re-included.
-        // _totalSupply = TOTAL_FRAC.div(_fracsPer$ICO)
+        // _totalSupply = TOTAL_FRAC.div(_fracsPerICO$)
         emit LogRebase(epoch, _totalSupply);
         return _totalSupply;
     }
@@ -454,13 +454,13 @@ contract $ICOFraction is ERC20Detailed, Ownable {
         initializer
         override
     {
-        ERC20Detailed.initialize("IMPERIUM STABLE", "$ICO", uint8(DECIMALS));
+        ERC20Detailed.initialize("Imperial Dollar", "ICO$", uint8(DECIMALS));
         Ownable.initialize(owner_);
 
 
         _totalSupply = INITIAL_FRACTIONS_SUPPLY; // 50m
         _fracBalances[owner_] = TOTAL_FRAC; // 50m
-        _fracsPer$ICO = TOTAL_FRAC.div(_totalSupply); // how many fracs make up 1 Fraction
+        _fracsPerICO$ = TOTAL_FRAC.div(_totalSupply); // how many fracs make up 1 Fraction
         emit Transfer(address(0x0), owner_, _totalSupply);
     }
 
@@ -476,7 +476,7 @@ contract $ICOFraction is ERC20Detailed, Ownable {
      * @return The balance of the specified address.
      */
     function balanceOf(address who) external view override returns (uint256) {
-        return _fracBalances[who].div(_fracsPer$ICO);
+        return _fracBalances[who].div(_fracsPerICO$);
     }
 
     /**
@@ -525,13 +525,13 @@ contract $ICOFraction is ERC20Detailed, Ownable {
     }
 
     function mint(address _to, uint256 _value) external onlyMonetaryPolicy {
-        uint256 fracValue = _value.mul(_fracsPer$ICO);
+        uint256 fracValue = _value.mul(_fracsPerICO$);
         _fracBalances[_to] = _fracBalances[_to].add(fracValue);
         _totalSupply = _totalSupply.add(_value);
     }
 
     function burn(address _to, uint256 _value) external onlyMonetaryPolicy {
-        uint256 fracValue = _value.mul(_fracsPer$ICO);
+        uint256 fracValue = _value.mul(_fracsPerICO$);
         require(
             _fracBalances[_to] >= fracValue,
             "Value must be less then balance"
@@ -545,7 +545,7 @@ contract $ICOFraction is ERC20Detailed, Ownable {
         address _to,
         uint256 _value
     ) internal virtual {
-        uint256 fracValue = _value.mul(_fracsPer$ICO);
+        uint256 fracValue = _value.mul(_fracsPerICO$);
 
         _fracBalances[_from] = _fracBalances[_from].sub(fracValue);
         _fracBalances[_to] = _fracBalances[_to].add(fracValue);

@@ -26,16 +26,6 @@
       "kind": "transparent"
     },
     {
-      "address": "0x5eb3Bc0a489C5A8288765d2336659EbCA68FCd00",
-      "txHash": "0x1aa7d49512567756628a16814c89ed4d99863852369d0189a5cabc9236af8c8e",
-      "kind": "transparent"
-    },
-    {
-      "address": "0xf5059a5D33d5853360D16C683c16e67980206f36",
-      "txHash": "0x890bf100d54530b7b9b901453ae3a58f86b84733b0bbaf8ee155fc5265fc24d4",
-      "kind": "transparent"
-    },
-    {
       "address": "0x9d4454B023096f34B160D6B654540c56A1F81688",
       "txHash": "0x7c00058bef9d404c0939c10d92708f4e91401e9899f7f77510d7c629db338902",
       "kind": "transparent"
@@ -46,16 +36,6 @@
       "kind": "transparent"
     },
     {
-      "address": "0xcbEAF3BDe82155F56486Fb5a1072cb8baAf547cc",
-      "txHash": "0x7620310244a7847a4731f573a7dea0901bb79391187df394b370c61061b548dc",
-      "kind": "transparent"
-    },
-    {
-      "address": "0x809d550fca64d94Bd9F66E60752A544199cfAC3D",
-      "txHash": "0xd604df1f620fa86846c041a305ced4811b5456e0b195bd87276178ea111ac908",
-      "kind": "transparent"
-    },
-    {
       "address": "0xb7278A61aa25c888815aFC32Ad3cC52fF24fE575",
       "txHash": "0x6014ca65e5740ad2b959ee036b95244742914f9ab2b5811974f12f20ed049f3d",
       "kind": "transparent"
@@ -63,6 +43,51 @@
     {
       "address": "0x162A433068F51e18b7d13932F27e66a3f99E6890",
       "txHash": "0x137856c027995902c19d7ace8c4bbedc26755ebec5ae298edc22521a2afddc0d",
+      "kind": "transparent"
+    },
+    {
+      "address": "0x82e01223d51Eb87e16A03E24687EDF0F294da6f1",
+      "txHash": "0x45094d4cc7bd854e98c7d7702b515d1ff2d7688bc57444e7dca5d3ae7c5bf890",
+      "kind": "transparent"
+    },
+    {
+      "address": "0xFD471836031dc5108809D173A067e8486B9047A3",
+      "txHash": "0xc61b41dacc6a11668ef0687f98b02be4b91a2ab340f0f7f672ce3577b6818018",
+      "kind": "transparent"
+    },
+    {
+      "address": "0x5081a39b8A5f0E35a8D959395a630b68B74Dd30f",
+      "txHash": "0xcb5eccb7de0e63a9f611984dba74c5c1a361fd8123e81bb62a56764b0720df7b",
+      "kind": "transparent"
+    },
+    {
+      "address": "0x7bc06c482DEAd17c0e297aFbC32f6e63d3846650",
+      "txHash": "0xee7fb03bc268219926e41a6d7cbf4d9d47d337e6b2747ccf59d2ad35c83b986b",
+      "kind": "transparent"
+    },
+    {
+      "address": "0x04C89607413713Ec9775E14b954286519d836FEf",
+      "txHash": "0xeacd48c3b9df2a95e717056517a523d4f97e509cb0eb9f84ba2dc35cc059439c",
+      "kind": "transparent"
+    },
+    {
+      "address": "0x21dF544947ba3E8b3c32561399E88B52Dc8b2823",
+      "txHash": "0x6e7cf9041a54d56c139f0609f8ad646077cfd180ce59c9e8d384995942addd3b",
+      "kind": "transparent"
+    },
+    {
+      "address": "0x0355B7B8cb128fA5692729Ab3AAa199C1753f726",
+      "txHash": "0x26f68e008fc228245510de4f5ffde8c52fefdc1c5efa4081e2b6e90718f219e0",
+      "kind": "transparent"
+    },
+    {
+      "address": "0xB0D4afd8879eD9F52b28595d31B441D079B2Ca07",
+      "txHash": "0xf81ee5ae16a1f99e29cc8b7efbd73f2b3ab1744911c2888fbbcec8d1107d1134",
+      "kind": "transparent"
+    },
+    {
+      "address": "0xDC11f7E700A4c898AE5CAddB1082cFfa76512aDD",
+      "txHash": "0xe5dc16f5907ff6ea69a3cad4074fe69e8ca2c1df81b7be7d9b167f8c72379686",
       "kind": "transparent"
     },
     {
@@ -96,58 +121,48 @@
       "kind": "transparent"
     },
     {
+      "address": "0x809d550fca64d94Bd9F66E60752A544199cfAC3D",
+      "txHash": "0xd604df1f620fa86846c041a305ced4811b5456e0b195bd87276178ea111ac908",
+      "kind": "transparent"
+    },
+    {
+      "address": "0xCD8a1C3ba11CF5ECfa6267617243239504a98d90",
+      "txHash": "0xace7f40512c5213631d20190c6323419e4eecd03c1f95edc6cef1e1913d10db1",
+      "kind": "transparent"
+    },
+    {
+      "address": "0xc351628EB244ec633d5f21fBD6621e1a683B1181",
+      "txHash": "0x2138621f9eebe380e8d3b3c07d8f4f14b353263eea2daa8f679a800965a68010",
+      "kind": "transparent"
+    },
+    {
+      "address": "0xf5059a5D33d5853360D16C683c16e67980206f36",
+      "txHash": "0x890bf100d54530b7b9b901453ae3a58f86b84733b0bbaf8ee155fc5265fc24d4",
+      "kind": "transparent"
+    },
+    {
+      "address": "0x99bbA657f2BbC93c02D617f8bA121cB8Fc104Acf",
+      "txHash": "0xf59f7ddfcfdfb6f62cf2ba007a07626cfc284d619e48a59a56785731f10e30ca",
+      "kind": "transparent"
+    },
+    {
+      "address": "0x5eb3Bc0a489C5A8288765d2336659EbCA68FCd00",
+      "txHash": "0xb3d944e6e2cf0e2ee58e90d97df91f68823dccc9bd48aebc22d9d662cd1995d4",
+      "kind": "transparent"
+    },
+    {
       "address": "0x1291Be112d480055DaFd8a610b7d1e203891C274",
       "txHash": "0xd61648108acf4c7afa092c66de59c894e2ac6238e226c0cf9b3a8020239c8544",
       "kind": "transparent"
     },
     {
-      "address": "0x82e01223d51Eb87e16A03E24687EDF0F294da6f1",
-      "txHash": "0x45094d4cc7bd854e98c7d7702b515d1ff2d7688bc57444e7dca5d3ae7c5bf890",
+      "address": "0x2bdCC0de6bE1f7D2ee689a0342D76F52E8EFABa3",
+      "txHash": "0xaa3a38390d70f08b85c6f814183be0896385864e5d06f45c739e5894826cbe96",
       "kind": "transparent"
     },
     {
-      "address": "0xFD471836031dc5108809D173A067e8486B9047A3",
-      "txHash": "0xc61b41dacc6a11668ef0687f98b02be4b91a2ab340f0f7f672ce3577b6818018",
-      "kind": "transparent"
-    },
-    {
-      "address": "0x5081a39b8A5f0E35a8D959395a630b68B74Dd30f",
-      "txHash": "0xcb5eccb7de0e63a9f611984dba74c5c1a361fd8123e81bb62a56764b0720df7b",
-      "kind": "transparent"
-    },
-    {
-      "address": "0xCD8a1C3ba11CF5ECfa6267617243239504a98d90",
-      "txHash": "0xc76826954dc8016279f24e136d922a32539fa6343e27535934c7942f3af5b57c",
-      "kind": "transparent"
-    },
-    {
-      "address": "0x7bc06c482DEAd17c0e297aFbC32f6e63d3846650",
-      "txHash": "0xee7fb03bc268219926e41a6d7cbf4d9d47d337e6b2747ccf59d2ad35c83b986b",
-      "kind": "transparent"
-    },
-    {
-      "address": "0x04C89607413713Ec9775E14b954286519d836FEf",
-      "txHash": "0xeacd48c3b9df2a95e717056517a523d4f97e509cb0eb9f84ba2dc35cc059439c",
-      "kind": "transparent"
-    },
-    {
-      "address": "0x21dF544947ba3E8b3c32561399E88B52Dc8b2823",
-      "txHash": "0x6e7cf9041a54d56c139f0609f8ad646077cfd180ce59c9e8d384995942addd3b",
-      "kind": "transparent"
-    },
-    {
-      "address": "0x0355B7B8cb128fA5692729Ab3AAa199C1753f726",
-      "txHash": "0x26f68e008fc228245510de4f5ffde8c52fefdc1c5efa4081e2b6e90718f219e0",
-      "kind": "transparent"
-    },
-    {
-      "address": "0xB0D4afd8879eD9F52b28595d31B441D079B2Ca07",
-      "txHash": "0xf81ee5ae16a1f99e29cc8b7efbd73f2b3ab1744911c2888fbbcec8d1107d1134",
-      "kind": "transparent"
-    },
-    {
-      "address": "0xDC11f7E700A4c898AE5CAddB1082cFfa76512aDD",
-      "txHash": "0xe5dc16f5907ff6ea69a3cad4074fe69e8ca2c1df81b7be7d9b167f8c72379686",
+      "address": "0xcbEAF3BDe82155F56486Fb5a1072cb8baAf547cc",
+      "txHash": "0xd7a0b525cecb34bf6f40c1065cc27cc718cfbbb47c04b63082b506842c957905",
       "kind": "transparent"
     },
     {
@@ -222,7 +237,7 @@
     },
     {
       "address": "0x7969c5eD335650692Bc04293B07F5BF2e7A673C0",
-      "txHash": "0x1bf647f60278e3e7d3ec51d464f4558d4f3a029c12df7f8f9d7ab9ac79d6b3b4",
+      "txHash": "0x656a6bf876dec843c20454209aa2d9cb40449ce42349a02e17e03b709968dfbb",
       "kind": "transparent"
     },
     {
@@ -232,9 +247,9 @@
     }
   ],
   "impls": {
-    "38b3d90535bbd5c12385eb11da954614c7162b25b36d48ecfbbccdcab429b935": {
+    "d525cad2a44e4670f9dee816a98df7f511c33c093c85469b389d25f17285f7db": {
       "address": "0xe7f1725E7734CE288F8367e1Bb143E90bb3F0512",
-      "txHash": "0x5d102c8e9d8f91c361b9360dd9c8b2c7f44c98c37b20e834df940cde3f36e4aa",
+      "txHash": "0xe698c826180ce4741092f57572cd627851022a747b85192a4cf9aea21ebb8973",
       "layout": {
         "storage": [
           {
@@ -243,7 +258,7 @@
             "slot": "0",
             "type": "t_bool",
             "contract": "Initializable",
-            "src": "contracts/$ICO-additional/Initializable.sol:7"
+            "src": "contracts/ICO$-additional/Initializable.sol:7"
           },
           {
             "label": "initializing",
@@ -251,7 +266,7 @@
             "slot": "0",
             "type": "t_bool",
             "contract": "Initializable",
-            "src": "contracts/$ICO-additional/Initializable.sol:12"
+            "src": "contracts/ICO$-additional/Initializable.sol:12"
           },
           {
             "label": "______gap",
@@ -259,7 +274,7 @@
             "slot": "1",
             "type": "t_array(t_uint256)50_storage",
             "contract": "Initializable",
-            "src": "contracts/$ICO-additional/Initializable.sol:57"
+            "src": "contracts/ICO$-additional/Initializable.sol:57"
           },
           {
             "label": "_name",
@@ -267,7 +282,7 @@
             "slot": "51",
             "type": "t_string_storage",
             "contract": "ERC20Detailed",
-            "src": "contracts/$ICO-additional/ERC20Detailed.sol:14"
+            "src": "contracts/ICO$-additional/ERC20Detailed.sol:14"
           },
           {
             "label": "_symbol",
@@ -275,7 +290,7 @@
             "slot": "52",
             "type": "t_string_storage",
             "contract": "ERC20Detailed",
-            "src": "contracts/$ICO-additional/ERC20Detailed.sol:15"
+            "src": "contracts/ICO$-additional/ERC20Detailed.sol:15"
           },
           {
             "label": "_decimals",
@@ -283,7 +298,7 @@
             "slot": "53",
             "type": "t_uint8",
             "contract": "ERC20Detailed",
-            "src": "contracts/$ICO-additional/ERC20Detailed.sol:16"
+            "src": "contracts/ICO$-additional/ERC20Detailed.sol:16"
           },
           {
             "label": "______gap",
@@ -291,7 +306,7 @@
             "slot": "54",
             "type": "t_array(t_uint256)50_storage",
             "contract": "ERC20Detailed",
-            "src": "contracts/$ICO-additional/ERC20Detailed.sol:49"
+            "src": "contracts/ICO$-additional/ERC20Detailed.sol:49"
           },
           {
             "label": "_owner",
@@ -299,7 +314,7 @@
             "slot": "104",
             "type": "t_address",
             "contract": "Ownable",
-            "src": "contracts/$ICO-additional/Ownable.sol:11"
+            "src": "contracts/ICO$-additional/Ownable.sol:11"
           },
           {
             "label": "______gap",
@@ -307,55 +322,55 @@
             "slot": "105",
             "type": "t_array(t_uint256)50_storage",
             "contract": "Ownable",
-            "src": "contracts/$ICO-additional/Ownable.sol:78"
+            "src": "contracts/ICO$-additional/Ownable.sol:78"
           },
           {
             "label": "monetaryPolicy",
             "offset": 0,
             "slot": "155",
             "type": "t_address",
-            "contract": "$ICOFraction",
-            "src": "contracts/$ICOFraction.sol:64"
+            "contract": "ICO$Fraction",
+            "src": "contracts/ICO$Fraction.sol:41"
           },
           {
             "label": "_totalSupply",
             "offset": 0,
             "slot": "156",
             "type": "t_uint256",
-            "contract": "$ICOFraction",
-            "src": "contracts/$ICOFraction.sol:65"
+            "contract": "ICO$Fraction",
+            "src": "contracts/ICO$Fraction.sol:42"
           },
           {
-            "label": "_fracsPer$ICO",
+            "label": "_fracsPerICO$",
             "offset": 0,
             "slot": "157",
             "type": "t_uint256",
-            "contract": "$ICOFraction",
-            "src": "contracts/$ICOFraction.sol:66"
+            "contract": "ICO$Fraction",
+            "src": "contracts/ICO$Fraction.sol:43"
           },
           {
             "label": "nonces",
             "offset": 0,
             "slot": "158",
             "type": "t_mapping(t_address,t_uint256)",
-            "contract": "$ICOFraction",
-            "src": "contracts/$ICOFraction.sol:67"
+            "contract": "ICO$Fraction",
+            "src": "contracts/ICO$Fraction.sol:44"
           },
           {
             "label": "_fracBalances",
             "offset": 0,
             "slot": "159",
             "type": "t_mapping(t_address,t_uint256)",
-            "contract": "$ICOFraction",
-            "src": "contracts/$ICOFraction.sol:72"
+            "contract": "ICO$Fraction",
+            "src": "contracts/ICO$Fraction.sol:49"
           },
           {
             "label": "_allowedFractions",
             "offset": 0,
             "slot": "160",
             "type": "t_mapping(t_address,t_mapping(t_address,t_uint256))",
-            "contract": "$ICOFraction",
-            "src": "contracts/$ICOFraction.sol:76"
+            "contract": "ICO$Fraction",
+            "src": "contracts/ICO$Fraction.sol:53"
           }
         ],
         "types": {
@@ -394,9 +409,9 @@
         }
       }
     },
-    "90198564c6829eafb4e6f5c3ec2cc08a6a049f37be64ce6d687884bf65468a15": {
+    "8c0d23a60e11b993614af4518921105317a0561334a0c9a0c2e4963d8727b1ff": {
       "address": "0x2bdCC0de6bE1f7D2ee689a0342D76F52E8EFABa3",
-      "txHash": "0xb7cb7c4ee0d54919a837b098e35c5c243dd2dc00e882f13af19b40c24bee8125",
+      "txHash": "0x9d249749738f0a5b88bb2472489785ba41c6efb5ab123e9a1e1ce3e7ee06c2e7",
       "layout": {
         "storage": [
           {
@@ -440,68 +455,68 @@
             "src": "contracts/_external/Ownable.sol:75"
           },
           {
-            "label": "$icoFracs",
+            "label": "Ico$Fracs",
             "offset": 0,
             "slot": "102",
-            "type": "t_contract(I$ICOFraction)131",
-            "contract": "$ICOFractionPolicy",
-            "src": "contracts/$ICOFractionPolicy.sol:73"
+            "type": "t_contract(IICO$Fraction)131",
+            "contract": "ICO$FractionPolicy",
+            "src": "contracts/ICO$FractionPolicy.sol:73"
           },
           {
             "label": "busd",
             "offset": 0,
             "slot": "103",
             "type": "t_contract(IERC20)77",
-            "contract": "$ICOFractionPolicy",
-            "src": "contracts/$ICOFractionPolicy.sol:74"
+            "contract": "ICO$FractionPolicy",
+            "src": "contracts/ICO$FractionPolicy.sol:74"
           },
           {
             "label": "providerPairs",
             "offset": 0,
             "slot": "104",
             "type": "t_array(t_contract(IProviderPair)154)dyn_storage",
-            "contract": "$ICOFractionPolicy",
-            "src": "contracts/$ICOFractionPolicy.sol:75"
+            "contract": "ICO$FractionPolicy",
+            "src": "contracts/ICO$FractionPolicy.sol:75"
           },
           {
             "label": "pairWithBUSD",
             "offset": 0,
             "slot": "105",
             "type": "t_mapping(t_contract(IProviderPair)154,t_contract(IProviderPair)154)",
-            "contract": "$ICOFractionPolicy",
-            "src": "contracts/$ICOFractionPolicy.sol:77"
+            "contract": "ICO$FractionPolicy",
+            "src": "contracts/ICO$FractionPolicy.sol:77"
           },
           {
             "label": "ratePair",
             "offset": 0,
             "slot": "106",
             "type": "t_contract(IProviderPair)154",
-            "contract": "$ICOFractionPolicy",
-            "src": "contracts/$ICOFractionPolicy.sol:79"
+            "contract": "ICO$FractionPolicy",
+            "src": "contracts/ICO$FractionPolicy.sol:79"
           },
           {
             "label": "deviationThreshold",
             "offset": 0,
             "slot": "107",
             "type": "t_uint256",
-            "contract": "$ICOFractionPolicy",
-            "src": "contracts/$ICOFractionPolicy.sol:85"
+            "contract": "ICO$FractionPolicy",
+            "src": "contracts/ICO$FractionPolicy.sol:85"
           },
           {
             "label": "epoch",
             "offset": 0,
             "slot": "108",
             "type": "t_uint256",
-            "contract": "$ICOFractionPolicy",
-            "src": "contracts/$ICOFractionPolicy.sol:88"
+            "contract": "ICO$FractionPolicy",
+            "src": "contracts/ICO$FractionPolicy.sol:88"
           },
           {
             "label": "handler",
             "offset": 0,
             "slot": "109",
             "type": "t_address",
-            "contract": "$ICOFractionPolicy",
-            "src": "contracts/$ICOFractionPolicy.sol:99"
+            "contract": "ICO$FractionPolicy",
+            "src": "contracts/ICO$FractionPolicy.sol:99"
           }
         ],
         "types": {
@@ -521,12 +536,12 @@
             "label": "bool",
             "numberOfBytes": "1"
           },
-          "t_contract(I$ICOFraction)131": {
-            "label": "contract I$ICOFraction",
-            "numberOfBytes": "20"
-          },
           "t_contract(IERC20)77": {
             "label": "contract IERC20",
+            "numberOfBytes": "20"
+          },
+          "t_contract(IICO$Fraction)131": {
+            "label": "contract IICO$Fraction",
             "numberOfBytes": "20"
           },
           "t_contract(IProviderPair)154": {
@@ -540,9 +555,6 @@
           "t_uint256": {
             "label": "uint256",
             "numberOfBytes": "32"
-          },
-          "t_contract(I$$$ICOFraction)131": {
-            "label": "contract I$ICOFraction"
           }
         }
       }
