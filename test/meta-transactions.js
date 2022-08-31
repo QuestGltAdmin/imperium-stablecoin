@@ -32,11 +32,11 @@ describe('Testing meta transactions', function () {
     initialSupply = await Imperium.totalSupply()
   }
 
-  it('balance of contract deployer should be 500000000', async () => {
+  it('balance of contract deployer should be 45000000000', async () => {
     const [admin] = await ethers.getSigners();
     const balance = await Imperium.balanceOf(admin.address);
     const totalBalance = balance / Math.pow(10, 9);
-    expect(totalBalance).to.be.equal(500000000);
+    expect(totalBalance).to.be.equal(45000000000);
   });
 
   it('initializes DOMAIN_SEPARATOR and PERMIT_TYPEHASH correctly', async () => {

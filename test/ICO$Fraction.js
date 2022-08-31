@@ -7,7 +7,7 @@ const toICO$FracDenomination = (Imperium) =>
   ethers.utils.parseUnits(Imperium, DECIMALS)
 
 const DECIMALS = 9
-const INITIAL_SUPPLY = ethers.utils.parseUnits('50', 7 + DECIMALS)
+const INITIAL_SUPPLY = ethers.utils.parseUnits('45', 9 + DECIMALS)
 const MAX_UINT256 = ethers.BigNumber.from(2).pow(256).sub(1)
 const TOTAL_FRACS = MAX_UINT256.sub(MAX_UINT256.mod(INITIAL_SUPPLY))
 
@@ -50,13 +50,13 @@ describe('ICO$Fraction', () => {
 describe('ICO$Fraction:Initialization', () => {
   before('setup ICO$Fraction contract', setupContracts)
 
-  it('should transfer 500M Ico$Fraction to the deployer', async function () {
+  it('should transfer 45B Ico$Fraction to the deployer', async function () {
     expect(await Ico$Fraction.balanceOf(await deployer.getAddress())).to.eq(
       INITIAL_SUPPLY,
     )
   })
 
-  it('should set the totalSupply to 500M', async function () {
+  it('should set the totalSupply to 45B', async function () {
     expect(await Ico$Fraction.totalSupply()).to.eq(INITIAL_SUPPLY)
   })
 
@@ -167,10 +167,10 @@ describe('ICO$Fraction:Rebase:Expansion', async () => {
 
     expect(await Ico$Fraction.scaledTotalSupply()).to.eq(TOTAL_FRACS)
     expect(await Ico$Fraction.scaledBalanceOf(await A.getAddress())).to.eq(
-      '173688133855974293135356477513031861779904976998460846059186250000000000',
+      '1929868153955269923726183083478131797554499744427342733990750000000000',
     )
     expect(await Ico$Fraction.scaledBalanceOf(await B.getAddress())).to.eq(
-      '57896044618658097711785492504343953926634992332820282019728750000000000',
+      '643289384651756641242061027826043932518166581475780911330250000000000',
     )
   })
 
@@ -199,10 +199,10 @@ describe('ICO$Fraction:Rebase:Expansion', async () => {
 
   it('should NOT CHANGE the individual scaled balances', async function () {
     expect(await Ico$Fraction.scaledBalanceOf(await A.getAddress())).to.eq(
-      '173688133855974293135356477513031861779904976998460846059186250000000000',
+      '1929868153955269923726183083478131797554499744427342733990750000000000',
     )
     expect(await Ico$Fraction.scaledBalanceOf(await B.getAddress())).to.eq(
-      '57896044618658097711785492504343953926634992332820282019728750000000000',
+      '643289384651756641242061027826043932518166581475780911330250000000000',
     )
   })
 
@@ -288,10 +288,10 @@ describe('ICO$Fraction:Rebase:NoChange', function () {
 
     expect(await Ico$Fraction.scaledTotalSupply()).to.eq(TOTAL_FRACS)
     expect(await Ico$Fraction.scaledBalanceOf(await A.getAddress())).to.eq(
-      '173688133855974293135356477513031861779904976998460846059186250000000000',
+      '1929868153955269923726183083478131797554499744427342733990750000000000',
     )
     expect(await Ico$Fraction.scaledBalanceOf(await B.getAddress())).to.eq(
-      '57896044618658097711785492504343953926634992332820282019728750000000000',
+      '643289384651756641242061027826043932518166581475780911330250000000000',
     )
   })
 
@@ -321,10 +321,10 @@ describe('ICO$Fraction:Rebase:NoChange', function () {
 
   it('should NOT CHANGE the individual scaled balances', async function () {
     expect(await Ico$Fraction.scaledBalanceOf(await A.getAddress())).to.eq(
-      '173688133855974293135356477513031861779904976998460846059186250000000000',
+      '1929868153955269923726183083478131797554499744427342733990750000000000',
     )
     expect(await Ico$Fraction.scaledBalanceOf(await B.getAddress())).to.eq(
-      '57896044618658097711785492504343953926634992332820282019728750000000000',
+      '643289384651756641242061027826043932518166581475780911330250000000000',
     )
   })
 })
@@ -332,7 +332,7 @@ describe('ICO$Fraction:Rebase:NoChange', function () {
 describe('ICO$Fraction:Rebase:Contraction', function () {
   // Rebase -5M (-10%), with starting balances A:750 and B:250.
   let A = Signer, B = Signer, policy = Signer
-  const rebaseAmt = INITIAL_SUPPLY.div(100)
+  const rebaseAmt = INITIAL_SUPPLY.div(10000)
 
   before('setup Ico$Fraction contract', async function () {
     await setupContracts()
@@ -341,25 +341,25 @@ describe('ICO$Fraction:Rebase:Contraction', function () {
     policy = accounts[1]
     await Ico$Fraction
       .connect(deployer)
-      .transfer(await A.getAddress(), toICO$FracDenomination('7500'))
+      .transfer(await A.getAddress(), toICO$FracDenomination('750'))
     await Ico$Fraction
       .connect(deployer)
-      .transfer(await B.getAddress(), toICO$FracDenomination('2500'))
+      .transfer(await B.getAddress(), toICO$FracDenomination('250'))
 
     expect(await Ico$Fraction.totalSupply()).to.eq(INITIAL_SUPPLY)
     expect(await Ico$Fraction.balanceOf(await A.getAddress())).to.eq(
-      toICO$FracDenomination('7500'),
+      toICO$FracDenomination('750'),
     )
     expect(await Ico$Fraction.balanceOf(await B.getAddress())).to.eq(
-      toICO$FracDenomination('2500'),
+      toICO$FracDenomination('250'),
     )
 
     expect(await Ico$Fraction.scaledTotalSupply()).to.eq(TOTAL_FRACS)
     expect(await Ico$Fraction.scaledBalanceOf(await A.getAddress())).to.eq(
-      '1736881338559742931353564775130318617799049769984608460591862500000000000',
+      '1929868153955269923726183083478131797554499744427342733990750000000000',
     )
     expect(await Ico$Fraction.scaledBalanceOf(await B.getAddress())).to.eq(
-      '578960446186580977117854925043439539266349923328202820197287500000000000',
+      '643289384651756641242061027826043932518166581475780911330250000000000',
     )
   })
 
@@ -380,19 +380,19 @@ describe('ICO$Fraction:Rebase:Contraction', function () {
 
   it('should decrease individual balances', async function () {
     expect(await Ico$Fraction.balanceOf(await A.getAddress())).to.eq(
-      toICO$FracDenomination('7425'),
+      toICO$FracDenomination('749.925'),
     )
     expect(await Ico$Fraction.balanceOf(await B.getAddress())).to.eq(
-      toICO$FracDenomination('2475'),
+      toICO$FracDenomination('249.975'),
     )
   })
 
   it('should NOT CHANGE the individual scaled balances', async function () {
     expect(await Ico$Fraction.scaledBalanceOf(await A.getAddress())).to.eq(
-      '1736881338559742931353564775130318617799049769984608460591862500000000000',
+      '1929868153955269923726183083478131797554499744427342733990750000000000',
     )
     expect(await Ico$Fraction.scaledBalanceOf(await B.getAddress())).to.eq(
-      '578960446186580977117854925043439539266349923328202820197287500000000000',
+      '643289384651756641242061027826043932518166581475780911330250000000000',
     )
   })
 })
@@ -550,56 +550,6 @@ describe('ICO$Fraction:Transfer', function () {
       expect(10).to.be.equal(totalBalance1);
     })
   })
-
-  // describe('Max sale per day', function () {
-  //     before('setup ICO$Fraction contract', setupContracts)
-  //     let balanceAdmin;
-  //     let balanceInvestor;
-  //     it('Should allow to sell less the 500 ICO$', async () => {
-  //       const [admin,,,,,,,,,,,,,,,investor1] = await ethers.getSigners();
-  //       await Ico$Fraction.transfer(investor1.address, '200000000000');
-  //       const balanceInvestorBefore = await Ico$Fraction.balanceOf(investor1.address);
-  //       const totalBalance = balanceInvestorBefore / Math.pow(10, 9);
-  //       expect(200).to.be.equal(totalBalance);
-  //       balanceAdmin = await Ico$Fraction.balanceOf(admin.address)
-  //       balanceInvestor = await Ico$Fraction.balanceOf(investor1.address)
-  //     })
-
-  //     it('Should not allow to sell more the 200 ICO$', async () => {
-  //       const [admin,,,,,,,,,,,,,,,investor1] = await ethers.getSigners();
-
-  //       expect(
-  //         Ico$Fraction.transfer(investor1.address, '320000000000')
-  //       ).to.be.revertedWith('One day needs to pass to be able to sell again');
-
-  //       const balanceAdmin1 = await Ico$Fraction.balanceOf(admin.address)
-  //       const balanceInvestor1 = await Ico$Fraction.balanceOf(investor1.address)
-  //       expect(balanceInvestor1).to.be.eq(balanceInvestor);
-  //       expect(balanceAdmin1).to.be.eq(balanceAdmin);
-  //       await Ico$Fraction.transfer(investor1.address, '300000000000');
-  //       const balanceInvestorBefore = await Ico$Fraction.balanceOf(investor1.address);
-  //       const totalBalance = balanceInvestorBefore / Math.pow(10, 9);
-  //       expect(200).to.be.equal(totalBalance);
-  //     })
-
-  //     it('Move time to one day to allow another 200 ICO$', async () => {
-  //       const [admin,,,,,,,,,,,,,,,investor1] = await ethers.getSigners();
-
-  //       expect(
-  //         Ico$Fraction.transfer(investor1.address, '320000000000')
-  //       ).to.be.revertedWith('One day needs to pass to be able to sell again');
-
-
-  //       const oneDay = 1 * 24 * 60 * 60;
-  //       await ethers.provider.send('evm_increaseTime', [oneDay]);
-  //       await ethers.provider.send('evm_mine');
-
-  //       await Ico$Fraction.transfer(investor1.address, '300000000000');
-  //       const balanceInvestorBefore = await Ico$Fraction.balanceOf(investor1.address);
-  //       const totalBalance = balanceInvestorBefore / Math.pow(10, 9);
-  //       expect(1140).to.be.equal(totalBalance);
-  //     })
-  // })
 })
 
 describe('ICO$Fraction:Mint', async () => {
