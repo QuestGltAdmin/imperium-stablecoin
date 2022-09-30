@@ -7,7 +7,7 @@ const toICO$FracDenomination = (Imperium) =>
   ethers.utils.parseUnits(Imperium, DECIMALS)
 
 const DECIMALS = 9
-const INITIAL_SUPPLY = ethers.utils.parseUnits('45', 9 + DECIMALS)
+const INITIAL_SUPPLY = ethers.utils.parseUnits('50', 6 + DECIMALS)
 const MAX_UINT256 = ethers.BigNumber.from(2).pow(256).sub(1)
 const TOTAL_FRACS = MAX_UINT256.sub(MAX_UINT256.mod(INITIAL_SUPPLY))
 
@@ -50,13 +50,13 @@ describe('ICO$Fraction', () => {
 describe('ICO$Fraction:Initialization', () => {
   before('setup ICO$Fraction contract', setupContracts)
 
-  it('should transfer 45B Ico$Fraction to the deployer', async function () {
+  it('should transfer 50M Ico$Fraction to the deployer', async function () {
     expect(await Ico$Fraction.balanceOf(await deployer.getAddress())).to.eq(
       INITIAL_SUPPLY,
     )
   })
 
-  it('should set the totalSupply to 45B', async function () {
+  it('should set the totalSupply to 50M', async function () {
     expect(await Ico$Fraction.totalSupply()).to.eq(INITIAL_SUPPLY)
   })
 
@@ -167,10 +167,10 @@ describe('ICO$Fraction:Rebase:Expansion', async () => {
 
     expect(await Ico$Fraction.scaledTotalSupply()).to.eq(TOTAL_FRACS)
     expect(await Ico$Fraction.scaledBalanceOf(await A.getAddress())).to.eq(
-      '1929868153955269923726183083478131797554499744427342733990750000000000',
+      '1736881338559742931353564775130318617799049769984608460591863250000000000',
     )
     expect(await Ico$Fraction.scaledBalanceOf(await B.getAddress())).to.eq(
-      '643289384651756641242061027826043932518166581475780911330250000000000',
+      '578960446186580977117854925043439539266349923328202820197287750000000000',
     )
   })
 
@@ -199,10 +199,10 @@ describe('ICO$Fraction:Rebase:Expansion', async () => {
 
   it('should NOT CHANGE the individual scaled balances', async function () {
     expect(await Ico$Fraction.scaledBalanceOf(await A.getAddress())).to.eq(
-      '1929868153955269923726183083478131797554499744427342733990750000000000',
+      '1736881338559742931353564775130318617799049769984608460591863250000000000',
     )
     expect(await Ico$Fraction.scaledBalanceOf(await B.getAddress())).to.eq(
-      '643289384651756641242061027826043932518166581475780911330250000000000',
+      '578960446186580977117854925043439539266349923328202820197287750000000000',
     )
   })
 
@@ -288,10 +288,10 @@ describe('ICO$Fraction:Rebase:NoChange', function () {
 
     expect(await Ico$Fraction.scaledTotalSupply()).to.eq(TOTAL_FRACS)
     expect(await Ico$Fraction.scaledBalanceOf(await A.getAddress())).to.eq(
-      '1929868153955269923726183083478131797554499744427342733990750000000000',
+      '1736881338559742931353564775130318617799049769984608460591863250000000000',
     )
     expect(await Ico$Fraction.scaledBalanceOf(await B.getAddress())).to.eq(
-      '643289384651756641242061027826043932518166581475780911330250000000000',
+      '578960446186580977117854925043439539266349923328202820197287750000000000',
     )
   })
 
@@ -321,10 +321,10 @@ describe('ICO$Fraction:Rebase:NoChange', function () {
 
   it('should NOT CHANGE the individual scaled balances', async function () {
     expect(await Ico$Fraction.scaledBalanceOf(await A.getAddress())).to.eq(
-      '1929868153955269923726183083478131797554499744427342733990750000000000',
+      '1736881338559742931353564775130318617799049769984608460591863250000000000',
     )
     expect(await Ico$Fraction.scaledBalanceOf(await B.getAddress())).to.eq(
-      '643289384651756641242061027826043932518166581475780911330250000000000',
+      '578960446186580977117854925043439539266349923328202820197287750000000000',
     )
   })
 })
@@ -356,10 +356,10 @@ describe('ICO$Fraction:Rebase:Contraction', function () {
 
     expect(await Ico$Fraction.scaledTotalSupply()).to.eq(TOTAL_FRACS)
     expect(await Ico$Fraction.scaledBalanceOf(await A.getAddress())).to.eq(
-      '1929868153955269923726183083478131797554499744427342733990750000000000',
+      '1736881338559742931353564775130318617799049769984608460591863250000000000',
     )
     expect(await Ico$Fraction.scaledBalanceOf(await B.getAddress())).to.eq(
-      '643289384651756641242061027826043932518166581475780911330250000000000',
+      '578960446186580977117854925043439539266349923328202820197287750000000000',
     )
   })
 
@@ -389,10 +389,10 @@ describe('ICO$Fraction:Rebase:Contraction', function () {
 
   it('should NOT CHANGE the individual scaled balances', async function () {
     expect(await Ico$Fraction.scaledBalanceOf(await A.getAddress())).to.eq(
-      '1929868153955269923726183083478131797554499744427342733990750000000000',
+      '1736881338559742931353564775130318617799049769984608460591863250000000000',
     )
     expect(await Ico$Fraction.scaledBalanceOf(await B.getAddress())).to.eq(
-      '643289384651756641242061027826043932518166581475780911330250000000000',
+      '578960446186580977117854925043439539266349923328202820197287750000000000',
     )
   })
 })

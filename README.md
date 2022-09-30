@@ -33,15 +33,6 @@ i.	Initialize (Owner Address): _`initialize(<owner_address>)`_ - Create ICO$ tok
 
 ii.	Set Monetary Policy (monetary policy address)
 
-iii.	Set Default Reward Token _`setDefaultReward(<rewardToken_address>)`
-
-iv.	*Request to add reward tokens*: _`addReward(IERC20 token <address>, start, end, rate)`_ - This function is payable in because fees must be paid in order to request a new token to be added as a reward token in the pool. 
-(Note: Must be run after approval of the token)
-
-v.	Approve the reward tokens that are requested to be added (OnlyOwner): _`approveReward(<reward_token>)`_
-
-vi.	Claim the rewards if you possess ICO$ tokens with you: _`claim(_to, [_reward_token1, _reward_token2, ...])`_
-
 ***2.	Deploy Monetary Policy: ICO$ Fraction Policy***
 
 i.	Initialize (Owner Address,  ICO$ Fraction  Address)
@@ -51,13 +42,6 @@ ii.	Set Handler (Handler Address)
 iii.	Add Provider (Provider Address): Index 0 will save the stable coin 
 
 iv.	Set ICO$ Stable Provider (provider Address): for decentralize exchange rate rate
-
-
-***3. Handler:***
-
-	Rebase the supply: `rebase()` - It'll check the market price of ICO$, and if the fluctuation if more than 5% on either side, rebase will change the total supply and takes the coin back to 1$.
-
-
 
 ### How this contract work: ###
 
@@ -76,12 +60,7 @@ iv.	Set ICO$ Stable Provider (provider Address): for decentralize exchange rate 
 
 •	ICO$ token (stablecoin)
 
-•	Imperium Token (reward token)
-
 •	Policy contract
-
-•	Handler 
-
 
 ## Deploy Testnet
 
@@ -95,17 +74,15 @@ send ICO$ to users
 
 ## Test Contracts
 
-ICO$ address: 0x645d7BD47143B24b9F9d13392a43a6E6065294fD
-Rewards address: 0xf2dcE23604236c1246c56ABF34429b45b1B018B6
-ICO$FractionPolicy Address 0x0b4BB9fAc47d8c3729f92A24A23f030A22732B91
-Handler Contract:  0xFfb6A61e971EDD20f06f3d783eEc5D112d4d234F
+ICO$ address: 0x0bF119Bd36AfcD3740A5E51F42C26007C41b5Bd1
+ICO$FractionPolicy Address 0xE566C18C7670FE6cc7E6C6565aC2cd5b89983b2d
 
 ## Deploy Mainnet
 
 `npx hardhat run --network mainnet scripts/deploy-prod.js`
 verify contract ICO$
 
-`npx hardhat verify --network mainnet 0x18a6fB85Fe50e8C7a13d1Bd0459092a162F55415`
+`npx hardhat verify --network mainnet 0x0bF119Bd36AfcD3740A5E51F42C26007C41b5Bd1`
 
 initialize ICO$ and Policy
 exclude contracts from fee Imperium exclude pool, Ico$ exlude main addres
@@ -121,6 +98,4 @@ npx hardhat flatten contracts/ICO$Fraction.sol > Ico$.sol
 ## Mainnet Contracts
 
 ICO$ address: 0x4Be8c674C51674bEb729832682bBA5E5b105b6e2
-Rewards address: 0x871d5a028f2b26EF8051714A7dE167c42bc2a0b2
 ICO$FractionPolicy Address 0x1f55D1fF24b1bBD88F49849e4bf3516Ce4439C06
-Handler Contract:  0xC6E7900d07cD660d304Cd5dC22da3DaEed8AD334

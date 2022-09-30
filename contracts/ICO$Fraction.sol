@@ -28,7 +28,7 @@ contract ICO$Fraction is ERC20Detailed, Ownable {
     uint256 private constant DECIMALS = 9;
     uint256 private constant MAX_UINT256 = type(uint256).max;
     uint256 private constant INITIAL_FRACTIONS_SUPPLY =
-        45 * 10**9 * 10**DECIMALS; // 45 billion
+        50 * 10**6 * 10**DECIMALS; // 50 million
 
     // TOTAL_FRAC is a multiple of INITIAL_FRACTIONS_SUPPLY so that _fracsPerICO$ is an integer.
     // Use the highest value that fits in a uint256 for max granularity.
