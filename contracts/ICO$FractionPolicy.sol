@@ -417,7 +417,6 @@ contract ICO$FractionPolicy is Ownable {
         initializer
     {
         Ownable.initialize(owner_);
-        // deviationThreshold = 0.05e18 = 5e16
         deviationThreshold = 5 * 10**(DECIMALS - 2);
         epoch = 0;
         Ico$Fracs = Ico$Fracs_;

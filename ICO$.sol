@@ -1,4 +1,6 @@
-// SPDX-License-Identifier: MIT
+// Sources flattened with hardhat v2.10.1 https://hardhat.org
+
+// File contracts/ICO$-additional/CastU256U128.sol
 
 pragma solidity 0.7.6;
 
@@ -10,6 +12,11 @@ library CastU256U128 {
     }
 }
 
+
+// File contracts/ICO$-additional/CastU256U32.sol
+
+pragma solidity 0.7.6;
+
 library CastU256U32 {
     /// @dev Safely cast an uint256 to an u32
     function u32(uint256 x) internal pure returns (uint32 y) {
@@ -17,6 +24,11 @@ library CastU256U32 {
         y = uint32(x);
     }
 }
+
+
+// File contracts/ICO$-additional/SafeMathInt.sol
+
+pragma solidity 0.7.6;
 
 /**
  * @title SafeMathInt
@@ -75,6 +87,11 @@ library SafeMathInt {
         return a < 0 ? -a : a;
     }
 }
+
+
+// File contracts/ICO$-additional/SafeMath.sol
+
+pragma solidity 0.7.6;
 
 /**
  * @title SafeMath
@@ -139,6 +156,11 @@ library SafeMath {
     }
 }
 
+
+// File contracts/ICO$-additional/Initializable.sol
+
+pragma solidity 0.7.6;
+
 contract Initializable {
     /**
      * @dev Indicates that the contract has been initialized.
@@ -196,6 +218,11 @@ contract Initializable {
     uint256[50] private ______gap;
 }
 
+
+// File contracts/ICO$-additional/IERC20.sol
+
+pragma solidity 0.7.6;
+
 /**
  * @title ERC20 interface
  * @dev see https://github.com/ethereum/EIPs/issues/20
@@ -228,6 +255,11 @@ interface IERC20 {
         uint256 value
     );
 }
+
+
+// File contracts/ICO$-additional/Ownable.sol
+
+pragma solidity 0.7.6;
 
 /**
  * @title Ownable
@@ -305,6 +337,12 @@ contract Ownable is Initializable {
     uint256[50] private ______gap;
 }
 
+
+// File contracts/ICO$-additional/ERC20Detailed.sol
+
+pragma solidity 0.7.6;
+
+
 /**
  * @title ERC20Detailed token
  * @dev The decimals are only for visualization purposes.
@@ -349,6 +387,19 @@ abstract contract ERC20Detailed is Initializable, IERC20 {
 
     uint256[50] private ______gap;
 }
+
+
+// File contracts/ICOFraction.sol
+
+// SPDX-License-Identifier: MIT
+pragma solidity 0.7.6;
+
+
+
+
+
+
+
 
 contract ICO$Fraction is ERC20Detailed, Ownable {
     using SafeMath for uint256;
